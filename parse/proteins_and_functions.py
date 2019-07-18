@@ -1,7 +1,7 @@
-from parse import sequences
+from parse import sequences, ontology
 
 
-def proteins_with_functions(valid_proteins, path="../data/uniprot_sprot_exp.txt"):
+def proteins_with_functions(valid_proteins, obsoletes, path="../data/uniprot_sprot_exp.txt"):
     # Funkcija za svaki protein odredjuje koje funkcije vrsi
     file = open(path, "r")
     all_lines = file.readlines()
@@ -18,6 +18,10 @@ def proteins_with_functions(valid_proteins, path="../data/uniprot_sprot_exp.txt"
             if protein not in valid_proteins:
                 continue
 
+            # Preskacu se zastarele funkcije
+            if function in obsoletes:
+                continue
+
             if protein in proteins:
                 proteins[protein].append(function)
             else:
@@ -27,9 +31,10 @@ def proteins_with_functions(valid_proteins, path="../data/uniprot_sprot_exp.txt"
     return proteins
 
 
-def functions_with_proteins(path="../data/uniprot_sprot_exp.txt"):
+def functions_with_proteins(obsoletes, path="../data/uniprot_sprot_exp.txt"):
     # Funkcija za svaku funkciju odredjuje koji proteini je vrse
     # Ima ih 5966, vecina su listovi ontologije, ali ima i unutrasnjih cvorova (1310)
+    # Zastarelih je 516, pa je ukupan broj funkcija 5916
     file = open(path, "r")
     all_lines = file.readlines()
     functions = {}
@@ -40,6 +45,10 @@ def functions_with_proteins(path="../data/uniprot_sprot_exp.txt"):
         if tokens[2] == "F\n":
             protein = tokens[0]
             function = tokens[1]
+
+            # Preskacu se zastarele funkcije
+            if function in obsoletes:
+                continue
 
             if function in functions:
                 functions[function].append(protein)
@@ -52,8 +61,9 @@ def functions_with_proteins(path="../data/uniprot_sprot_exp.txt"):
 
 def main():
     valid_proteins = sequences.protein_sequences().keys()
-    proteins = proteins_with_functions(valid_proteins)
-    functions = functions_with_proteins()
+    fs, obsoletes = ontology.functions()
+    proteins = proteins_with_functions(valid_proteins, obsoletes)
+    functions = functions_with_proteins(obsoletes)
     print(len(proteins))
     print(len(functions))
 
