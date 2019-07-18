@@ -8,35 +8,59 @@ def functions(path="../data/go.obo"):
     # mapa sa siframa molekulskih funkcija i podacima o njima
     # ime, definicija, roditeljske funkcije
     molecular_functions = {}
+    obsoletes = []
 
     for function in all_functions:
         # Izdvajaju se samo molekulske funkcije i to one koje nisu zastarele
-        if function.find("namespace: molecular_function") != -1 and function.find("is_obsolete: true") == -1:
-            function_info = function.split("\n")
-            function_id = function_info[1][4:]
-            name = function_info[2][6:]
-            definition = ''
-            parents = []
+        if function.find("namespace: molecular_function") != -1:
+            if function.find("is_obsolete: true") == -1:
+                function_info = function.split("\n")
+                function_id = function_info[1][4:]
+                name = function_info[2][6:]
+                definition = ""
+                parents = []
 
-            for info in function_info:
-                if info.startswith("def:"):
-                    definition = info[6:]
+                # Neke funkcije imaju alterantivne identifikatore
+                alt_ids = []
 
-                if info.startswith("is_a"):
-                    parent = info.split(" ")
-                    parents.append(parent[1])
+                for info in function_info:
+                    if info.startswith("def:"):
+                        definition = info[6:]
 
-            if len(parents) == 0:
-                parents = "root"
+                    if info.startswith("alt_id:"):
+                        alt_ids.append(info[8:].replace("\n", ""))
 
-            molecular_functions[function_id] = {
-                "name": name,
-                "definition": definition,
-                "parents": parents
-            }
+                    if info.startswith("is_a"):
+                        parent = info.split(" ")
+                        parents.append(parent[1])
+
+                if len(parents) == 0:
+                    parents = "root"
+
+                molecular_functions[function_id] = {
+                    "name": name,
+                    "definition": definition,
+                    "parents": parents,
+                    "alt_id": []
+                }
+
+                for alt_id in alt_ids:
+                    molecular_functions[alt_id] = {
+                        "name": name,
+                        "definition": definition,
+                        "parents": parents,
+                        "alt_id": function_id
+                    }
+
+                    molecular_functions[function_id]["alt_id"] = alt_ids
+
+            else:
+                function_info = function.split("\n")
+                function_id = function_info[1][4:]
+                obsoletes.append(function_id)
 
     file.close()
-    return molecular_functions
+    return molecular_functions, obsoletes
 
 
 def ontology_tree(molecular_functions):
@@ -64,10 +88,11 @@ def ontology_tree(molecular_functions):
 
 
 def main():
-    fs = functions()
+    fs, obsoletes = functions()
     tree = ontology_tree(fs)
     print(len(fs))
     print(len(tree))
+    print(len(obsoletes))
 
 
 if __name__ == '__main__':
