@@ -13,17 +13,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parse/ontology.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="-374">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parse/sequences.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/parse/sequences.py">
+        <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+            <state relative-caret-position="139">
+              <caret line="50" selection-end-line="62" />
             </state>
           </provider>
         </entry>
@@ -51,8 +60,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/parse/ontology.py" />
         <option value="$PROJECT_DIR$/parse/sequences.py" />
+        <option value="$PROJECT_DIR$/parse/protein_with_functions.py" />
+        <option value="$PROJECT_DIR$/parse/proteins_with_functions.py" />
+        <option value="$PROJECT_DIR$/parse/ontology.py" />
+        <option value="$PROJECT_DIR$/parse/proteins_and_functions.py" />
       </list>
     </option>
   </component>
@@ -108,7 +120,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.sequences">
+  <component name="RunManager" selected="Python.proteins_and_functions">
     <configuration name="ontology" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Master-rad" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -122,6 +134,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/ontology.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="proteins_and_functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Master-rad" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/proteins_and_functions.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,8 +186,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.sequences" />
+        <item itemvalue="Python.proteins_and_functions" />
         <item itemvalue="Python.ontology" />
+        <item itemvalue="Python.sequences" />
       </list>
     </recent_temporary>
   </component>
@@ -215,17 +249,24 @@
         <state relative-caret-position="-324" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/ontology.py">
+    <entry file="file://$PROJECT_DIR$/parse/sequences.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="594">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/sequences.py">
+    <entry file="file://$PROJECT_DIR$/parse/ontology.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+        <state relative-caret-position="-374">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="50" selection-end-line="62" />
         </state>
       </provider>
     </entry>
