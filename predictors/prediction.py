@@ -1,5 +1,6 @@
 from predictors import one_function
 from parse import array_sequences, ontology, proteins_and_functions, sequences
+from datetime import datetime
 
 
 def main():
@@ -13,6 +14,7 @@ def main():
 
     # sve sekvence
     protein_sequences = sequences.protein_sequences()
+    test_proteins_arrays = [array_sequences.form_array(protein_sequences[p]) for p in test_proteins]
 
     # proteini koji vrse tu funkciju
     proteins = proteins_and_functions.functions_with_proteins(protein_sequences.keys(), obsoletes)[function]
@@ -21,12 +23,13 @@ def main():
     for protein in test_proteins:
         del protein_sequences[protein]
 
+    print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
     # all_sequences = array_sequences.all_array_sequences(protein_sequences)
     positive, negative = array_sequences.n_array_sequences(protein_sequences, proteins)
 
     classificator = one_function.one_function_predictor(positive, negative)
 
-    prediction = classificator.predict(test_proteins)
+    prediction = classificator.predict(test_proteins_arrays)
     print(prediction)
 
 
