@@ -21,9 +21,10 @@ def main():
     for protein in test_proteins:
         del protein_sequences[protein]
 
-    all_sequences = array_sequences.all_array_sequences(protein_sequences)
+    # all_sequences = array_sequences.all_array_sequences(protein_sequences)
+    positive, negative = array_sequences.n_array_sequences(protein_sequences, proteins)
 
-    classificator = one_function.one_function_predictor(all_sequences, proteins)
+    classificator = one_function.one_function_predictor(positive, negative)
 
     prediction = classificator.predict(test_proteins)
     print(prediction)

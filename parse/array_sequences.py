@@ -1,4 +1,4 @@
-from parse import sequences
+from parse import sequences, proteins_and_functions, ontology
 import numpy as np
 
 amino_acids_list = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
@@ -15,6 +15,49 @@ def all_array_sequences(protein_sequences, k=4):
         array_sequences[protein] = form_array(sequence, k)
 
     return array_sequences
+
+
+def n_array_sequences(protein_sequences, positive_proteins, n=5000, k=4):
+    # Funkcija odredjuje sekvence za n proteina
+    # protein_sequences sadrze proteine i niske aminokiselina
+    # positive_proteins sadrzi listu proteina koji izvrsavaju odredjenu funkciju
+
+    # Ukupan broj proteina koji vse molekulske funckije
+    num_of_proteins = len(protein_sequences)
+
+    # Ukupan broj pozitivnih i negativnih instanci
+    total_num_of_positive = len(positive_proteins)
+    total_num_of_negative = num_of_proteins - total_num_of_positive
+
+    # Broj pozitivnih i negativnih instanci za uzorak
+    num_of_positive = round(len(positive_proteins) / num_of_proteins * n)
+    num_of_negative = n - num_of_positive
+
+    # Indeksi odabranih instanci
+    positive_indices = np.random.choice(total_num_of_positive, num_of_positive, replace=False)
+    negative_indices = np.random.choice(total_num_of_negative, num_of_negative, replace=False)
+
+    # Lista negativnih instanci
+    negative_proteins = []
+    for protein in protein_sequences:
+        if protein not in positive_proteins:
+            negative_proteins.append(protein)
+
+    # Odabir instanci
+    chosen_positive = np.array(positive_proteins)[positive_indices]
+    chosen_negative = np.array(negative_proteins)[negative_indices]
+
+    # Formiranje recnika pozitivnih i negativnih instanci sa sekvencama
+    positive = {}
+    negative = {}
+
+    for protein in chosen_positive:
+        positive[protein] = form_array(protein_sequences[protein], k)
+
+    for protein in chosen_negative:
+        negative[protein] = form_array(protein_sequences[protein], k)
+
+    return positive, negative
 
 
 def form_array(protein, k=4):
@@ -70,10 +113,14 @@ def number_to_amino(n):
 
 
 def main():
-    proteins = sequences.protein_sequences()
-    print(len(proteins))
-    all_sequences = all_array_sequences(proteins)
-    print(len(all_sequences))
+    # Testiranje napisanih funkcija
+    fs, obsoletes = ontology.functions()
+    protein_sequences = sequences.protein_sequences()
+    valid_proteins = protein_sequences.keys()
+    functions = proteins_and_functions.functions_with_proteins(valid_proteins, obsoletes)
+    proteins = functions["GO:0042802"]
+    positives, negatives = n_array_sequences(protein_sequences, proteins)
+    print(len(positives), len(negatives))
 
 
 if __name__ == '__main__':

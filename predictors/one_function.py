@@ -2,7 +2,7 @@ from sklearn import model_selection, metrics, svm
 from datetime import datetime
 
 
-def one_function_predictor(array_sequences, proteins):
+def one_function_predictor(positive, negative):
     # Funkcija odredjuje klasifikator za jednu funkciju
     # array_sequences je niz proteina i njihovih nizovnih sekvenci
     # proteins je niz proteina koji vrse zadatu funkciju
@@ -10,12 +10,13 @@ def one_function_predictor(array_sequences, proteins):
     x = []
     y = []
 
-    for protein in array_sequences:
-        x.append(array_sequences[protein])
-        if protein in proteins:
-            y.append(1)
-        else:
-            y.append(-1)
+    for protein in positive:
+        x.append(positive[protein])
+        y.append(1)
+
+    for protein in negative:
+        x.append(positive[protein])
+        y.append(-1)
 
     x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
     x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
