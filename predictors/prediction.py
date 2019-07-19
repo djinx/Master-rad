@@ -11,11 +11,11 @@ def main():
     function = "GO:0042802"
     fs, obsoletes = ontology.functions()
 
-    # proteini koji vrse tu funkciju
-    proteins = proteins_and_functions.functions_with_proteins(obsoletes)[function]
-
     # sve sekvence
     protein_sequences = sequences.protein_sequences()
+
+    # proteini koji vrse tu funkciju
+    proteins = proteins_and_functions.functions_with_proteins(protein_sequences.keys(), obsoletes)[function]
 
     # izbaceni test proteini
     for protein in test_proteins:

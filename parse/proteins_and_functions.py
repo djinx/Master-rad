@@ -31,7 +31,7 @@ def proteins_with_functions(valid_proteins, obsoletes, path="../data/uniprot_spr
     return proteins
 
 
-def functions_with_proteins(obsoletes, path="../data/uniprot_sprot_exp.txt"):
+def functions_with_proteins(valid_proteins, obsoletes, path="../data/uniprot_sprot_exp.txt"):
     # Funkcija za svaku funkciju odredjuje koji proteini je vrse
     # Ima ih 5966, vecina su listovi ontologije, ali ima i unutrasnjih cvorova (1310)
     # Zastarelih je 516, neke se ponavljaju za vise proteina, pa je ukupan broj funkcija 5916
@@ -45,6 +45,10 @@ def functions_with_proteins(obsoletes, path="../data/uniprot_sprot_exp.txt"):
         if tokens[2] == "F\n":
             protein = tokens[0]
             function = tokens[1]
+
+            # Preskacemo proteine koji sadrze nestandardne aminokiseline
+            if protein not in valid_proteins:
+                continue
 
             # Preskacu se zastarele funkcije
             if function in obsoletes:
