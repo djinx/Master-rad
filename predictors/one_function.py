@@ -15,7 +15,7 @@ def one_function_predictor(positive, negative):
         y.append(1)
 
     for protein in negative:
-        x.append(positive[protein])
+        x.append(negative[protein])
         y.append(-1)
 
     x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
