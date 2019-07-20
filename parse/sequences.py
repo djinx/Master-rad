@@ -1,4 +1,4 @@
-def protein_sequences(path="../data/uniprot_sprot_exp_molecular.fasta"):
+def protein_sequences(path="../data/parsed_data/uniprot_sprot_exp_molecular.fasta"):
     # Funkcija izdvaja sekvence aminokiselina za svaki od proteina koji vrsi bar jednu molekulsku funckiju
     file = open(path, "r")
     all_lines = file.read()

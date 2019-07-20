@@ -1,4 +1,4 @@
-def functions(path="../data/go.obo"):
+def functions(path="../data/original_data/go.obo"):
     # Funckija izdvaja sve molekulske funkcije u mapu
     file = open(path, "r")
     all_lines = file.read()
