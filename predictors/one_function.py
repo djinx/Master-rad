@@ -1,20 +1,32 @@
 from sklearn import model_selection, metrics, svm
 from datetime import datetime
+from parse import array_sequences
+import subprocess
 
 
-def one_function_predictor(positive, negative):
+def one_function_predictor(function, positive, negative):
     # Funkcija odredjuje klasifikator za jednu funkciju
     # array_sequences je niz proteina i njihovih nizovnih sekvenci
     # proteins je niz proteina koji vrse zadatu funkciju
+
+    path = "../data/input/" + function + ".txt"
+    # file = open(path, "a")
+    # arrays = array_sequences.read_sequences()
 
     x = []
     y = []
 
     for protein in positive:
+        # file.write("1 ")
+        # file.write(arrays[protein])
+        # file.write("\n")
         x.append(positive[protein])
         y.append(1)
 
     for protein in negative:
+        # file.write("-1 ")
+        # file.write(arrays[protein].replace("0:", "1:"))
+        # file.write("\n")
         x.append(negative[protein])
         y.append(-1)
 
@@ -22,26 +34,32 @@ def one_function_predictor(positive, negative):
     x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
                                                                                     test_size=0.25)
 
-    print("Odabir modela: ", datetime.now().time())
-    best_c = select_best_c(x_train, x_validation, y_train, y_validation)
+    print("Pocelo trenuranje: ", datetime.now().time())
+    subprocess.run("../svm_light/svm_learn ../data/input/0042802.txt ../data/models/0042802")
+    print("Zavrseno treniranje: ", datetime.now().time())
 
-    print("Treniranje odabranog modela: ", datetime.now().time())
-    classificator = svm.SVC(gamma="scale", C=best_c)
-    classificator.fit(x_train_val, y_train_val)
+    # print("Odabir modela: ", datetime.now().time())
+    # best_c = select_best_c(x_train, x_validation, y_train, y_validation)
+    #
+    # print("Treniranje odabranog modela: ", datetime.now().time())
+    # classificator = svm.SVC(gamma="scale", C=best_c)
+    # classificator.fit(x_train_val, y_train_val)
+    #
+    # print("Testiranje odabranog modela: ", datetime.now().time())
+    # y_predicted = classificator.predict(x_test)
+    #
+    # print("Ocena odabranog modela: ", datetime.now().time())
+    # accuracy = metrics.accuracy_score(y_test, y_predicted)
+    # precision = metrics.precision_score(y_test, y_predicted)
+    # f1 = metrics.f1_score(y_test, y_predicted)
+    #
+    # print("accuracy: ", accuracy)
+    # print("precision: ", precision)
+    # print("f1: ", f1)
 
-    print("Testiranje odabranog modela: ", datetime.now().time())
-    y_predicted = classificator.predict(x_test)
+    # return classificator
 
-    print("Ocena odabranog modela: ", datetime.now().time())
-    accuracy = metrics.accuracy_score(y_test, y_predicted)
-    precision = metrics.precision_score(y_test, y_predicted)
-    f1 = metrics.f1_score(y_test, y_predicted)
-
-    print("accuracy: ", accuracy)
-    print("precision: ", precision)
-    print("f1: ", f1)
-
-    return classificator
+    # file.close()
 
 
 def select_best_c(x_train, x_test, y_train, y_test):
