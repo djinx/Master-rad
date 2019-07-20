@@ -8,12 +8,28 @@ amino_acids_list = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 
 number_of_aa = len(amino_acids_list)
 
 
-def all_array_sequences(protein_sequences, k=4):
+def all_array_sequences(protein_sequences, k=4, path="../data/all_array_sequences.txt", n=10):
+    file = open(path, "a")
     array_sequences = {}
-    for protein in protein_sequences:
-        sequence = protein_sequences[protein]
-        array_sequences[protein] = form_array(sequence, k)
 
+    for protein in protein_sequences:
+        n -= 1
+        sequence = protein_sequences[protein]
+        array = form_array(sequence, k)
+        array_sequences[protein] = array
+
+        file.write(protein + " ")
+
+        for i in range(0, len(array)):
+            if array[i] > 0:
+                file.write(str(i) + ":" + str(array[i]) + " ")
+
+        file.write("\n")
+
+        if n < 0:
+            break
+
+    file.close()
     return array_sequences
 
 
@@ -112,6 +128,16 @@ def number_to_amino(n):
     return amino_acids[n]
 
 
+def read_sequences(path="../data/all_array_sequences.txt"):
+    file = open(path, "r")
+    array_sequences = {}
+
+    
+
+    file.close()
+    return array_sequences
+
+
 def main():
     # Testiranje napisanih funkcija
     fs, obsoletes = ontology.functions()
@@ -119,8 +145,11 @@ def main():
     valid_proteins = protein_sequences.keys()
     functions = proteins_and_functions.functions_with_proteins(valid_proteins, obsoletes)
     proteins = functions["GO:0042802"]
-    positives, negatives = n_array_sequences(protein_sequences, proteins)
-    print(len(positives), len(negatives))
+    # positives, negatives = n_array_sequences(protein_sequences, proteins)
+    # print(len(positives), len(negatives))
+    array = all_array_sequences(protein_sequences)
+
+    print(len(array))
 
 
 if __name__ == '__main__':
