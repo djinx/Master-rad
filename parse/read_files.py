@@ -1,3 +1,15 @@
+def read_molecular_functions(path="../data/parsed_data/molecular_functions.txt"):
+    file = open(path, "r")
+    lines = file.readlines()
+    molecular_functions = []
+
+    for line in lines:
+        molecular_functions.append(line.replace("\n", ""))
+
+    file.close()
+    return molecular_functions
+
+
 def read_alt_ids(path="../data/parsed_data/alt_ids.txt"):
     file = open(path, "r")
     lines = file.readlines()
