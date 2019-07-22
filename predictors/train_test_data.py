@@ -30,6 +30,6 @@ def make_file(x, y, all_sequences, path):
 
     for i in range(0, len(x)):
         protein = x[i]
-        file.write(y[i] + " " + all_sequences[protein] + "\n")
+        file.write(str(y[i]) + " " + all_sequences[protein] + "\n")
 
     file.close()
