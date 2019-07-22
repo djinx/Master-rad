@@ -25,7 +25,7 @@ def proteins_with_functions(valid_proteins, obsoletes, path="../data/original_da
             if protein in proteins:
                 proteins[protein].append(function)
             else:
-                proteins[protein] = []
+                proteins[protein] = [function]
 
     file.close()
     return proteins
@@ -57,7 +57,7 @@ def functions_with_proteins(valid_proteins, obsoletes, path="../data/original_da
             if function in functions:
                 functions[function].append(protein)
             else:
-                functions[function] = []
+                functions[function] = [protein]
 
     file.close()
     return functions
@@ -67,10 +67,9 @@ def main():
     valid_proteins = sequences.protein_sequences().keys()
     fs, obsoletes = ontology.functions()
     proteins = proteins_with_functions(valid_proteins, obsoletes)
-    functions = functions_with_proteins(obsoletes)
+    functions = functions_with_proteins(valid_proteins, obsoletes)
     print(len(proteins))
     print(len(functions))
-
 
 if __name__ == '__main__':
     main()
