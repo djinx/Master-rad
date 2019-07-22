@@ -8,29 +8,23 @@ amino_acids_list = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 
 number_of_aa = len(amino_acids_list)
 
 
-def all_array_sequences(protein_sequences, k=4, path="../data/all_array_sequences.txt", n=10):
-    file = open(path, "a")
-    array_sequences = {}
+def all_array_sequences_file(protein_sequences, k=4, path="../data/parsed_data/all_array_sequences.txt"):
+    file = open(path, "w")
 
     for protein in protein_sequences:
-        n -= 1
         sequence = protein_sequences[protein]
         array = form_array(sequence, k)
-        array_sequences[protein] = array
 
         file.write(protein + " ")
 
         for i in range(0, len(array)):
             if array[i] > 0:
+                # obelezavanje svsojstva krece od 1
                 file.write(str(i+1) + ":" + str(array[i]) + " ")
 
         file.write("\n")
 
-        if n < 0:
-            break
-
     file.close()
-    return array_sequences
 
 
 def n_array_sequences(protein_sequences, positive_proteins, n=5000, k=4):
@@ -129,8 +123,8 @@ def number_to_amino(n):
 
 
 def main():
-    array = read_files.read_array_sequences()
-    print(len(array))
+    protein_sequences = read_files.read_proteins_with_sequences()
+    all_array_sequences_file(protein_sequences)
 
 
 if __name__ == '__main__':
