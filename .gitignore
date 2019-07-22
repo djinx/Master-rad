@@ -6,5 +6,6 @@ data/parsed_data/all_array_sequences.txt
 data/input/*
 data/models/*
 data/output/*
+data/svm/*
 data/test/*
 izlaz719
