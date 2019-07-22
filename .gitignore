@@ -2,3 +2,4 @@ venv
 *.pyc
 parse/__pycache__/
 predictos/__pycache__/
+data/parsed_data/all_array_sequences.txt
