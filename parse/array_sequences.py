@@ -22,7 +22,7 @@ def all_array_sequences(protein_sequences, k=4, path="../data/all_array_sequence
 
         for i in range(0, len(array)):
             if array[i] > 0:
-                file.write(str(i) + ":" + str(array[i]) + " ")
+                file.write(str(i+1) + ":" + str(array[i]) + " ")
 
         file.write("\n")
 
@@ -128,27 +128,21 @@ def number_to_amino(n):
     return amino_acids[n]
 
 
-def read_sequences(path="../data/all_array_sequences.txt"):
+def read_sequences(path="../data/parsed_data/all_array_sequences.txt"):
     file = open(path, "r")
+    lines = file.readlines()
     array_sequences = {}
 
-    
+    for line in lines:
+        tokens = line.split(" ")
+        array_sequences[tokens[0]] = " ".join(tokens[1:-1])
 
     file.close()
     return array_sequences
 
 
 def main():
-    # Testiranje napisanih funkcija
-    fs, obsoletes = ontology.functions()
-    protein_sequences = sequences.protein_sequences()
-    valid_proteins = protein_sequences.keys()
-    functions = proteins_and_functions.functions_with_proteins(valid_proteins, obsoletes)
-    proteins = functions["GO:0042802"]
-    # positives, negatives = n_array_sequences(protein_sequences, proteins)
-    # print(len(positives), len(negatives))
-    array = all_array_sequences(protein_sequences)
-
+    array = read_sequences()
     print(len(array))
 
 
