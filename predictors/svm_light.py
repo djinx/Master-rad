@@ -30,7 +30,7 @@ def main():
     make_test_file(function[3:], test_proteins, all_sequences)
 
     print("Pocelo trenuranje: ", datetime.now().time())
-    subprocess.run("../svm_light/svm_learn ../data/input/0042802.txt ../data/models/0042802")
+    subprocess.run("../svm_light/svm_learn -t 3 -s 0.00000625 -r 1 -m 100 -# 1000 ../data/input/0042802.txt ../data/models/0042802")
     print("Zavrseno treniranje: ", datetime.now().time())
 
     print("Pocelo testiranje: ", datetime.now().time())
