@@ -3,3 +3,8 @@ venv
 parse/__pycache__/
 predictos/__pycache__/
 data/parsed_data/all_array_sequences.txt
+data/input/*
+data/models/*
+data/output/*
+data/test/*
+izlaz719
