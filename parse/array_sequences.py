@@ -1,4 +1,4 @@
-from parse import sequences, proteins_and_functions, ontology
+from parse import read_files
 import numpy as np
 
 amino_acids_list = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
@@ -128,9 +128,8 @@ def number_to_amino(n):
     return amino_acids[n]
 
 
-
 def main():
-    array = read_sequences()
+    array = read_files.read_array_sequences()
     print(len(array))
 
 
