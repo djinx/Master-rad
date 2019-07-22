@@ -79,6 +79,22 @@ def proteins_with_function_file(proteins, alt_ids):
     file.close()
 
 
+def function_with_proteins_file(functions, alt_ids):
+    file = open("../data/parsed_data/functions_with_proteins.txt", "w")
+
+    for function in functions:
+        proteins = functions[function]
+        if function in alt_ids:
+            file.write(alt_ids[function] + " ")
+        else:
+            file.write(function + " ")
+        file.write(function + "->")
+
+        file.write(" ".join(proteins) + "\n")
+
+    file.close()
+
+
 def main():
     alt_ids = read_files.read_alt_ids()
     valid_proteins = sequences.protein_sequences().keys()
@@ -87,6 +103,8 @@ def main():
     functions = functions_with_proteins(valid_proteins, obsoletes)
     print(len(proteins))
     print(len(functions))
+    proteins_with_function_file(proteins, alt_ids)
+    function_with_proteins_file(functions, alt_ids)
 
 
 if __name__ == '__main__':
