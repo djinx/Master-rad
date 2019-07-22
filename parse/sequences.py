@@ -1,4 +1,7 @@
-def protein_sequences(path="../data/parsed_data/uniprot_sprot_exp_molecular.fasta"):
+from parse import read_files
+
+
+def protein_sequences(molecular_proteins, path="../data/original_data/uniprot_sprot_exp_molecular.fasta"):
     # Funkcija izdvaja sekvence aminokiselina za svaki od proteina koji vrsi bar jednu molekulsku funckiju
     file = open(path, "r")
     all_lines = file.read()
@@ -11,7 +14,7 @@ def protein_sequences(path="../data/parsed_data/uniprot_sprot_exp_molecular.fast
 
     for line in lines:
         if line.startswith(">"):
-            if protein_id != "":
+            if protein_id != "" and protein_id in molecular_proteins:
                 sequences[protein_id] = sequence
 
             protein_id = line.replace(">", "").replace("\n", "")
@@ -27,9 +30,20 @@ def protein_sequences(path="../data/parsed_data/uniprot_sprot_exp_molecular.fast
     return sequences
 
 
+def protein_sequences_file(proteins_with_sequences):
+    file = open("../data/parsed_data/proteins_with_sequences.txt", "w")
+
+    for protein in proteins_with_sequences:
+        file.write(protein + "->" + proteins_with_sequences[protein] + "\n")
+
+    file.close()
+
+
 def main():
-    sequences = protein_sequences()
+    molecular_proteins = read_files.read_proteins_with_functions()
+    sequences = protein_sequences(molecular_proteins.keys())
     print(len(sequences))
+    protein_sequences_file(sequences)
 
 
 if __name__ == '__main__':
