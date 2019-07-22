@@ -1,4 +1,4 @@
-from parse import sequences, ontology
+from parse import sequences, ontology, read_files
 
 
 def proteins_with_functions(valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
@@ -63,13 +63,31 @@ def functions_with_proteins(valid_proteins, obsoletes, path="../data/original_da
     return functions
 
 
+def proteins_with_function_file(proteins, alt_ids):
+    file = open("../data/parsed_data/proteins_with_functions.txt", "w")
+
+    for protein in proteins:
+        functions = proteins[protein]
+        file.write(protein + "->")
+        for function in functions:
+            if function in alt_ids:
+                file.write(alt_ids[function] + " ")
+            else:
+                file.write(function + " ")
+        file.write("\n")
+
+    file.close()
+
+
 def main():
+    alt_ids = read_files.read_alt_ids()
     valid_proteins = sequences.protein_sequences().keys()
     fs, obsoletes = ontology.functions()
     proteins = proteins_with_functions(valid_proteins, obsoletes)
     functions = functions_with_proteins(valid_proteins, obsoletes)
     print(len(proteins))
     print(len(functions))
+
 
 if __name__ == '__main__':
     main()
