@@ -26,3 +26,20 @@ def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functio
             proteins_with_functions[protein].append(function)
 
     return proteins_with_functions
+
+
+def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins.txt"):
+    file = open(path, "r")
+    lines = file.readlines()
+    functions_with_proteins = {}
+
+    for line in lines:
+        tokens = line.split("->")
+        function = tokens[0]
+        proteins = tokens[1].split(" ")
+        functions_with_proteins[function] = []
+
+        for protein in proteins:
+            functions_with_proteins[protein].append(protein)
+
+    return functions_with_proteins
