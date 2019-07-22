@@ -128,18 +128,6 @@ def number_to_amino(n):
     return amino_acids[n]
 
 
-def read_sequences(path="../data/parsed_data/all_array_sequences.txt"):
-    file = open(path, "r")
-    lines = file.readlines()
-    array_sequences = {}
-
-    for line in lines:
-        tokens = line.split(" ")
-        array_sequences[tokens[0]] = " ".join(tokens[1:-1])
-
-    file.close()
-    return array_sequences
-
 
 def main():
     array = read_sequences()

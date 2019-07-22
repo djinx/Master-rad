@@ -84,6 +84,19 @@ def read_proteins_with_sequences(path="../data/parsed_data/proteins_with_sequenc
     return proteins_with_sequences
 
 
+def read_array_sequences(path="../data/parsed_data/all_array_sequences.txt"):
+    file = open(path, "r")
+    lines = file.readlines()
+    array_sequences = {}
+
+    for line in lines:
+        tokens = line.split(" ")
+        array_sequences[tokens[0]] = " ".join(tokens[1:-1])
+
+    file.close()
+    return array_sequences
+
+
 def main():
     print(len(read_proteins_with_functions()))
     print(len(read_alt_ids()))
@@ -91,7 +104,8 @@ def main():
     print(len(read_molecular_functions()))
     print(len(read_obsoletes()))
     print(len(read_proteins_with_sequences()))
-    
+    print(len(read_array_sequences()))
+
 
 if __name__ == '__main__':
     main()
