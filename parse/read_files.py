@@ -95,17 +95,3 @@ def read_array_sequences(path="../data/parsed_data/all_array_sequences.txt"):
 
     file.close()
     return array_sequences
-
-
-def main():
-    print(len(read_proteins_with_functions()))
-    print(len(read_alt_ids()))
-    print(len(read_functions_with_proteins()))
-    print(len(read_molecular_functions()))
-    print(len(read_obsoletes()))
-    print(len(read_proteins_with_sequences()))
-    print(len(read_array_sequences()))
-
-
-if __name__ == '__main__':
-    main()

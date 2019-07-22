@@ -1,6 +1,3 @@
-from parse import read_files
-
-
 def protein_sequences(molecular_proteins, path="../data/original_data/uniprot_sprot_exp_molecular.fasta"):
     # Funkcija izdvaja sekvence aminokiselina za svaki od proteina koji vrsi bar jednu molekulsku funckiju
     file = open(path, "r")
@@ -37,14 +34,3 @@ def protein_sequences_file(proteins_with_sequences):
         file.write(protein + "->" + proteins_with_sequences[protein] + "\n")
 
     file.close()
-
-
-def main():
-    molecular_proteins = read_files.read_proteins_with_functions()
-    sequences = protein_sequences(molecular_proteins.keys())
-    print(len(sequences))
-    protein_sequences_file(sequences)
-
-
-if __name__ == '__main__':
-    main()

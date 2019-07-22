@@ -93,19 +93,3 @@ def function_with_proteins_file(functions, alt_ids):
         file.write(" ".join(proteins) + "\n")
 
     file.close()
-
-
-def main():
-    alt_ids = read_files.read_alt_ids()
-    valid_proteins = sequences.protein_sequences().keys()
-    fs, obsoletes = ontology.functions()
-    proteins = proteins_with_functions(valid_proteins, obsoletes)
-    functions = functions_with_proteins(valid_proteins, obsoletes)
-    print(len(proteins))
-    print(len(functions))
-    proteins_with_function_file(proteins, alt_ids)
-    function_with_proteins_file(functions, alt_ids)
-
-
-if __name__ == '__main__':
-    main()

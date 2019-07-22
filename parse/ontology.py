@@ -105,15 +105,3 @@ def alternate_ids_file(molecular_functions):
             file.write(alt_id + " " + f + "\n")
 
     file.close()
-
-
-def main():
-    fs, obsoletes = functions()
-    tree = ontology_tree(fs)
-    molecular_functions_file(fs)
-    obsolete_functions_file(obsoletes)
-    alternate_ids_file(fs)
-
-
-if __name__ == '__main__':
-    main()
