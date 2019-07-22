@@ -41,18 +41,8 @@ def functions(path="../data/original_data/go.obo"):
                     "name": name,
                     "definition": definition,
                     "parents": parents,
-                    "alt_id": []
+                    "alt_id": alt_ids
                 }
-
-                for alt_id in alt_ids:
-                    molecular_functions[alt_id] = {
-                        "name": name,
-                        "definition": definition,
-                        "parents": parents,
-                        "alt_id": function_id
-                    }
-
-                    molecular_functions[function_id]["alt_id"] = alt_ids
 
             else:
                 function_info = function.split("\n")
