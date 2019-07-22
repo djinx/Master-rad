@@ -95,12 +95,24 @@ def obsolete_functions_file(obsolete_functions):
     file.close()
 
 
+def alternate_ids_file(molecular_functions):
+    file = open("../data/parsed_data/alt_ids.txt", "w")
+
+    for f in molecular_functions:
+        alt_ids = molecular_functions[f]["alt_id"]
+
+        for alt_id in alt_ids:
+            file.write(alt_id + " " + f + "\n")
+
+    file.close()
+
+
 def main():
     fs, obsoletes = functions()
     tree = ontology_tree(fs)
-    print(len(fs))
-    print(len(tree))
-    print(len(obsoletes))
+    molecular_functions_file(fs)
+    obsolete_functions_file(obsoletes)
+    alternate_ids_file(fs)
 
 
 if __name__ == '__main__':
