@@ -10,6 +10,18 @@ def read_molecular_functions(path="../data/parsed_data/molecular_functions.txt")
     return molecular_functions
 
 
+def read_obsoletes(path="../data/parsed_data/obsolete_functions.txt"):
+    file = open(path, "r")
+    lines = file.readlines()
+    obsoletes = []
+
+    for line in lines:
+        obsoletes.append(line.replace("\n", ""))
+
+    file.close()
+    return obsoletes
+
+
 def read_alt_ids(path="../data/parsed_data/alt_ids.txt"):
     file = open(path, "r")
     lines = file.readlines()
@@ -52,6 +64,18 @@ def read_functions_with_proteins(path="../data/parsed_data/functions_with_protei
         functions_with_proteins[function] = []
 
         for protein in proteins:
-            functions_with_proteins[protein].append(protein)
+            functions_with_proteins[function].append(protein)
 
     return functions_with_proteins
+
+
+def main():
+    print(len(read_proteins_with_functions()))
+    print(len(read_alt_ids()))
+    print(len(read_functions_with_proteins()))
+    print(len(read_molecular_functions()))
+    print(len(read_obsoletes()))
+
+
+if __name__ == '__main__':
+    main()
