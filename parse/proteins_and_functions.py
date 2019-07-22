@@ -1,6 +1,3 @@
-from parse import sequences, ontology, read_files
-
-
 def proteins_with_functions(valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
     # Funkcija za svaki protein odredjuje koje funkcije vrsi
     file = open(path, "r")
@@ -85,10 +82,9 @@ def function_with_proteins_file(functions, alt_ids):
     for function in functions:
         proteins = functions[function]
         if function in alt_ids:
-            file.write(alt_ids[function] + " ")
+            file.write(alt_ids[function] + "->")
         else:
-            file.write(function + " ")
-        file.write(function + "->")
+            file.write(function + "->")
 
         file.write(" ".join(proteins) + "\n")
 
