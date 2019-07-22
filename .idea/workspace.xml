@@ -10,23 +10,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/predictors/one_function.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/predictors/svm_light.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="486">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#0#78#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/predictors/prediction.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parse/read_files.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+            <state relative-caret-position="206">
+              <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -35,47 +44,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/array_sequences.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="90" selection-start-line="90" selection-end-line="90" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/ontology.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="66" selection-end-column="57" />
+            <state relative-caret-position="435">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/sequences.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/go.obo">
-          <provider selected="true" editor-type-id="LargeFileEditor" />
         </entry>
       </file>
     </leaf>
@@ -90,7 +64,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>k=3</find>
+      <find>file</find>
+      <find>0008017</find>
+      <find>0050513</find>
     </findStrings>
+    <replaceStrings>
+      <replace>in_file</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,14 +79,24 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/parse/sequences.py" />
         <option value="$PROJECT_DIR$/parse/protein_with_functions.py" />
         <option value="$PROJECT_DIR$/parse/proteins_with_functions.py" />
-        <option value="$PROJECT_DIR$/parse/ontology.py" />
-        <option value="$PROJECT_DIR$/parse/proteins_and_functions.py" />
-        <option value="$PROJECT_DIR$/parse/array_sequences.py" />
-        <option value="$PROJECT_DIR$/predictors/one_function.py" />
+        <option value="$PROJECT_DIR$/izlaz719" />
+        <option value="$PROJECT_DIR$/data/test/0042802.txt" />
+        <option value="$PROJECT_DIR$/data/output/0042802" />
+        <option value="$PROJECT_DIR$/data/models/0042802" />
+        <option value="$PROJECT_DIR$/data/parsed_data/alt_ids.txt" />
+        <option value="$PROJECT_DIR$/data/parsed_data/functions_with_proteins.txt" />
+        <option value="$PROJECT_DIR$/data/parsed_data/proteins_with_functions.txt" />
         <option value="$PROJECT_DIR$/predictors/prediction.py" />
+        <option value="$PROJECT_DIR$/parse/array_sequences.py" />
+        <option value="$PROJECT_DIR$/parse/ontology.py" />
+        <option value="$PROJECT_DIR$/parse/sequences.py" />
+        <option value="$PROJECT_DIR$/parse/read_files.py" />
+        <option value="$PROJECT_DIR$/predictors/one_function.py" />
+        <option value="$PROJECT_DIR$/parse/proteins_and_functions.py" />
+        <option value="$PROJECT_DIR$/predictors/train_test_data.py" />
+        <option value="$PROJECT_DIR$/predictors/svm_light.py" />
       </list>
     </option>
   </component>
@@ -137,6 +127,18 @@
             <path>
               <item name="Master-rad" type="b2602c69:ProjectViewProjectNode" />
               <item name="Master-rad" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Master-rad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Master-rad" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="svm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Master-rad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Master-rad" type="462c0819:PsiDirectoryNode" />
               <item name="parse" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -153,8 +155,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/original_data" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\original_data" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\parsed_data" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\parsed_data" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\original_data" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -168,7 +181,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.prediction">
+  <component name="RunManager" selected="Python.svm_light">
     <configuration name="array_sequences" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Master-rad" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,48 +195,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/array_sequences.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ontology" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Master-rad" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/ontology.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="prediction" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Master-rad" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/predictors" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/predictors/prediction.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -253,6 +224,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="read_files" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Master-rad" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/read_files.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sequences" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Master-rad" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -274,12 +266,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="svm_light" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Master-rad" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/predictors" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/predictors/svm_light.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.prediction" />
-        <item itemvalue="Python.array_sequences" />
+        <item itemvalue="Python.svm_light" />
         <item itemvalue="Python.proteins_and_functions" />
-        <item itemvalue="Python.ontology" />
+        <item itemvalue="Python.array_sequences" />
+        <item itemvalue="Python.read_files" />
         <item itemvalue="Python.sequences" />
       </list>
     </recent_temporary>
@@ -299,14 +312,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30119178" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -319,6 +331,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.24973656" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -343,30 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/go.obo">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parse/ontology.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parse/sequences.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="66" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/30435887/numpy/random/mtrand.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -374,32 +381,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/array_sequences.py">
+    <entry file="file://$PROJECT_DIR$/data/original_data/go.obo">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/all_array_sequences.txt" />
+    <entry file="file://$PROJECT_DIR$/izlaz719">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="729">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/predictors/one_function.py">
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/all_array_sequences.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/input/0042802.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="LargeFileEditor">
+        <state relative-caret-position="3091">
+          <caret line="210" column="52" lean-forward="true" selection-start-line="210" selection-start-column="52" selection-end-line="210" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test/0042802.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/models/0042802">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/output/0042802">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/functions_with_proteins.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="339">
+          <caret line="5907" column="29" selection-start-line="5907" selection-start-column="29" selection-end-line="5907" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/alt_ids.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16443">
+          <caret line="609" column="21" selection-start-line="609" selection-start-column="21" selection-end-line="609" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/original_data/uniprot_sprot_exp.fasta">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/original_data/uniprot_sprot_exp_molecular.fasta">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/proteins_with_functions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2585">
+          <caret line="34784" column="18" selection-start-line="34784" selection-start-column="18" selection-end-line="34784" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/predictors/prediction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+        <state relative-caret-position="270">
+          <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="44" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/molecular_functions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16362" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/obsolete_functions.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/proteins_with_sequences.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/ontology.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2889">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/array_sequences.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="745">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/sequences.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="63" selection-start-line="1" selection-start-column="63" selection-end-line="1" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/one_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/read_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/svm/train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3564" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/output/GO">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/svm_light.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#78#0" expanded="true" />
           </folding>
         </state>
       </provider>
