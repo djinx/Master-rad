@@ -69,13 +69,29 @@ def read_functions_with_proteins(path="../data/parsed_data/functions_with_protei
     return functions_with_proteins
 
 
+def read_proteins_with_sequences(path="../data/parsed_data/proteins_with_sequences.txt"):
+    file = open(path, "r")
+    lines = file.readlines()
+    proteins_with_sequences = {}
+
+    for line in lines:
+        tokens = line.split("->")
+        protein = tokens[0]
+        sequence = tokens[1]
+        proteins_with_sequences[protein] = sequence
+
+    file.close()
+    return proteins_with_sequences
+
+
 def main():
     print(len(read_proteins_with_functions()))
     print(len(read_alt_ids()))
     print(len(read_functions_with_proteins()))
     print(len(read_molecular_functions()))
     print(len(read_obsoletes()))
-
+    print(len(read_proteins_with_sequences()))
+    
 
 if __name__ == '__main__':
     main()
