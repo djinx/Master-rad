@@ -86,6 +86,15 @@ def molecular_functions_file(molecular_functions):
     file.close()
 
 
+def obsolete_functions_file(obsolete_functions):
+    file = open("../data/parsed_data/obsolete_functions.txt", "w")
+
+    for f in obsolete_functions:
+        file.write(f + "\n")
+
+    file.close()
+
+
 def main():
     fs, obsoletes = functions()
     tree = ontology_tree(fs)
