@@ -3,9 +3,11 @@ venv
 parse/__pycache__/
 predictos/__pycache__/
 data/parsed_data/all_array_sequences.txt
+data/parsed_data/all_array_sequences_old.txt
 data/input/*
 data/models/*
 data/output/*
 data/svm/*
 data/test/*
+data/terminal/*
 izlaz719
