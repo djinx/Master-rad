@@ -1,4 +1,7 @@
-def proteins_with_functions(valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
+from parse import read_files
+
+
+def proteins_with_functions(alt_ids, valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
     # Funkcija za svaki protein odredjuje koje funkcije vrsi
     file = open(path, "r")
     all_lines = file.readlines()
@@ -19,8 +22,12 @@ def proteins_with_functions(valid_proteins, obsoletes, path="../data/original_da
             if function in obsoletes:
                 continue
 
+            if function in alt_ids:
+                function = alt_ids[function]
+
             if protein in proteins:
-                proteins[protein].append(function)
+                if function not in proteins[protein]:
+                    proteins[protein].append(function)
             else:
                 proteins[protein] = [function]
 
@@ -28,7 +35,7 @@ def proteins_with_functions(valid_proteins, obsoletes, path="../data/original_da
     return proteins
 
 
-def functions_with_proteins(valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
+def functions_with_proteins(alt_ids, valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
     # Funkcija za svaku funkciju odredjuje koji proteini je vrse
     # Ima ih 5966, vecina su listovi ontologije, ali ima i unutrasnjih cvorova (1310)
     # Zastarelih je 516, neke se ponavljaju za vise proteina, pa je ukupan broj funkcija 5916
@@ -51,6 +58,9 @@ def functions_with_proteins(valid_proteins, obsoletes, path="../data/original_da
             if function in obsoletes:
                 continue
 
+            if function in alt_ids:
+                function = alt_ids[function]
+
             if function in functions:
                 functions[function].append(protein)
             else:
@@ -60,32 +70,21 @@ def functions_with_proteins(valid_proteins, obsoletes, path="../data/original_da
     return functions
 
 
-def proteins_with_function_file(proteins, alt_ids):
+def proteins_with_function_file(proteins):
     file = open("../data/parsed_data/proteins_with_functions.txt", "w")
 
     for protein in proteins:
         functions = proteins[protein]
-        file.write(protein + "->")
-        for function in functions:
-            if function in alt_ids:
-                file.write(alt_ids[function] + " ")
-            else:
-                file.write(function + " ")
-        file.write("\n")
+        file.write(protein + "->" + " ".join(functions) + "\n")
 
     file.close()
 
 
-def function_with_proteins_file(functions, alt_ids):
+def functions_with_proteins_file(functions):
     file = open("../data/parsed_data/functions_with_proteins.txt", "w")
 
     for function in functions:
         proteins = functions[function]
-        if function in alt_ids:
-            file.write(alt_ids[function] + "->")
-        else:
-            file.write(function + "->")
-
-        file.write(" ".join(proteins) + "\n")
+        file.write(function + "->" + " ".join(proteins) + "\n")
 
     file.close()
