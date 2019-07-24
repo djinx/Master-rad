@@ -58,7 +58,7 @@ def read_functions_with_proteins(path="../data/parsed_data/functions_with_protei
     functions_with_proteins = {}
 
     for line in lines:
-        tokens = line.split("->")
+        tokens = line.replace("\n", "").split("->")
         function = tokens[0]
         proteins = tokens[1].split(" ")
         functions_with_proteins[function] = []
