@@ -18,23 +18,24 @@ def main():
     print(len(all_sequences))
 
     # funckija za koju se pravi klasifikator
-    function = "GO:0004653"
+    function = "GO:0003700"
 
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
     train_test(all_sequences, function)
 
-    cs = [10**i for i in range(-3, 1)]
+    cs = [10**i for i in range(-3, 2)]
     gammas = np.logspace(-5, 0, 6)
 
     for gamma in gammas:
+        print("Pocelo trenuranje za gamma: ", gamma, datetime.now().time())
         for c in cs:
-            print(c, gamma)
-            model = " ../data/models/" + function[3:] + "_" + str(c) + "_" + str(gamma)
-            output = " ../data/output/" + function[3:] + "_" + str(c) + "_" + str(gamma)
-            model_terminal = "../data/terminal/train_" + function[3:] + "_" + str(c) + "_" + str(gamma) + ".txt"
-            output_terminal = "../data/terminal/test_ " + function[3:] + "_" + str(c) + "_" + str(gamma) + ".txt"
+            print("\t", c, datetime.now().time())
+            model = " ../data/models/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+            output = " ../data/output/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+            model_terminal = "../data/terminal/train_" + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
+            output_terminal = "../data/terminal/test_ " + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
 
-            parameters = "-c " + str(c) + " -t 3 -r " + str(gamma)
+            parameters = "-c " + str(c) + " -t 2 -g " + str(gamma)
 
             with open(model_terminal, "w") as file:
                 file.write("Pocelo trenuranje za c: " + str(c) + " " + str(datetime.now().time()) + "\n")
