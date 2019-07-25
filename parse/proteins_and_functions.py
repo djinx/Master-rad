@@ -88,3 +88,12 @@ def functions_with_proteins_file(functions):
         file.write(function + "->" + " ".join(proteins) + "\n")
 
     file.close()
+
+
+def proteins_file(proteins):
+    file = open("../data/parsed_data/proteins.txt", "w")
+
+    for protein in proteins:
+        file.write(protein + "\n")
+
+    file.close()
