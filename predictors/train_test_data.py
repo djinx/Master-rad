@@ -9,19 +9,16 @@ def train_test(all_sequences, function, size=20000):
 
     chosen_positives, chosen_negatives = smaller_set(positive_proteins, negative_proteins, len(all_sequences), size)
     num_of_positives = len(chosen_positives)
-    n = (size / 2 - num_of_positives) / num_of_positives
+    n = round((size / 2 - num_of_positives) / num_of_positives)
 
     x = []
     y = []
 
     for protein in all_sequences:
-        i = 0
-        if protein in positive_proteins:
-            while i < n:
-                y.append(1)
-                x.append(protein)
-                i += 1
-        else:
+        if protein in chosen_positives:
+            y.append(1)
+            x.append(protein)
+        elif protein in chosen_negatives:
             y.append(-1)
             x.append(protein)
 
@@ -29,17 +26,25 @@ def train_test(all_sequences, function, size=20000):
     x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
                                                                                     test_size=0.25)
 
-    make_file(x_train, y_train, all_sequences, "../data/svm/train.txt")
+    make_file(x_train, y_train, all_sequences, "../data/svm/train.txt", True, n)
     make_file(x_validation, y_validation, all_sequences, "../data/svm/validation.txt")
     make_file(x_test, y_test, all_sequences, "../data/svm/test.txt")
 
 
-def make_file(x, y, all_sequences, path):
+def make_file(x, y, all_sequences, path, train=False, n=1):
     file = open(path, "w")
 
     for i in range(0, len(x)):
         protein = x[i]
-        file.write(str(y[i]) + " " + all_sequences[protein] + "\n")
+        k = 0
+
+        if train and y[i] == 1:
+            while k < n:
+                file.write(str(y[i]) + " " + all_sequences[protein] + "\n")
+                k += 1
+
+        else:
+            file.write(str(y[i]) + " " + all_sequences[protein] + "\n")
 
     file.close()
 
