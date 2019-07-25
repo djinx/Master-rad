@@ -95,3 +95,25 @@ def read_array_sequences(path="../data/parsed_data/all_array_sequences.txt"):
 
     file.close()
     return array_sequences
+
+
+def read_proteins(positive_proteins=None, path="../data/parsed_data/proteins.txt"):
+    file = open(path, "r")
+    lines = file.readlines()
+    proteins = []
+
+    print(len(positive_proteins))
+
+    if positive_proteins is None:
+        for line in lines:
+            proteins.append(line.replace("\n", ""))
+
+    else:
+        for line in lines:
+            protein = line.replace("\n", "")
+            if protein not in positive_proteins:
+                proteins.append(protein)
+
+    file.close()
+    print(len(proteins))
+    return proteins
