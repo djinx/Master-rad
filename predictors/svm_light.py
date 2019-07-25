@@ -23,8 +23,8 @@ def main():
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
     train_test(all_sequences, function)
 
-    cs = [10**i for i in range(-3, 2)]
-    gammas = np.logspace(-5, 0, 6)
+    cs = [10**i for i in range(-1, 2)]
+    gammas = np.logspace(-4, 2, 7)
 
     for gamma in gammas:
         print("Pocelo trenuranje za gamma: ", gamma, datetime.now().time())

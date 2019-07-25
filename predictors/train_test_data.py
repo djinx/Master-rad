@@ -5,16 +5,25 @@ from parse import read_files
 def train_test(all_sequences, function):
     positive_proteins = read_files.read_functions_with_proteins()[function]
 
+    # povecanje broja pozitivnih instanci
+    # dodaju se iste instance vise puta
+    total = len(all_sequences)
+    positive = len(positive_proteins)
+    n = (total - 2*positive) / positive
+
     x = []
     y = []
 
     for protein in all_sequences:
+        i = 0
         if protein in positive_proteins:
-            y.append(1)
+            while i < n:
+                y.append(1)
+                x.append(protein)
+                i += 1
         else:
             y.append(-1)
-
-        x.append(protein)
+            x.append(protein)
 
     x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
     x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
