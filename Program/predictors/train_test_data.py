@@ -7,9 +7,14 @@ def train_test(all_sequences, function, size=20000):
     positive_proteins = read_files.read_functions_with_proteins()[function]
     negative_proteins = read_files.read_proteins(positive_proteins)
 
-    chosen_positives, chosen_negatives = smaller_set(positive_proteins, negative_proteins, len(all_sequences), size)
-    num_of_positives = len(chosen_positives)
-    n = round((size / 2 - num_of_positives) / num_of_positives)
+    if size == -1:
+        chosen_positives = positive_proteins
+        chosen_negatives = negative_proteins
+        n = 1
+    else:
+        chosen_positives, chosen_negatives = smaller_set(positive_proteins, negative_proteins, len(all_sequences), size)
+        num_of_positives = len(chosen_positives)
+        n = round((size / 2 - num_of_positives) / num_of_positives)
 
     x = []
     y = []
