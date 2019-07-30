@@ -1,11 +1,11 @@
 from parse import read_files
 
 
-def proteins_with_functions(alt_ids, valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
+def proteins_with_functions_molecular(alt_ids, valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
     # Funkcija za svaki protein odredjuje koje funkcije vrsi
     file = open(path, "r")
     all_lines = file.readlines()
-    proteins = {}
+    proteins_molecular = {}
 
     for line in all_lines:
         tokens = line.split(" ")
@@ -25,14 +25,30 @@ def proteins_with_functions(alt_ids, valid_proteins, obsoletes, path="../data/or
             if function in alt_ids:
                 function = alt_ids[function]
 
-            if protein in proteins:
-                if function not in proteins[protein]:
-                    proteins[protein].append(function)
+            if protein in proteins_molecular:
+                if function not in proteins_molecular[protein]:
+                    proteins_molecular[protein].append(function)
             else:
-                proteins[protein] = [function]
+                proteins_molecular[protein] = [function]
 
     file.close()
-    return proteins
+    return proteins_molecular
+
+
+def proteins_with_functions_other(proteins_molecular, path="../data/original_data/uniprot_sprot_exp.txt"):
+    file = open(path, "r")
+    all_lines = file.readlines()
+    proteins_other = set()
+
+    for line in all_lines:
+        tokens = line.split(" ")
+        protein = tokens[0]
+
+        if tokens[2] != "F\n" and protein not in proteins_molecular:
+            proteins_other.add(protein)
+
+    file.close()
+    return proteins_other
 
 
 def functions_with_proteins(alt_ids, valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
@@ -97,3 +113,13 @@ def proteins_file(proteins):
         file.write(protein + "\n")
 
     file.close()
+
+
+def main():
+    proteins_molecular = proteins_with_functions_molecular(read_files.read_alt_ids(), read_files.read_proteins_with_sequences().keys(), read_files.read_obsoletes())
+    proteins_other = proteins_with_functions_other(proteins_molecular)
+    print(len(proteins_other))
+
+
+if __name__ == '__main__':
+    main()
