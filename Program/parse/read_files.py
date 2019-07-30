@@ -97,7 +97,7 @@ def read_array_sequences(path="../data/parsed_data/all_array_sequences.txt"):
     return array_sequences
 
 
-def read_proteins(positive_proteins=None, path="../data/parsed_data/proteins.txt"):
+def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_proteins.txt"):
     file = open(path, "r")
     lines = file.readlines()
     proteins = []

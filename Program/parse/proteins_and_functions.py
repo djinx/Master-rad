@@ -107,19 +107,10 @@ def functions_with_proteins_file(functions):
 
 
 def proteins_file(proteins):
-    file = open("../data/parsed_data/proteins.txt", "w")
+    file = open("../data/parsed_data/molecular_proteins.txt", "w")
 
     for protein in proteins:
         file.write(protein + "\n")
 
     file.close()
 
-
-def main():
-    proteins_molecular = proteins_with_functions_molecular(read_files.read_alt_ids(), read_files.read_proteins_with_sequences().keys(), read_files.read_obsoletes())
-    proteins_other = proteins_with_functions_other(proteins_molecular)
-    print(len(proteins_other))
-
-
-if __name__ == '__main__':
-    main()
