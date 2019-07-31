@@ -102,13 +102,12 @@ def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_pr
     lines = file.readlines()
     proteins = []
 
-    print(len(positive_proteins))
-
     if positive_proteins is None:
         for line in lines:
             proteins.append(line.replace("\n", ""))
 
     else:
+        print(len(positive_proteins))
         for line in lines:
             protein = line.replace("\n", "")
             if protein not in positive_proteins:
