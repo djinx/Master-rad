@@ -105,3 +105,12 @@ def alternate_ids_file(molecular_functions):
             file.write(alt_id + " " + f + "\n")
 
     file.close()
+
+
+def ontology_tree_file(ontology):
+    file = open("../data/parsed_data/ontology.txt", "w")
+
+    for o in ontology:
+        file.write(o + " -> " + " ".join(ontology[o]) + "\n")
+
+    file.close()
