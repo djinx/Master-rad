@@ -3,7 +3,7 @@ from parse import read_files
 import numpy as np
 
 
-def train_test(all_sequences, function, size=20000):
+def train_test(all_sequences, function, size=-1):
     positive_proteins = read_files.read_functions_with_proteins()[function]
     negative_proteins = read_files.read_proteins(positive_proteins)
 
@@ -31,7 +31,7 @@ def train_test(all_sequences, function, size=20000):
     x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
                                                                                     test_size=0.25)
 
-    make_file(x_train, y_train, all_sequences, "../data/svm/train.txt", True, n)
+    make_file(x_train, y_train, all_sequences, "../data/svm/train.txt")
     make_file(x_validation, y_validation, all_sequences, "../data/svm/validation.txt")
     make_file(x_test, y_test, all_sequences, "../data/svm/test.txt")
 
@@ -61,7 +61,7 @@ def smaller_set(positives, negatives, num_of_proteins, n):
 
     # Broj pozitivnih i negativnih instanci za uzorak
     num_of_positive = round(len(positives) / num_of_proteins * n)
-    num_of_negative = n // 2
+    num_of_negative = n - num_of_positive
 
     # Indeksi odabranih instanci
     positive_indices = np.random.choice(total_num_of_positive, num_of_positive, replace=False)
