@@ -69,7 +69,7 @@ def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functio
     return proteins_with_functions
 
 
-def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins_leaves.txt"):
+def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins.txt"):
     file = open(path, "r")
     lines = file.readlines()
     functions_with_proteins = {}
