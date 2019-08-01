@@ -1,6 +1,3 @@
-from parse import read_files
-
-
 def proteins_with_functions_molecular(alt_ids, valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
     # Funkcija za svaki protein odredjuje koje funkcije vrsi
     file = open(path, "r")
@@ -84,6 +81,29 @@ def functions_with_proteins(alt_ids, valid_proteins, obsoletes, path="../data/or
 
     file.close()
     return functions
+
+
+def all_functions_with_proteins(function, functions, ontology_tree):
+
+    children = ontology_tree[function]
+
+    if function in functions:
+        proteins = functions[function]
+    else:
+        proteins = []
+
+    for child in children:
+        all_functions_with_proteins(child, functions, ontology_tree)
+
+        if child in functions:
+            proteins.extend(functions[child])
+
+    if function in functions:
+        set_current = set(functions[function])
+    else:
+        set_current = set([])
+    set_proteins = set(proteins)
+    functions[function] = list(set_current) + list(set_proteins - set_current)
 
 
 def proteins_with_function_file(proteins):

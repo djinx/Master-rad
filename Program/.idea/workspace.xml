@@ -11,26 +11,36 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/predictors/svm_light_parallel.py">
+        <entry file="file://$PROJECT_DIR$/data/parsed_data/ontology.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="197">
+              <caret line="1383" column="10" selection-start-line="1383" selection-start-column="10" selection-end-line="1383" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parse/read_files.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parse/ontology.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/predictors/models_parallel.py">
+        <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-1215" />
           </provider>
         </entry>
       </file>
@@ -49,6 +59,13 @@
       <find>file</find>
       <find>0008017</find>
       <find>0050513</find>
+      <find>GO:0003674</find>
+      <find>0003824</find>
+      <find>GO:0001134</find>
+      <find>P54001</find>
+      <find>Q10576</find>
+      <find>GO:0019798</find>
+      <find>GO:0031545</find>
     </findStrings>
     <replaceStrings>
       <replace>in_file</replace>
@@ -71,9 +88,6 @@
         <option value="$PROJECT_DIR$/data/parsed_data/functions_with_proteins.txt" />
         <option value="$PROJECT_DIR$/data/parsed_data/proteins_with_functions.txt" />
         <option value="$PROJECT_DIR$/predictors/prediction.py" />
-        <option value="$PROJECT_DIR$/parse/array_sequences.py" />
-        <option value="$PROJECT_DIR$/parse/ontology.py" />
-        <option value="$PROJECT_DIR$/parse/sequences.py" />
         <option value="$PROJECT_DIR$/predictors/one_function.py" />
         <option value="$PROJECT_DIR$/data/terminal/train_0.01" />
         <option value="$PROJECT_DIR$/data/terminal/train_0.1" />
@@ -84,18 +98,21 @@
         <option value="$PROJECT_DIR$/data/terminal/train_0.001" />
         <option value="$PROJECT_DIR$/data/terminal/test_ 0003700_g0.0001_c1.txt" />
         <option value="$PROJECT_DIR$/predictors/svm_light.py" />
-        <option value="$PROJECT_DIR$/parse/proteins_and_functions.py" />
-        <option value="$PROJECT_DIR$/predictors/train_test_data.py" />
         <option value="$PROJECT_DIR$/predictors/test_svm.py" />
-        <option value="$PROJECT_DIR$/parse/read_files.py" />
+        <option value="$PROJECT_DIR$/predictors/train_test_data.py" />
         <option value="$PROJECT_DIR$/predictors/svm_light_parallel.py" />
         <option value="$PROJECT_DIR$/predictors/models_parallel.py" />
+        <option value="$PROJECT_DIR$/parse/array_sequences.py" />
+        <option value="$PROJECT_DIR$/parse/sequences.py" />
+        <option value="$PROJECT_DIR$/parse/read_files.py" />
+        <option value="$PROJECT_DIR$/parse/ontology.py" />
+        <option value="$PROJECT_DIR$/parse/proteins_and_functions.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="240" />
-    <option name="y" value="130" />
+    <option name="x" value="2248" />
+    <option name="y" value="42" />
     <option name="width" value="1440" />
     <option name="height" value="780" />
   </component>
@@ -106,7 +123,33 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Program" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Program" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Program" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="parsed_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Program" type="462c0819:PsiDirectoryNode" />
+              <item name="parse" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -115,17 +158,17 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\models\smaller set 25 7" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\output\smaller set 25 7" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\terminal\smaller set 25 7" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\terminal\validation" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\terminal" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\original_data" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\parsed_data" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\parsed_data" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal\linear smaller set" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\output\parallel" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models\parallel" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal\parallel" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -140,7 +183,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.svm_light_parallel">
+  <component name="RunManager" selected="Python.proteins_and_functions">
     <configuration name="models_parallel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Master-rad" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,7 +205,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="svm_light" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="proteins_and_functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Master-rad" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -170,11 +213,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/predictors" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/predictors/svm_light.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/proteins_and_functions.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sequences" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Master-rad" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/sequences.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -225,34 +289,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_test_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Master-rad" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/predictors" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/predictors/train_test_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.proteins_and_functions" />
+        <item itemvalue="Python.sequences" />
         <item itemvalue="Python.svm_light_parallel" />
         <item itemvalue="Python.models_parallel" />
         <item itemvalue="Python.test_svm" />
-        <item itemvalue="Python.svm_light" />
-        <item itemvalue="Python.train_test_data" />
       </list>
     </recent_temporary>
   </component>
@@ -270,14 +313,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.18440464" />
       <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2990249" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2990249" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -290,25 +334,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.24973656" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -317,161 +342,129 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/parse/read_files.py">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainN_0008810_c1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainN_0008810_c0.001.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainN_0008810_c0.01.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainN_0008810_c0.1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+        <state relative-caret-position="324">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.1_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.01_c0.1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.1_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.01_c0.01.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.1_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.001_c0.1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.01_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.001_c0.01.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.01_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.001_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.01_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.001_c10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.001_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.001_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.001_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.0001_c0.1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.001_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.0001_c0.01.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.0001_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.0001_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.0001_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.0001_c10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g0.0001_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.0001_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g1.0_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_g0.001_c0.1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g1.0_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_g0.01_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g1.0_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_g0.0001_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g10.0_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_g0.001_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g10.0_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_g0.01_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g10.0_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.1_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g100.0_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_g0.1_c100.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_g0.0001_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g100.0_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_c0.1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0004653_g100.0_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_c0.01.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.1_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.1_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_c10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.1_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_g0.1_c0.1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.01_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/valG_ 0008810_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.01_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_c0.1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.01_c10.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_c0.01.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.001_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.001_c1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_c10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.001_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.0001_c0.1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.0001_c1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g0.0001_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g1.0_c0.1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g1.0_c1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g1.0_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g10.0_c0.1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g10.0_c1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g10.0_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g100.0_c0.1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g100.0_c1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0004653_g100.0_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0080043_c0.1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0080043_c1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/train_0080043_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0080043_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0080043_c1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/val_ 0080043_c0.1.txt">
+    <entry file="file://$PROJECT_DIR$/data/terminal/trainG_0008810_c100.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/predictors/svm_light_parallel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="432">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -480,12 +473,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/predictors/models_parallel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="621">
+          <caret line="27" column="64" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/array_sequences.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/other_proteins.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/molecular_proteins_with_sequences.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/sequences.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="599">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/provera.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/molecular_proteins.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-938384">
+          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/provera_prot.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="3428" column="6" selection-start-line="3428" selection-start-column="6" selection-end-line="3428" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/ontology.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="1383" column="10" selection-start-line="1383" selection-start-column="10" selection-end-line="1383" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/read_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/ontology.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/functions_with_proteins_leaves.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156397" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/functions_with_proteins.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-845180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1215" />
       </provider>
     </entry>
   </component>
