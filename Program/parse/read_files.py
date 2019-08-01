@@ -35,6 +35,23 @@ def read_alt_ids(path="../data/parsed_data/alt_ids.txt"):
     return alt_ids
 
 
+def read_ontology_tree(path="../data/parsed_data/ontology.txt"):
+    file = open(path, "r")
+    lines = file.readlines()
+    ontology_tree = {}
+
+    for line in lines:
+        tokens = line.split(" -> ")
+        function = tokens[0]
+        children = tokens[1].split(" ")
+        ontology_tree[function] = []
+
+        for child in children:
+            ontology_tree[function].append(child)
+
+    return ontology_tree
+
+
 def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functions.txt"):
     file = open(path, "r")
     lines = file.readlines()
@@ -52,7 +69,7 @@ def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functio
     return proteins_with_functions
 
 
-def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins.txt"):
+def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins_leaves.txt"):
     file = open(path, "r")
     lines = file.readlines()
     functions_with_proteins = {}
