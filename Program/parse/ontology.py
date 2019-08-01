@@ -72,7 +72,7 @@ def ontology_tree(molecular_functions):
                 tree[parent].append(function_id)
 
             else:
-                tree[parent] = []
+                tree[parent] = [function_id]
 
     return tree
 
