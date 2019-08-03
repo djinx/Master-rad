@@ -3,7 +3,7 @@ from parse import read_files
 import numpy as np
 
 
-def train_test(all_sequences, function, size=-1):
+def train_test_svm_light(all_sequences, function, size=-1):
     positive_proteins = read_files.read_functions_with_proteins()[function]
     negative_proteins = read_files.read_proteins(positive_proteins)
 
@@ -72,3 +72,50 @@ def smaller_set(positives, negatives, num_of_proteins, n):
     chosen_negative = np.array(negatives)[negative_indices]
 
     return chosen_positive, chosen_negative
+
+
+def train_test_knn_nn(all_sequences, function, size=-1):
+    positive_proteins = read_files.read_functions_with_proteins()[function]
+    negative_proteins = read_files.read_proteins(positive_proteins)
+
+    if size == -1:
+        chosen_positives = positive_proteins
+        chosen_negatives = negative_proteins
+        n = 1
+    else:
+        chosen_positives, chosen_negatives = smaller_set(positive_proteins, negative_proteins, len(all_sequences), size)
+        num_of_positives = len(chosen_positives)
+        n = round((size / 2 - num_of_positives) / num_of_positives)
+
+    x = []
+    y = []
+
+    for protein in all_sequences:
+        if protein in chosen_positives:
+            y.append(1)
+            x.append(make_array(all_sequences[protein]))
+        elif protein in chosen_negatives:
+            y.append(-1)
+            x.append(make_array(all_sequences[protein]))
+
+    x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
+    x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
+                                                                                    test_size=0.25)
+
+    return x, y
+
+
+def make_array(sequences):
+    array = np.zeros(20**4)
+    values = sequences.replace("\n", "").split(" ")
+
+    for value in values:
+        if value == '':
+            continue
+        tokens = value.split(":")
+        i = int(tokens[0]) - 1
+        num = float(tokens[1])
+
+        array[i] = num
+
+    return array
