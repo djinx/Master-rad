@@ -1,5 +1,5 @@
 from parse import read_files
-from predictors.train_test_data import train_test
+from predictors.train_test_data import train_test_svm_light
 from datetime import datetime
 import subprocess
 import numpy as np
@@ -21,7 +21,7 @@ def main():
     function = "GO:0003700"
 
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
-    train_test(all_sequences, function)
+    train_test_svm_light(all_sequences, function)
 
     cs = [10**i for i in range(-1, 2)]
     gammas = np.logspace(-4, 2, 7)

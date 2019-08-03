@@ -1,5 +1,5 @@
 from parse import read_files
-from predictors.train_test_data import train_test
+from predictors.train_test_data import train_test_svm_light
 from predictors.models_parallel import all_models
 from datetime import datetime
 
@@ -10,10 +10,10 @@ def main():
     print(len(all_sequences))
 
     # funckija za koju se pravi klasifikator
-    function = "GO:0080043"
+    function = "GO:0003824"
 
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
-    train_test(all_sequences, function)
+    train_test_svm_light(all_sequences, function)
 
     print("Pocinje paralelno izracunavanje modela: ", datetime.now().time())
     all_models(function)
