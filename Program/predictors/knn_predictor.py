@@ -14,7 +14,7 @@ def main():
 
     function = "GO:0003824"
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
-    x, y = train_test_data.train_test_knn(all_sequences, function, 10000)
+    x, y = train_test_data.train_test_knn_nn(all_sequences, function, 10000)
 
     x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
     x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
