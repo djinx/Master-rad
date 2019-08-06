@@ -10,6 +10,7 @@ Program/data/output/*
 Program/data/svm/*
 Program/data/test/*
 Program/data/terminal/*
+Program/data/nn/*
 Program/izlaz719
 Program/test 24 7
 Tekst/main.aux
@@ -26,3 +27,4 @@ Tekst/main.blg
 Tekst/main.lot
 Tekst/main.bbl
 Tekst/main-blx.bib
+Program/data/parsed_data/all_array_sequences_20_3.txt
