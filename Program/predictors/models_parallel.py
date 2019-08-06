@@ -12,8 +12,8 @@ validation = " ../data/svm/validation.txt "
 
 
 def all_models(function):
-    cs = [10**i for i in range(-1, 2)]
-    gammas = np.logspace(-4, -1, 4)
+    cs = [10**i for i in range(0, 2)]
+    gammas = [10**i for i in range(-4, -2)]
 
     with multiprocessing.Pool(processes=4) as pool:
         pool.starmap(calculate_one_model, [(gamma, c, function) for gamma in gammas for c in cs])
@@ -22,11 +22,11 @@ def all_models(function):
 
 def calculate_one_model(gamma, c, function):
     # def calculate_one_model(c, function):
-    print("Pocelo trenuranje za C=", c, "gamma=", gamma, datetime.now().time())
-    model = " ../data/models/rbf20k/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
-    output = " ../data/output/rbf20k/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
-    model_terminal = "../data/terminal/rbf20k/train_" + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
-    output_terminal = "../data/terminal/rbf20k/val_ " + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
+    print("Pocelo trenuranje za C=", c, " gamma=", gamma, datetime.now().time())
+    model = " ../data/models/rbfAll/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+    output = " ../data/output/rbfAll/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+    model_terminal = "../data/terminal/rbfAll/train_" + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
+    output_terminal = "../data/terminal/rbfAll/val_ " + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
 
     parameters = "-c " + str(c) + " -t 2 -g " + str(gamma)
 

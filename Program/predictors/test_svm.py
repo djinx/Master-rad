@@ -9,18 +9,18 @@ def main():
     test = " ../data/svm/test.txt "
 
     # funckija za koju se pravi klasifikator
-    function = "GO:0003700"
+    function = "GO:0003824"
 
-    cs = [10 ** i for i in range(-1, 2)]
-    gammas = np.logspace(-4, 2, 7)
+    cs = [10 ** i for i in range(0, 2)]
+    gammas = np.logspace(-4, -2, 3)
 
     for gamma in gammas:
         print("Pocelo testiranje za gamma: ", gamma, datetime.now().time())
         for c in cs:
             print("\t", c, datetime.now().time())
-            model = " ../data/models/smaller_set/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
-            output = " ../data/output/test_smaller_set/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
-            output_terminal = "../data/terminal/test_smaller_set/test_ " + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
+            model = " ../data/models/rbf20k/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+            output = " ../data/output/rbf20k/test_" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+            output_terminal = "../data/terminal/rbf20k/test_ " + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
 
             with open(output_terminal, "w") as file:
                 file.write("Pocelo testiranje: " + str(datetime.now().time()) + "\n")
