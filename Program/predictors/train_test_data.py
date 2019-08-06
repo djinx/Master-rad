@@ -74,7 +74,7 @@ def smaller_set(positives, negatives, num_of_proteins, n):
     return chosen_positive, chosen_negative
 
 
-def train_test_knn_nn(all_sequences, function, size=-1):
+def train_test_knn_nn(all_sequences, function, size=-1, k=4):
     positive_proteins = read_files.read_functions_with_proteins()[function]
     negative_proteins = read_files.read_proteins(positive_proteins)
 
@@ -82,31 +82,31 @@ def train_test_knn_nn(all_sequences, function, size=-1):
         chosen_positives = positive_proteins
         chosen_negatives = negative_proteins
         n = 1
+        size = len(all_sequences)
     else:
         chosen_positives, chosen_negatives = smaller_set(positive_proteins, negative_proteins, len(all_sequences), size)
         num_of_positives = len(chosen_positives)
         n = round((size / 2 - num_of_positives) / num_of_positives)
 
-    x = []
-    y = []
+    x = np.zeros((size, 20**k))
+    y = np.zeros(size)
+    i = 0
 
     for protein in all_sequences:
         if protein in chosen_positives:
-            y.append(1)
-            x.append(make_array(all_sequences[protein]))
-        elif protein in chosen_negatives:
-            y.append(-1)
-            x.append(make_array(all_sequences[protein]))
+            y[i] = 1
+            x[i] = make_array(all_sequences[protein], k)
+            i += 1
+        if protein in chosen_negatives:
+            x[i] = make_array(all_sequences[protein], k)
+            i += 1
 
-    x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
-    x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
-                                                                                    test_size=0.25)
-
+    print(x.shape, y.shape)
     return x, y
 
 
-def make_array(sequences):
-    array = np.zeros(20**4)
+def make_array(sequences, k=4):
+    array = np.zeros(20**k)
     values = sequences.replace("\n", "").split(" ")
 
     for value in values:

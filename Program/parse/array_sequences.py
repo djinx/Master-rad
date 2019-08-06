@@ -124,7 +124,7 @@ def number_to_amino(n):
 
 def main():
     protein_sequences = read_files.read_proteins_with_sequences()
-    all_array_sequences_file(protein_sequences)
+    all_array_sequences_file(protein_sequences, 3, "../data/parsed_data/all_array_sequences_20_3.txt")
 
 
 if __name__ == '__main__':
