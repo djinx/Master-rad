@@ -106,8 +106,8 @@ def all_functions_with_proteins(function, functions, ontology_tree):
     functions[function] = list(set_current) + list(set_proteins - set_current)
 
 
-def proteins_with_function_file(proteins):
-    file = open("../data/parsed_data/proteins_with_functions.txt", "w")
+def proteins_with_function_file(proteins, path="../data/parsed_data/proteins_with_functions.txt"):
+    file = open(path, "w")
 
     for protein in proteins:
         functions = proteins[protein]
@@ -116,8 +116,8 @@ def proteins_with_function_file(proteins):
     file.close()
 
 
-def functions_with_proteins_file(functions):
-    file = open("../data/parsed_data/functions_with_proteins.txt", "w")
+def functions_with_proteins_file(functions, path="../data/parsed_data/functions_with_proteins.txt"):
+    file = open(path, "w")
 
     for function in functions:
         proteins = functions[function]
