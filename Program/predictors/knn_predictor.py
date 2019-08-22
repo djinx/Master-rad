@@ -2,23 +2,36 @@ from parse import read_files
 from predictors import train_test_data
 from datetime import datetime
 from sklearn import model_selection
+from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
+import numpy as np
 
 
 def main():
 
     # nekoliko proteina za testiranje klasifikatora
-    all_sequences = read_files.read_array_sequences()
+    all_sequences = read_files.read_array_sequences(add="_20_3.txt")
     print(len(all_sequences))
 
     function = "GO:0003824"
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
-    x, y = train_test_data.train_test_knn_nn(all_sequences, function, 10000)
+    x, y = train_test_data.train_test_knn_nn(all_sequences, function, 10000, k=3)
 
     x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
-    x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val, y_train_val,
-                                                                                    test_size=0.25)
+
+    num_components = 1000
+    pca = PCA(n_components=num_components)
+    pca.fit(x_train_val)
+    x_train_val_prepared_pca = pca.transform(x_train_val)
+    x_test_prepared_pca = pca.transform(x_test)
+
+    x_train, x_validation, y_train, y_validation = model_selection.train_test_split(x_train_val_prepared_pca,
+                                                                                    y_train_val, test_size=0.25)
+
+    print("Explained variance: {}".format(np.sum(pca.explained_variance_ratio_)))
+
+    print(x_train_val_prepared_pca.shape, x_test_prepared_pca.shape)
 
     ks = [5*i for i in range(1, 5)]
     classifiers = []
