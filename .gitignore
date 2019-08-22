@@ -28,3 +28,6 @@ Tekst/main.lot
 Tekst/main.bbl
 Tekst/main-blx.bib
 Program/data/parsed_data/all_array_sequences_20_3.txt
+Program/data/parsed_data/array_sequences.txt
+Program/data/parsed_data/array_sequences_20_3.txt
+Program/data/parsed_data/array_sequences_n_10.txt
