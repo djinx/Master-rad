@@ -11,12 +11,12 @@ import numpy as np
 def main():
 
     # nekoliko proteina za testiranje klasifikatora
-    all_sequences = read_files.read_array_sequences(add="_20_3.txt")
+    all_sequences = read_files.read_array_sequences(add="_n_10.txt")
     print(len(all_sequences))
 
-    function = "GO:0003824"
+    function = "GO:0060589"
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
-    x, y = train_test_data.train_test_knn_nn(all_sequences, function, 10000, k=3)
+    x, y = train_test_data.train_test_knn_nn(all_sequences, function, k=3)
 
     x_train_val, x_test, y_train_val, y_test = model_selection.train_test_split(x, y, test_size=0.25)
 
