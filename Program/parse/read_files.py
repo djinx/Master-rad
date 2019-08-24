@@ -74,7 +74,7 @@ def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functio
     return proteins_with_functions
 
 
-def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins.txt"):
+def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins", add=".txt"):
     # Citanje funkcija sa proteinima koji ih izvrsavaju
     file = open(path, "r")
     lines = file.readlines()
@@ -94,29 +94,8 @@ def read_functions_with_proteins(path="../data/parsed_data/functions_with_protei
     return functions_with_proteins
 
 
-def read_functions_with_proteins_reduced(accepted_functions, path="../data/parsed_data/functions_with_proteins.txt"):
-    file = open(path, "r")
-    lines = file.readlines()
-    functions_with_proteins = {}
-    accepted_proteins = read_proteins(path="../data/parsed_data/proteins_n_10.txt")
-
-    for line in lines:
-        tokens = line.replace("\n", "").split("->")
-        function = tokens[0]
-        proteins = tokens[1].split(" ")
-
-        if function in accepted_functions:
-            functions_with_proteins[function] = []
-
-            for protein in proteins:
-                if protein != "" and protein in accepted_proteins:
-                    functions_with_proteins[function].append(protein)
-
-    return functions_with_proteins
-
-
-def read_proteins_with_sequences(path="../data/parsed_data/proteins_with_sequences.txt"):
-    file = open(path, "r")
+def read_proteins_with_sequences(path="../data/parsed_data/proteins_with_sequences", add=".txt"):
+    file = open(path+add, "r")
     lines = file.readlines()
     proteins_with_sequences = {}
 
@@ -143,8 +122,8 @@ def read_array_sequences(path="../data/parsed_data/array_sequences", add=".txt")
     return array_sequences
 
 
-def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_proteins.txt"):
-    file = open(path, "r")
+def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_proteins", add=".txt"):
+    file = open(path+add, "r")
     lines = file.readlines()
     proteins = []
 
@@ -153,12 +132,10 @@ def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_pr
             proteins.append(line.replace("\n", ""))
 
     else:
-        print("\t\tBroj pozitivnih (odredjivanje negativnih instanci):", len(positive_proteins))
         for line in lines:
             protein = line.replace("\n", "")
             if protein not in positive_proteins:
                 proteins.append(protein)
 
     file.close()
-    print("\t\tBroj izdvojenih instanci:", len(proteins))
     return proteins
