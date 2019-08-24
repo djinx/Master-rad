@@ -13,10 +13,10 @@ from datetime import datetime
 
 
 def main():
-    all_sequences = read_files.read_array_sequences("../data/parsed_data/all_array_sequences_20_3.txt")
+    all_sequences = read_files.read_array_sequences(add="_n_10.txt")
     print(len(all_sequences))
 
-    function = "GO:0003824"
+    function = "GO:0060589"
 
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
     x, y = train_test_data.train_test_knn_nn(all_sequences, function, k=3)
