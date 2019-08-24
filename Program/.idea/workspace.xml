@@ -34,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parse/read_files.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1374">
-              <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+            <state relative-caret-position="213">
+              <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -553,8 +553,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parse/read_files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1374">
-          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+        <state relative-caret-position="213">
+          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
         </state>
       </provider>
     </entry>

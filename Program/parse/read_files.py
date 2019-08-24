@@ -76,7 +76,7 @@ def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functio
 
 def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins", add=".txt"):
     # Citanje funkcija sa proteinima koji ih izvrsavaju
-    file = open(path, "r")
+    file = open(path+add, "r")
     lines = file.readlines()
     functions_with_proteins = {}
 
@@ -95,6 +95,7 @@ def read_functions_with_proteins(path="../data/parsed_data/functions_with_protei
 
 
 def read_proteins_with_sequences(path="../data/parsed_data/proteins_with_sequences", add=".txt"):
+    # Citanje proteina sa sekvencama
     file = open(path+add, "r")
     lines = file.readlines()
     proteins_with_sequences = {}
@@ -110,6 +111,7 @@ def read_proteins_with_sequences(path="../data/parsed_data/proteins_with_sequenc
 
 
 def read_array_sequences(path="../data/parsed_data/array_sequences", add=".txt"):
+    # Citanje proteina sa sekvencama u formatu za datoteke
     file = open(path+add, "r")
     lines = file.readlines()
     array_sequences = {}
@@ -123,6 +125,7 @@ def read_array_sequences(path="../data/parsed_data/array_sequences", add=".txt")
 
 
 def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_proteins", add=".txt"):
+    # Citanje spiska proteina koji ce se koristiti prilikom treniranja i testiranja
     file = open(path+add, "r")
     lines = file.readlines()
     proteins = []
