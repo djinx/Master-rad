@@ -14,6 +14,7 @@ def main():
     functions_with_proteins = read_files.read_functions_with_proteins()
     function_number = {}
     accepted_functions = []
+    limit = 100
     zero = 0
     less_10 = 0
     less_100 = 0
@@ -37,7 +38,7 @@ def main():
             rest += 1
 
         # Izdvajanje funkcija koje se pojavljuju bar 100 puta
-        if n >= 100:
+        if n >= limit:
             accepted_functions.append(function)
 
     print(zero, less_10, less_100, less_500, rest)
@@ -62,11 +63,11 @@ def main():
         final_proteins[protein] = protein_sequences[protein]
 
     # Upis proteina i sekvenci u novu datoteku
-    array_sequences.all_array_sequences_file(final_proteins, k=3, path="../data/parsed_data/array_sequences_n_10.txt")
+    array_sequences.all_array_sequences_file(final_proteins, k=3, path="../data/parsed_data/array_sequences_n_ " + str(limit) + ".txt")
 
     # Upis smanjenog skupa u datoteke
-    reduced_data_file(final_proteins, "proteins_n_10.txt")
-    reduced_data_file(accepted_functions, "functions_n_10.txt")
+    reduced_data_file(final_proteins, "proteins_n_ " + str(limit) + ".txt")
+    reduced_data_file(accepted_functions, "molecular_functions_n_ " + str(limit) + ".txt")
 
 
 if __name__ == '__main__':
