@@ -1,7 +1,9 @@
 import pandas as pd
+import numpy as np
 from matplotlib import pyplot as plt
 
 from sklearn import model_selection
+from sklearn import metrics
 
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
@@ -32,8 +34,8 @@ def main():
     number_of_outputs = 1
 
     # broj neurona za skriveni sloj
-    number_of_neurons = [100, 200, 500, 1000]
-    rates = [i/10 for i in range(1, 6)]
+    number_of_neurons = [100, 500, 1000]
+    rates = [i/10 for i in range(3, 5)]
 
     for neurons in number_of_neurons:
         for r in rates:
@@ -85,6 +87,9 @@ def main():
             test_scores = model.evaluate(x_test, y_test)
             test_scores = pd.Series(test_scores, index=model.metrics_names)
             eval_time = datetime.now() - eval_time
+            y_pred = model.predict(x_test)
+            y_pred_bool = np.argmax(y_pred, axis=1)
+            report = metrics.classification_report(y_test, y_pred_bool)
 
             with open("../data/nn/results/neurons" + str(neurons) + "_rate_" + str(r), "w") as file:
                 file.write("Vreme za model: " + str(model_time.total_seconds()) + "\n")
@@ -92,6 +97,7 @@ def main():
                 file.write("Vreme za sliku: " + str(graph_time.total_seconds()) + "\n")
                 file.write("Vreme za evaluaciju: " + str(eval_time.total_seconds()) + "\n")
                 file.write("Test: " + test_scores.to_string())
+                file.write("Izvestaej klasifikacije:" + report)
 
 
 if __name__ == '__main__':
