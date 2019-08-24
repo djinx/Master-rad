@@ -31,11 +31,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parse/read_files.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-270">
               <caret line="77" column="55" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/predictors/neural_network_predictor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,10 +120,10 @@
         <option value="$PROJECT_DIR$/predictors/svm_light.py" />
         <option value="$PROJECT_DIR$/predictors/knn_predictor.py" />
         <option value="$PROJECT_DIR$/predictors/train_test_data.py" />
-        <option value="$PROJECT_DIR$/predictors/neural_network_predictor.py" />
         <option value="$PROJECT_DIR$/parse/array_sequences.py" />
         <option value="$PROJECT_DIR$/parse/reducing_data.py" />
         <option value="$PROJECT_DIR$/parse/read_files.py" />
+        <option value="$PROJECT_DIR$/predictors/neural_network_predictor.py" />
       </list>
     </option>
   </component>
@@ -521,16 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/predictors/neural_network_predictor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parse/array_sequences.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -555,6 +557,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-270">
           <caret line="77" column="55" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/neural_network_predictor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

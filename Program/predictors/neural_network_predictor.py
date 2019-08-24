@@ -91,13 +91,13 @@ def main():
             y_pred_bool = np.argmax(y_pred, axis=1)
             report = metrics.classification_report(y_test, y_pred_bool)
 
-            with open("../data/nn/results/neurons" + str(neurons) + "_rate_" + str(r), "w") as file:
+            with open("../data/nn/results/neurons" + str(neurons) + "_rate_" + str(r) + ".txt", "w") as file:
                 file.write("Vreme za model: " + str(model_time.total_seconds()) + "\n")
                 file.write("Vreme za treniranje: " + str(train_time.total_seconds()) + "\n")
                 file.write("Vreme za sliku: " + str(graph_time.total_seconds()) + "\n")
                 file.write("Vreme za evaluaciju: " + str(eval_time.total_seconds()) + "\n")
                 file.write("Test: " + test_scores.to_string())
-                file.write("Izvestaej klasifikacije:" + report)
+                file.write("Izvestaj klasifikacije:\n" + report)
 
 
 if __name__ == '__main__':
