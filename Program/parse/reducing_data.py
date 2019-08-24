@@ -63,7 +63,7 @@ def main():
         final_proteins[protein] = protein_sequences[protein]
 
     # Upis proteina i sekvenci u novu datoteku
-    array_sequences.all_array_sequences_file(final_proteins, k=3, path="../data/parsed_data/array_sequences_n_ " + str(limit) + ".txt")
+    array_sequences.array_sequences_file(final_proteins, k=3, add="_n_" + str(limit) + ".txt")
 
     # Upis smanjenog skupa u datoteke
     reduced_data_file(final_proteins, "proteins_n_ " + str(limit) + ".txt")

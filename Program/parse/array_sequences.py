@@ -5,8 +5,8 @@ amino_acids_list = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 
 number_of_aa = len(amino_acids_list)
 
 
-def all_array_sequences_file(protein_sequences, k=4, path="../data/parsed_data/all_array_sequences.txt"):
-    file = open(path, "w")
+def array_sequences_file(protein_sequences, k=4, path="../data/parsed_data/array_sequences", add=".txt"):
+    file = open(path+add, "w")
 
     for protein in protein_sequences:
         sequence = protein_sequences[protein]
