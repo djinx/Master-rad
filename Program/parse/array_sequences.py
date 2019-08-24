@@ -24,49 +24,6 @@ def all_array_sequences_file(protein_sequences, k=4, path="../data/parsed_data/a
     file.close()
 
 
-def n_array_sequences(protein_sequences, positive_proteins, n=5000, k=4):
-    # Funkcija odredjuje sekvence za n proteina
-    # protein_sequences sadrze proteine i niske aminokiselina
-    # positive_proteins sadrzi listu proteina koji izvrsavaju odredjenu funkciju
-
-    # Ukupan broj proteina koji vse molekulske funckije
-    num_of_proteins = len(protein_sequences)
-
-    # Ukupan broj pozitivnih i negativnih instanci
-    total_num_of_positive = len(positive_proteins)
-    total_num_of_negative = num_of_proteins - total_num_of_positive
-
-    # Broj pozitivnih i negativnih instanci za uzorak
-    num_of_positive = round(len(positive_proteins) / num_of_proteins * n)
-    num_of_negative = n - num_of_positive
-
-    # Indeksi odabranih instanci
-    positive_indices = np.random.choice(total_num_of_positive, num_of_positive, replace=False)
-    negative_indices = np.random.choice(total_num_of_negative, num_of_negative, replace=False)
-
-    # Lista negativnih instanci
-    negative_proteins = []
-    for protein in protein_sequences:
-        if protein not in positive_proteins:
-            negative_proteins.append(protein)
-
-    # Odabir instanci
-    chosen_positive = np.array(positive_proteins)[positive_indices]
-    chosen_negative = np.array(negative_proteins)[negative_indices]
-
-    # Formiranje recnika pozitivnih i negativnih instanci sa sekvencama
-    positive = {}
-    negative = {}
-
-    for protein in chosen_positive:
-        positive[protein] = form_array(protein_sequences[protein], k)
-
-    for protein in chosen_negative:
-        negative[protein] = form_array(protein_sequences[protein], k)
-
-    return positive, negative
-
-
 def form_array(protein, k=4):
     # Funkcija formira niz za zadatu sekvencu aminokiselina proteina.
     n = len(protein)
