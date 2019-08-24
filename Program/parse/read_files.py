@@ -1,5 +1,6 @@
-def read_molecular_functions(path="../data/parsed_data/molecular_functions.txt"):
-    file = open(path, "r")
+def read_molecular_functions(path="../data/parsed_data/molecular_functions", add=".txt"):
+    # Citanje molekularnih funkcija
+    file = open(path+add, "r")
     lines = file.readlines()
     molecular_functions = []
 
@@ -11,6 +12,7 @@ def read_molecular_functions(path="../data/parsed_data/molecular_functions.txt")
 
 
 def read_obsoletes(path="../data/parsed_data/obsolete_functions.txt"):
+    # Citanje zastarelih funkcija
     file = open(path, "r")
     lines = file.readlines()
     obsoletes = []
@@ -23,6 +25,7 @@ def read_obsoletes(path="../data/parsed_data/obsolete_functions.txt"):
 
 
 def read_alt_ids(path="../data/parsed_data/alt_ids.txt"):
+    # Citanje alternativnih idetifikatora funkcija
     file = open(path, "r")
     lines = file.readlines()
     alt_ids = {}
@@ -36,6 +39,7 @@ def read_alt_ids(path="../data/parsed_data/alt_ids.txt"):
 
 
 def read_ontology_tree(path="../data/parsed_data/ontology.txt"):
+    # Citanje ontologije
     file = open(path, "r")
     lines = file.readlines()
     ontology_tree = {}
@@ -53,6 +57,7 @@ def read_ontology_tree(path="../data/parsed_data/ontology.txt"):
 
 
 def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functions.txt"):
+    # Citanje proteina sa listom funkcija koje izvrsavaju
     file = open(path, "r")
     lines = file.readlines()
     proteins_with_functions = {}
@@ -70,6 +75,7 @@ def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functio
 
 
 def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins.txt"):
+    # Citanje funkcija sa proteinima koji ih izvrsavaju
     file = open(path, "r")
     lines = file.readlines()
     functions_with_proteins = {}
@@ -156,16 +162,3 @@ def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_pr
     file.close()
     print("\t\tBroj izdvojenih instanci:", len(proteins))
     return proteins
-
-
-def read_functions(path="../data/parsed_data/functions_n_10.txt"):
-    file = open(path, "r")
-    lines = file.readlines()
-    functions = []
-
-    for line in lines:
-        functions.append(line.replace("\n", ""))
-
-    file.close()
-    print("\t\tPrihvacenih funkcija:", len(functions))
-    return functions
