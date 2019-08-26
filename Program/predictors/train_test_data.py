@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 def train_test_svm_light(all_sequences, function, n=1, size=-1, k=4):
-    positive_proteins = read_files.read_map_file("functions_with_proteins_n_10.txt")[function]
+    positive_proteins = read_files.read_map_file("functions_with_proteins_n_100.txt")[function]
     negative_proteins = read_files.read_proteins(positive_proteins, add="_n_100.txt")
 
     if size == -1:
