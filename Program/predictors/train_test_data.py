@@ -6,9 +6,8 @@ from datetime import datetime
 
 
 def train_test_svm_light(all_sequences, function, n=1, size=-1, k=4):
-    accepted_functions = read_files.read_functions()
-    positive_proteins = read_files.read_functions_with_proteins(accepted_functions)[function]
-    negative_proteins = read_files.read_proteins(positive_proteins, "../data/parsed_data/proteins_n_10.txt")
+    positive_proteins = read_files.read_map_file("functions_with_proteins_n_10.txt")[function]
+    negative_proteins = read_files.read_proteins(positive_proteins, add="_n_100.txt")
 
     if size == -1:
         chosen_positives = positive_proteins
@@ -106,8 +105,8 @@ def smaller_set(positives, negatives, num_of_proteins, n):
 
 
 def train_test_knn_nn(all_sequences, function, size=-1, k=4):
-    positive_proteins = read_files.read_functions_with_proteins_reduced(read_files.read_functions())[function]
-    negative_proteins = read_files.read_proteins(positive_proteins, "../data/parsed_data/proteins_n_10.txt")
+    positive_proteins = read_files.read_map_file("functions_with_proteins_n_100.txt")[function]
+    negative_proteins = read_files.read_proteins(positive_proteins, "_n_100.txt")
 
     if size == -1:
         chosen_positives = positive_proteins
