@@ -93,8 +93,8 @@ def main():
     array_sequences.array_sequences_file(final_proteins, k=3, add="_n_" + str(limit) + ".txt")
 
     # Upis smanjenog skupa u datoteke
-    reduced_data_file(final_proteins, "../data/parsed_data/molecular_proteins_n_ " + str(limit) + ".txt")
-    reduced_data_file(accepted_functions, "../data/parsed_data/molecular_functions_n_ " + str(limit) + ".txt")
+    reduced_data_file(final_proteins, "../data/parsed_data/molecular_proteins_n_" + str(limit) + ".txt")
+    reduced_data_file(accepted_functions, "../data/parsed_data/molecular_functions_n_" + str(limit) + ".txt")
 
     reduced_functions_with_proteins_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
     reduced_proteins_with_functions_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
