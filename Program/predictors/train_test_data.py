@@ -9,6 +9,10 @@ def train_test_svm_light(all_sequences, function, n=1, size=-1, k=4):
     positive_proteins = read_files.read_map_file("functions_with_proteins_n_100.txt")[function]
     negative_proteins = read_files.read_proteins(positive_proteins, add="_n_100.txt")
 
+    print("ukupno:", len(all_sequences))
+    print("+:", len(positive_proteins))
+    print("-:", len(negative_proteins))
+
     if size == -1:
         chosen_positives = positive_proteins
         chosen_negatives = negative_proteins
@@ -20,7 +24,7 @@ def train_test_svm_light(all_sequences, function, n=1, size=-1, k=4):
 
     print("n =", n)
     x = np.zeros((size, 20 ** k))
-    y = np.ones(size)
+    y = np.ones(size, dtype=int)
     i = 0
 
     print("\tPriprema x i y pocetak: ", datetime.now().time())
