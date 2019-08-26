@@ -13,20 +13,50 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parse/reducing_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="68" column="74" selection-start-line="68" selection-start-column="74" selection-end-line="68" selection-end-column="74" />
+            <state relative-caret-position="307">
+              <caret line="112" column="10" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/parse/array_sequences.py">
+        <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="3267">
+              <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="123" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/predictors/svm_light.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parse/read_files.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -55,6 +85,7 @@
       <find>GO:0031545</find>
       <find>print</find>
       <find>Broj ne</find>
+      <find>0060589</find>
     </findStrings>
     <replaceStrings>
       <replace>in_file</replace>
@@ -99,10 +130,10 @@
         <option value="$PROJECT_DIR$/predictors/svm_light.py" />
         <option value="$PROJECT_DIR$/predictors/knn_predictor.py" />
         <option value="$PROJECT_DIR$/predictors/train_test_data.py" />
-        <option value="$PROJECT_DIR$/parse/reducing_data.py" />
         <option value="$PROJECT_DIR$/predictors/neural_network_predictor.py" />
         <option value="$PROJECT_DIR$/parse/read_files.py" />
         <option value="$PROJECT_DIR$/parse/array_sequences.py" />
+        <option value="$PROJECT_DIR$/parse/reducing_data.py" />
       </list>
     </option>
   </component>
@@ -139,12 +170,6 @@
             <path>
               <item name="Program" type="b2602c69:ProjectViewProjectNode" />
               <item name="Program" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="terminal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Program" type="462c0819:PsiDirectoryNode" />
               <item name="parse" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -165,19 +190,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\output" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\original_data" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\parsed_data" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\parsed_data" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\nn" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models\linAll" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal\linAll" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models\lin20k" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\output" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\original_data" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\parsed_data" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -192,7 +217,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.neural_network_predictor">
+  <component name="RunManager" selected="Python.reducing_data">
     <configuration name="knn_predictor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Master-rad" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -300,9 +325,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.reducing_data" />
         <item itemvalue="Python.neural_network_predictor" />
         <item itemvalue="Python.knn_predictor" />
-        <item itemvalue="Python.reducing_data" />
         <item itemvalue="Python.svm_light" />
         <item itemvalue="Python.svm_light_parallel" />
       </list>
@@ -325,12 +350,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.18440464" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.18440464" />
       <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36619717" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36619717" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -351,15 +376,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/terminal/pca/test_ 0003824_g0.01_c0.1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/pca/test_ 0060589_g0.01_c10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/terminal/pca/test_ 0060589_g0.01_c1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/terminal/pca/test_ 0060589_g0.001_c10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -384,16 +400,6 @@
     <entry file="file://$PROJECT_DIR$/data/terminal/pca/test_ 0060589_g-4_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/predictors/svm_light.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="32" column="45" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/terminal/pca/test_n_5_ 0060589_g0.01_c10.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -412,63 +418,33 @@
     <entry file="file://$PROJECT_DIR$/data/terminal/pca/test_n_5_ 0060589_g0.001_c1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.1">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.2">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.1" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.2" />
     <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.3">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.4">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.5">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.1">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.2">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.3">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.4">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.5">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.1">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.2">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons100_rate_0.5" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.1" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.2" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.3" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.4" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons200_rate_0.5" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.1" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.2" />
     <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.3">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000_rate_0.3">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000_rate_0.1">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.5">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000_rate_0.1" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000" />
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.5" />
     <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500_rate_0.4">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -476,25 +452,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons500" />
     <entry file="file://$PROJECT_DIR$/data/output/pca/0003824_g0.01_c0.1" />
-    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000_rate_0.2">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000_rate_0.2" />
     <entry file="file://$PROJECT_DIR$/data/nn/results/neurons1000_rate_0.4">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="122" column="16" selection-start-line="122" selection-start-column="11" selection-end-line="122" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/predictors/knn_predictor.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -509,43 +471,80 @@
     <entry file="file://$PROJECT_DIR$/data/parsed_data/molecular_functions.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/reducing_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="68" column="74" selection-start-line="68" selection-start-column="74" selection-end-line="68" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/predictors/neural_network_predictor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/parsed_data/molecular_proteins.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/data/parsed_data/array_sequences.txt">
       <provider selected="true" editor-type-id="LargeFileEditor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/parse/read_files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="127" column="83" selection-start-line="127" selection-start-column="83" selection-end-line="127" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parse/array_sequences.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="189">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Nastava/UVIT/mongo_terminal.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/neural_network_predictor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="821">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/svm_light.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed_data/functions_with_proteins_n_100.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="393" column="454" selection-start-line="393" selection-start-column="12" selection-end-line="393" selection-end-column="454" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/read_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/reducing_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="112" column="10" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/proteins_and_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3267">
+          <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="123" selection-end-column="63" />
         </state>
       </provider>
     </entry>

@@ -10,6 +10,38 @@ def reduced_data_file(data, path):
     file.close()
 
 
+def reduced_functions_with_proteins_file(functions, proteins, path="../data/parsed_data/functions_with_proteins_n_", add=".txt"):
+    file = open(path+add, "w")
+    functions_with_proteins_all = read_files.read_functions_with_proteins()
+
+    for function in functions:
+        proteins_all = functions_with_proteins_all[function]
+        proteins_reduced = []
+        for protein in proteins_all:
+            if protein in proteins:
+                proteins_reduced.append(protein)
+
+        file.write(function + "->" + " ".join(proteins_reduced) + "\n")
+
+    file.close()
+
+
+def reduced_proteins_with_functions_file(functions, proteins, path="../data/parsed_data/proteins_with_functions_n_", add=".txt"):
+    file = open(path+add, "w")
+    proteins_with_functions_all = read_files.read_proteins_with_functions()
+
+    for protein in proteins:
+        functions_all = proteins_with_functions_all[protein]
+        functions_reduced = []
+        for function in functions_all:
+            if function in functions:
+                functions_reduced.append(function)
+
+        file.write(protein + "->" + " ".join(functions_reduced) + "\n")
+
+    file.close()
+
+
 def main():
     functions_with_proteins = read_files.read_functions_with_proteins()
     function_number = {}
@@ -50,6 +82,8 @@ def main():
     proteins_with_accepted_functions = set()
     final_proteins = {}
 
+    print(len(protein_sequences), len(proteins_with_functions))
+
     for protein in proteins_with_functions:
         functions = proteins_with_functions[protein]
 
@@ -63,11 +97,20 @@ def main():
         final_proteins[protein] = protein_sequences[protein]
 
     # Upis proteina i sekvenci u novu datoteku
-    array_sequences.array_sequences_file(final_proteins, k=3, add="_n_" + str(limit) + ".txt")
+    # array_sequences.array_sequences_file(final_proteins, k=3, add="_n_" + str(limit) + ".txt")
 
     # Upis smanjenog skupa u datoteke
-    reduced_data_file(final_proteins, "proteins_n_ " + str(limit) + ".txt")
-    reduced_data_file(accepted_functions, "molecular_functions_n_ " + str(limit) + ".txt")
+    # reduced_data_file(final_proteins, "proteins_n_ " + str(limit) + ".txt")
+    # reduced_data_file(accepted_functions, "molecular_functions_n_ " + str(limit) + ".txt")
+
+    # reduced_functions_with_proteins_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
+    # reduced_proteins_with_functions_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
+
+    bla = read_files.read_functions_with_proteins(add="_n_" + str(limit) + ".txt")
+    print(len(functions_with_proteins["GO:0060589"]))
+    print(len(bla["GO:0060589"]))
+    razlika = set(functions_with_proteins["GO:0060589"]) - set(bla["GO:0060589"])
+    print(razlika)
 
 
 if __name__ == '__main__':
