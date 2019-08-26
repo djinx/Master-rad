@@ -1,0 +1,49 @@
+from parse import read_files
+from predictors.train_test_data import train_test_svm_light
+from datetime import datetime
+import subprocess
+import numpy as np
+
+
+def main():
+    # putanje
+    svm_learn = "../svm_light/svm_learn "
+    svm_classify = "../svm_light/svm_classify "
+    train = " ../data/svm/train.txt "
+    validation = " ../data/svm/validation.txt "
+    test = " ../data/svm/test.txt "
+
+    # nekoliko proteina za testiranje klasifikatora
+    all_sequences = read_files.read_array_sequences(add="_n_100.txt")
+    print(len(all_sequences))
+
+    # funckija za koju se pravi klasifikator
+    function = "GO:0045182"
+
+    print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
+    train_test_svm_light(all_sequences, function, k=3)
+
+    cs = [10**i for i in range(-3, 3)]
+
+    for c in cs:
+        print("\t", c, datetime.now().time())
+        model = " ../data/models/reduced_lin/" + function[3:] + "_c" + str(c)
+        output = " ../data/output/reduced_lin/" + function[3:] + "_c" + str(c)
+        model_terminal = "../data/terminal/reduced_lin/train_" + function[3:] + "_c" + str(c) + ".txt"
+        output_terminal = "../data/terminal/reduced_lin/val_ " + function[3:] + "_c" + str(c) + ".txt"
+
+        parameters = "-c " + str(c)
+
+        with open(model_terminal, "w") as file:
+            file.write("Pocelo trenuranje za c: " + str(c) + " " + str(datetime.now().time()) + "\n")
+            subprocess.run(svm_learn + parameters + train + model, stdout=file)
+            file.write("Zavrseno treniranje: " + str(datetime.now().time()) + "\n")
+
+        with open(output_terminal, "w") as file:
+            file.write("Pocelo testiranje: " + str(datetime.now().time()) + "\n")
+            subprocess.run(svm_classify + validation + model + output, stdout=file)
+            file.write("Zavrseno testiranje: " + str(datetime.now().time()) + "\n")
+
+
+if __name__ == '__main__':
+    main()

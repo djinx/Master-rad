@@ -14,26 +14,26 @@ def main():
     test = " ../data/svm/test.txt "
 
     # nekoliko proteina za testiranje klasifikatora
-    all_sequences = read_files.read_array_sequences()
+    all_sequences = read_files.read_array_sequences(add="_n_100.txt")
     print(len(all_sequences))
 
     # funckija za koju se pravi klasifikator
-    function = "GO:0003700"
+    function = "GO:0060589"
 
     print("Priprema pozitivnih i negativnih instanci: ", datetime.now().time())
-    train_test_svm_light(all_sequences, function)
+    train_test_svm_light(all_sequences, function, k=3)
 
-    cs = [10**i for i in range(-1, 2)]
-    gammas = np.logspace(-4, 2, 7)
+    cs = [10**i for i in range(-2, 2)]
+    gammas = np.logspace(-3, 1, 5)
 
     for gamma in gammas:
         print("Pocelo trenuranje za gamma: ", gamma, datetime.now().time())
         for c in cs:
             print("\t", c, datetime.now().time())
-            model = " ../data/models/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
-            output = " ../data/output/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
-            model_terminal = "../data/terminal/train_" + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
-            output_terminal = "../data/terminal/test_ " + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
+            model = " ../data/models/reduced_rbf/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+            output = " ../data/output/reduced_rbf/" + function[3:] + "_g" + str(gamma) + "_c" + str(c)
+            model_terminal = "../data/terminal/reduced_rbf/train_" + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
+            output_terminal = "../data/terminal/reduced_rbf/val_ " + function[3:] + "_g" + str(gamma) + "_c" + str(c) + ".txt"
 
             parameters = "-c " + str(c) + " -t 2 -g " + str(gamma)
 
