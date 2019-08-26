@@ -3,6 +3,7 @@ def proteins_with_functions_molecular(alt_ids, valid_proteins, obsoletes, path="
     file = open(path, "r")
     all_lines = file.readlines()
     proteins_molecular = {}
+    # parents = read_files.read_map_file("parents.txt")
 
     for line in all_lines:
         tokens = line.split(" ")
@@ -25,8 +26,13 @@ def proteins_with_functions_molecular(alt_ids, valid_proteins, obsoletes, path="
             if protein in proteins_molecular:
                 if function not in proteins_molecular[protein]:
                     proteins_molecular[protein].append(function)
+
             else:
                 proteins_molecular[protein] = [function]
+
+            # for parent in parents[function]:
+            #     if parent not in proteins_molecular[protein]:
+            #         proteins_molecular[protein].append(parent)
 
     file.close()
     return proteins_molecular
@@ -50,8 +56,6 @@ def proteins_with_functions_other(proteins_molecular, path="../data/original_dat
 
 def functions_with_proteins(alt_ids, valid_proteins, obsoletes, path="../data/original_data/uniprot_sprot_exp.txt"):
     # Funkcija za svaku funkciju odredjuje koji proteini je vrse
-    # Ima ih 5966, vecina su listovi ontologije, ali ima i unutrasnjih cvorova (1310)
-    # Zastarelih je 516, neke se ponavljaju za vise proteina, pa je ukupan broj funkcija 5916
     file = open(path, "r")
     all_lines = file.readlines()
     functions = {}
