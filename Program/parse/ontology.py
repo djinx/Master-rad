@@ -34,9 +34,6 @@ def functions(path="../data/original_data/go.obo"):
                         parent = info.split(" ")
                         parents.append(parent[1])
 
-                if len(parents) == 0:
-                    parents = "root"
-
                 molecular_functions[function_id] = {
                     "name": name,
                     "definition": definition,
@@ -111,6 +108,28 @@ def ontology_tree_file(ontology):
     file = open("../data/parsed_data/ontology.txt", "w")
 
     for o in ontology:
-        file.write(o + " -> " + " ".join(ontology[o]) + "\n")
+        file.write(o + "->" + " ".join(ontology[o]) + "\n")
+
+    file.close()
+
+
+def find_all_parents(function, parents, molecular_functions):
+    current_parents = molecular_functions[function]['parents']
+
+    for parent in current_parents:
+        if parent not in parents:
+            parents.append(parent)
+
+    for parent in current_parents:
+        find_all_parents(parent, parents, molecular_functions)
+
+
+def parents_file(molecular_functions):
+    file = open("../data/parsed_data/parents.txt", "w")
+
+    for mf in molecular_functions:
+        parents = []
+        find_all_parents(mf, parents, molecular_functions)
+        file.write(mf + "->" + " ".join(parents) + "\n")
 
     file.close()
