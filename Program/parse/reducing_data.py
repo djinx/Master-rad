@@ -12,7 +12,7 @@ def reduced_data_file(data, path):
 
 def reduced_functions_with_proteins_file(functions, proteins, path="../data/parsed_data/functions_with_proteins_n_", add=".txt"):
     file = open(path+add, "w")
-    functions_with_proteins_all = read_files.read_functions_with_proteins()
+    functions_with_proteins_all = read_files.read_map_file("functions_with_proteins.txt")
 
     for function in functions:
         proteins_all = functions_with_proteins_all[function]
@@ -28,7 +28,7 @@ def reduced_functions_with_proteins_file(functions, proteins, path="../data/pars
 
 def reduced_proteins_with_functions_file(functions, proteins, path="../data/parsed_data/proteins_with_functions_n_", add=".txt"):
     file = open(path+add, "w")
-    proteins_with_functions_all = read_files.read_proteins_with_functions()
+    proteins_with_functions_all = read_files.read_map_file("proteins_with_functions.txt")
 
     for protein in proteins:
         functions_all = proteins_with_functions_all[protein]
@@ -43,7 +43,7 @@ def reduced_proteins_with_functions_file(functions, proteins, path="../data/pars
 
 
 def main():
-    functions_with_proteins = read_files.read_functions_with_proteins()
+    functions_with_proteins = read_files.read_map_file("functions_with_proteins.txt")
     function_number = {}
     accepted_functions = []
     limit = 100
@@ -73,16 +73,11 @@ def main():
         if n >= limit:
             accepted_functions.append(function)
 
-    print(zero, less_10, less_100, less_500, rest)
-    print(len(accepted_functions))
-
     # Izdvajanje proteina sa funkcijama koje se pojavljuju bar 100 puta
-    proteins_with_functions = read_files.read_proteins_with_functions()
+    proteins_with_functions = read_files.read_map_file("proteins_with_functions.txt")
     protein_sequences = read_files.read_proteins_with_sequences()
     proteins_with_accepted_functions = set()
     final_proteins = {}
-
-    print(len(protein_sequences), len(proteins_with_functions))
 
     for protein in proteins_with_functions:
         functions = proteins_with_functions[protein]
@@ -91,26 +86,18 @@ def main():
             if function in accepted_functions:
                 proteins_with_accepted_functions.add(protein)
 
-    print(len(proteins_with_accepted_functions))
-
     for protein in proteins_with_accepted_functions:
         final_proteins[protein] = protein_sequences[protein]
 
     # Upis proteina i sekvenci u novu datoteku
-    # array_sequences.array_sequences_file(final_proteins, k=3, add="_n_" + str(limit) + ".txt")
+    array_sequences.array_sequences_file(final_proteins, k=3, add="_n_" + str(limit) + ".txt")
 
     # Upis smanjenog skupa u datoteke
-    # reduced_data_file(final_proteins, "proteins_n_ " + str(limit) + ".txt")
-    # reduced_data_file(accepted_functions, "molecular_functions_n_ " + str(limit) + ".txt")
+    reduced_data_file(final_proteins, "proteins_n_ " + str(limit) + ".txt")
+    reduced_data_file(accepted_functions, "molecular_functions_n_ " + str(limit) + ".txt")
 
-    # reduced_functions_with_proteins_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
-    # reduced_proteins_with_functions_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
-
-    bla = read_files.read_functions_with_proteins(add="_n_" + str(limit) + ".txt")
-    print(len(functions_with_proteins["GO:0060589"]))
-    print(len(bla["GO:0060589"]))
-    razlika = set(functions_with_proteins["GO:0060589"]) - set(bla["GO:0060589"])
-    print(razlika)
+    reduced_functions_with_proteins_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
+    reduced_proteins_with_functions_file(accepted_functions, final_proteins, add=str(limit) + ".txt")
 
 
 if __name__ == '__main__':
