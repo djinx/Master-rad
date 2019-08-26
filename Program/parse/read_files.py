@@ -38,60 +38,24 @@ def read_alt_ids(path="../data/parsed_data/alt_ids.txt"):
     return alt_ids
 
 
-def read_ontology_tree(path="../data/parsed_data/ontology.txt"):
-    # Citanje ontologije
-    file = open(path, "r")
+def read_map_file(file, path="../data/parsed_data/"):
+    # Cita datoteke zapisane u obliku kljuc -> vrednosti
+    file = open(path+file, "r")
     lines = file.readlines()
-    ontology_tree = {}
-
-    for line in lines:
-        tokens = line.split(" -> ")
-        function = tokens[0]
-        children = tokens[1].split(" ")
-        ontology_tree[function] = []
-
-        for child in children:
-            ontology_tree[function].append(child)
-
-    return ontology_tree
-
-
-def read_proteins_with_functions(path="../data/parsed_data/proteins_with_functions.txt"):
-    # Citanje proteina sa listom funkcija koje izvrsavaju
-    file = open(path, "r")
-    lines = file.readlines()
-    proteins_with_functions = {}
-
-    for line in lines:
-        tokens = line.split("->")
-        protein = tokens[0]
-        functions = tokens[1].split(" ")
-        proteins_with_functions[protein] = []
-
-        for function in functions:
-            proteins_with_functions[protein].append(function)
-
-    return proteins_with_functions
-
-
-def read_functions_with_proteins(path="../data/parsed_data/functions_with_proteins", add=".txt"):
-    # Citanje funkcija sa proteinima koji ih izvrsavaju
-    file = open(path+add, "r")
-    lines = file.readlines()
-    functions_with_proteins = {}
+    data = {}
 
     for line in lines:
         tokens = line.replace("\n", "").split("->")
-        function = tokens[0]
-        proteins = tokens[1].split(" ")
+        key = tokens[0]
+        values = tokens[1].split(" ")
 
-        functions_with_proteins[function] = []
+        data[key] = []
 
-        for protein in proteins:
-            if protein != "":
-                functions_with_proteins[function].append(protein)
+        for value in values:
+            if value != "":
+                data[key].append(value)
 
-    return functions_with_proteins
+    return data
 
 
 def read_proteins_with_sequences(path="../data/parsed_data/proteins_with_sequences", add=".txt"):
