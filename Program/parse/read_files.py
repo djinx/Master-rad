@@ -106,3 +106,14 @@ def read_proteins(positive_proteins=None, path="../data/parsed_data/molecular_pr
 
     file.close()
     return proteins
+
+
+def read_test_functions(path="../data/parsed_data/", file="testing_functions.txt"):
+    file = open(path + file, "r")
+    lines = file.readlines()
+    functions = []
+
+    for line in lines:
+        functions.append(line.replace("\n", ""))
+
+    return functions
