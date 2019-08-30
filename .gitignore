@@ -38,3 +38,5 @@ Program/data/parsed_data/test_functions_n_100.txt
 Program/data/parsed_data/test_functions.txt
 Program/data/parsed_data/num_functions_n_100.txt
 Program/data/parsed_data/num_functions.txt
+Tekst/Chapters/*.aux
+Tekst/Chapters/*.log
