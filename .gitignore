@@ -1,9 +1,18 @@
 venv
 *.pyc
+
 Program/parse/__pycache__/
 Program/predictos/__pycache__/
 Program/data/parsed_data/all_array_sequences.txt
 Program/data/parsed_data/all_array_sequences_old.txt
+Program/data/parsed_data/all_array_sequences_20_3.txt
+Program/data/parsed_data/array_sequences.txt
+Program/data/parsed_data/array_sequences_20_3.txt
+Program/data/parsed_data/array_sequences_n_10.txt
+Program/data/parsed_data/test_functions_n_100.txt
+Program/data/parsed_data/test_functions.txt
+Program/data/parsed_data/num_functions_n_100.txt
+Program/data/parsed_data/num_functions.txt
 Program/data/input/*
 Program/data/models/*
 Program/data/output/*
@@ -13,6 +22,13 @@ Program/data/terminal/*
 Program/data/nn/*
 Program/izlaz719
 Program/test 24 7
+
+Prijava teme/Molba_AnjaBukurov.log
+Prijava teme/Molba_AnjaBukurov.aux
+Prijava teme/Molba_AnjaBukurov.synctex.gz
+
+RF*
+
 Tekst/main.aux
 Tekst/main.lof
 Tekst/main.txt 
@@ -27,16 +43,6 @@ Tekst/main.blg
 Tekst/main.lot
 Tekst/main.bbl
 Tekst/main-blx.bib
-Program/data/parsed_data/all_array_sequences_20_3.txt
-Program/data/parsed_data/array_sequences.txt
-Program/data/parsed_data/array_sequences_20_3.txt
-Program/data/parsed_data/array_sequences_n_10.txt
-Prijava teme/Molba_AnjaBukurov.log
-Prijava teme/Molba_AnjaBukurov.aux
-Prijava teme/Molba_AnjaBukurov.synctex.gz
-Program/data/parsed_data/test_functions_n_100.txt
-Program/data/parsed_data/test_functions.txt
-Program/data/parsed_data/num_functions_n_100.txt
-Program/data/parsed_data/num_functions.txt
 Tekst/Chapters/*.aux
 Tekst/Chapters/*.log
+Tekst/main.dvi
