@@ -3,8 +3,10 @@ import numpy as np
 from parse import read_files
 from predictors import train_test_data
 from sklearn import metrics
+from datetime import datetime
 
 models_path = "../data/models/"
+models = {}
 
 
 def save_model(function, model, directory):
@@ -15,12 +17,25 @@ def read_model(function, directory):
     return pickle.load(open(models_path+directory+function, 'rb'))
 
 
-def prediction(protein_sequence, function, directory):
-    classifier = read_model(function, directory)
+def read_models(directory):
+    start = datetime.now()
+    functions = read_files.read_molecular_functions(add="_n_100.txt")
+
+    for function in functions:
+        if function != "GO:0003674":
+            models[function] = read_model(function.replace(":", "_"), directory)
+
+    end = datetime.now()
+    print("Citanje modela:", end - start)
+
+
+def prediction(protein_sequence, function):
+    classifier = models[function]
     return classifier.predict([protein_sequence])[0]
 
 
-def all_predictions(protein, directory, true_functions):
+def all_predictions(protein, true_functions):
+    start = datetime.now()
     predicted_functions = []
     functions = read_files.read_molecular_functions(add="_n_100.txt")
 
@@ -34,6 +49,7 @@ def all_predictions(protein, directory, true_functions):
     i = 0
 
     for function in functions:
+
         if function == "GO:0003674":
             predicted_functions.append(function)
             y_true[i] = 1
@@ -41,7 +57,7 @@ def all_predictions(protein, directory, true_functions):
             continue
 
         sequence = train_test_data.make_array(protein, 3)
-        predicted = prediction(sequence, function.replace(":", "_"), directory)
+        predicted = prediction(sequence, function)
         
         if function in true_functions:
             y_true[i] = 1
@@ -67,7 +83,9 @@ def all_predictions(protein, directory, true_functions):
     rec = metrics.recall_score(y_true, y_predicted)
     f1 = metrics.f1_score(y_true, y_predicted)
 
-    # print("\t", acc, pre, rec, f1)
+    print("\t", acc, pre, rec, f1)
+    end = datetime.now()
+    print("\t", end - start)
 
     return predicted_functions, round(f1, 3)
 
@@ -75,11 +93,12 @@ def all_predictions(protein, directory, true_functions):
 def main():
     test_protein_sequences = read_files.read_array_sequences(add="_test_n_100.txt")
     test_proteins_with_functions = read_files.read_map_file("proteins_with_functions_test_n_100.txt")
+    read_models("RF_models/")
     f1_scores = {}
     avg = 0.0
     for protein in test_protein_sequences:
-        # print(protein)
-        predicted_functions, f1 = all_predictions(test_protein_sequences[protein], "LR_models/", test_proteins_with_functions[protein])
+        print(protein)
+        predicted_functions, f1 = all_predictions(test_protein_sequences[protein], test_proteins_with_functions[protein])
 
         avg += f1
         if f1 in f1_scores:
