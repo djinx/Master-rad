@@ -42,7 +42,8 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{amsmath}
 % dužine
 
-\usepackage{listings}                                                           
+\usepackage{float}
+\usepackage{listings}                                                          
 \usepackage{color}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -212,7 +213,6 @@ dr Mladen Nikolić \\
 %	ABSTRACT PAGE
 %----------------------------------------------------------------------------------------
 
-% definišemo korisne komande
 \newcommand{\en}[1]{(engl. \textit{#1})}
 \newcommand{\lat}[1]{(latin. \textit{#1})}
 \newcommand{\keyword}[1]{\textbf{#1}}
@@ -224,6 +224,7 @@ dr Mladen Nikolić \\
 
 \newtheorem{definicija}{Definicija}
 
+\iffalse 
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 % The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too
@@ -243,7 +244,7 @@ dr Mladen Nikolić \\
 
 
 \end{acknowledgements}
-
+\fi 
 %
 %----------------------------------------------------------------------------------------
 %	LIST OF KEYWORDS
@@ -258,9 +259,9 @@ dr Mladen Nikolić \\
 
 \tableofcontents % Prints the main table of contents
 
-\listoffigures % Prints the list of figures
+%\listoffigures % Prints the list of figures
 
-\listoftables % Prints the list of tables
+%\listoftables % Prints the list of tables
 
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS
@@ -306,7 +307,7 @@ dr Mladen Nikolić \\
 %	DEDICATION
 %----------------------------------------------------------------------------------------
 
-\dedicatory{} 
+%\dedicatory{} 
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - CHAPTERS
@@ -322,7 +323,7 @@ dr Mladen Nikolić \\
 % Uncomment the lines as you write the chapters
 
 \include{Chapters/Uvod}
-\include{Chapters/BioloskiPojmovi}
+\include{Chapters/Proteini}
 %\include{Chapters/BinarniKlasifikatori}
 %\include{Chapters/Podaci}
 %\include{Chapters/Implementacija}
