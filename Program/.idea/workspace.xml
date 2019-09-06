@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/function prediction/function_prediction.py" line="101" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="072a6f0a-e5e7-4973-ab86-05d2b769b7fa" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -10,20 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/read_files.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="4" selection-start-column="4" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/function prediction/function_prediction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="17">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -32,25 +26,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/predictors/knn_predictor.py">
+        <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="52" column="56" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/reducing_data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-3662">
+              <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -128,9 +107,10 @@
         <option value="$PROJECT_DIR$/predictors/svm_light.py" />
         <option value="$PROJECT_DIR$/predictors/svm_light_rbf.py" />
         <option value="$PROJECT_DIR$/predictors/svm_light_linear" />
-        <option value="$PROJECT_DIR$/predictors/train_test_data.py" />
         <option value="$PROJECT_DIR$/parse/read_files.py" />
         <option value="$PROJECT_DIR$/parse/reducing_data.py" />
+        <option value="$PROJECT_DIR$/predictors/random_forest.py" />
+        <option value="$PROJECT_DIR$/predictors/train_test_data.py" />
         <option value="$PROJECT_DIR$/function prediction/function_prediction.py" />
       </list>
     </option>
@@ -147,6 +127,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -163,7 +144,25 @@
               <item name="Program" type="b2602c69:ProjectViewProjectNode" />
               <item name="Program" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Program" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="PCA_models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Program" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="terminal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Program" type="462c0819:PsiDirectoryNode" />
+              <item name="function prediction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Program" type="b2602c69:ProjectViewProjectNode" />
@@ -179,7 +178,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -188,19 +186,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal\linAll" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\parsed_data" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\nn" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models\linAll" />
-      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models\lin20k" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\output" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\original_data" />
       <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\data\parsed_data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\terminal\linAll" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\parsed_data" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\nn" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models\linAll" />
+      <recent name="C:\Users\Anja\Documents\Master rad\Master-rad\Program\data\models\lin20k" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -346,6 +344,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.18440464" />
       <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.24973656" />
@@ -373,7 +372,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/terminal/reduced_lin/val_ 0045182_c1.txt" />
     <entry file="file://$PROJECT_DIR$/data/terminal/reduced_lin/val_ 0045182_c0.1.txt" />
     <entry file="file://$PROJECT_DIR$/data/terminal/reduced_lin/train_0060589_c0.01.txt" />
     <entry file="file://$PROJECT_DIR$/data/terminal/reduced_lin/val_ 0045182_c0.01.txt" />
@@ -533,16 +531,19 @@
         <state relative-caret-position="-3159" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="104" column="59" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/predictors/svm_light_parallel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictors/knn_predictor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="52" column="56" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="56" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -558,7 +559,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parse/reducing_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
+        <state relative-caret-position="821">
           <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
@@ -566,20 +567,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/predictors/knn_predictor.py">
+    <entry file="file://$PROJECT_DIR$/predictors/random_forest.py" />
+    <entry file="file://$PROJECT_DIR$/predictors/train_test_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="52" column="56" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-3662">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/function prediction/function_prediction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        <state relative-caret-position="17">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
