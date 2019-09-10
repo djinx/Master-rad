@@ -17,6 +17,19 @@ def read_model(function, directory):
     return pickle.load(open(models_path+directory+function, 'rb'))
 
 
+# def read_pca_models():
+#     start = datetime.now()
+#     directory = "PCA_models/"
+#     functions = read_files.read_molecular_functions(add="_n_100.txt")
+#
+#     for function in functions:
+#         if function != "GO:0003674":
+#             pca_models[function] = read_model(function.replace(":", "_"), directory)
+#
+#     end = datetime.now()
+#     print("Citanje PCA modela:", end - start)
+
+
 def read_models(directory):
     start = datetime.now()
     functions = read_files.read_molecular_functions(add="_n_100.txt")
@@ -31,19 +44,15 @@ def read_models(directory):
 
 def prediction(protein_sequence, function):
     classifier = models[function]
-    return classifier.predict([protein_sequence])[0]
+    return classifier.predict(protein_sequence)[0]
 
 
-def all_predictions(protein, true_functions):
+def all_predictions(protein, true_functions, pca):
     start = datetime.now()
     predicted_functions = []
     functions = read_files.read_molecular_functions(add="_n_100.txt")
 
     n = len(functions)
-    tp = 0
-    tn = 0
-    fp = 0
-    fn = 0
     y_true = np.zeros(n)
     y_predicted = np.zeros(n)
     i = 0
@@ -57,59 +66,77 @@ def all_predictions(protein, true_functions):
             continue
 
         sequence = train_test_data.make_array(protein, 3)
-        predicted = prediction(sequence, function)
-        
+
+        if pca:
+            pca_model = read_model(function.replace(":", "_"), "PCA_models/")
+            sequences = pca_model.transform([sequence])
+            predicted = prediction(sequences, function)
+        else:
+            predicted = prediction([sequence], function)
+
         if function in true_functions:
             y_true[i] = 1
 
         if predicted == 1:
             y_predicted[i] = 1
             predicted_functions.append(function)
-            if function in true_functions:
-                tp += 1
-            else:
-                fp += 1
-
-        else:
-            if function in true_functions:
-                fn += 1
-            else:
-                tn += 1
 
         i += 1
 
-    acc = metrics.accuracy_score(y_true, y_predicted)
-    pre = metrics.precision_score(y_true, y_predicted)
-    rec = metrics.recall_score(y_true, y_predicted)
     f1 = metrics.f1_score(y_true, y_predicted)
 
-    print("\t", acc, pre, rec, f1)
+    print("\t", f1)
     end = datetime.now()
     print("\t", end - start)
 
-    return predicted_functions, round(f1, 3)
+    return predicted_functions, f1
+
+
+def organism_num(organism):
+    if organism == 'human':
+        return 0
+    elif organism == 'mouse':
+        return 1
+    elif organism == 'rat':
+        return 2
+    elif organism == 'ecoli':
+        return 3
+    elif organism == 'arath':
+        return 4
+    else:
+        return 5
 
 
 def main():
-    test_protein_sequences = read_files.read_array_sequences(add="_test_n_100.txt")
-    test_proteins_with_functions = read_files.read_map_file("proteins_with_functions_test_n_100.txt")
-    read_models("RF_models/")
-    f1_scores = {}
-    avg = 0.0
+    proteins_with_organisms = read_files.read_map_file("proteins_with_organisms.txt")
+    test_protein_sequences = read_files.read_array_sequences(add="_test_org_n_100.txt")
+    test_proteins_with_functions = read_files.read_map_file("proteins_with_functions_test_org_n_100.txt")
+    read_models("SVM_models/")
+    pca = True
+    i = 0
+    nums = [0, 0, 0, 0, 0]
+    avgs = [0.0, 0.0, 0.0, 0.0, 0.0]
+    avg_f1 = 0.0
+
     for protein in test_protein_sequences:
-        print(protein)
-        predicted_functions, f1 = all_predictions(test_protein_sequences[protein], test_proteins_with_functions[protein])
+        i += 1
+        print(protein, i, "/ 100")
+        predicted_functions, f1 = all_predictions(test_protein_sequences[protein], test_proteins_with_functions[protein], pca)
 
-        avg += f1
-        if f1 in f1_scores:
-            f1_scores[f1].append(protein)
-        else:
-            f1_scores[f1] = [protein]
+        if protein in proteins_with_organisms:
+            p = organism_num(proteins_with_organisms[protein][0])
+            avgs[p] += f1
+            nums[p] += 1
 
-    for f1 in f1_scores:
-        print(f1, ":", len(f1_scores[f1]))
+        avg_f1 += f1
 
-    print("Prosek:", avg/100)
+    avg_f1s = [0.0 for i in range(0, len(avgs))]
+    for i in range(0, len(avgs)):
+        if nums[i] != 0:
+            avg_f1s[i] = avgs[i] / nums[i]
+
+    print("Proseci:", avg_f1s)
+    print("Ukupna f1:", avg_f1 / 100)
 
 
 if __name__ == '__main__':
