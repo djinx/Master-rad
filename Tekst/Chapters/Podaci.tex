@@ -30,7 +30,7 @@ Podaci o proteinima mogu se pronaći u biomedicinskim bazama podataka, a neke od
 		& & masenom sprektometrijom \\
 		\hline 
 	\end{tabular}
-	\caption{Prikaz nekih javno dostupni biomedicinskih baza \\ podataka \cite{radivojac, doktJK}.}
+	\caption{Prikaz nekih javno dostupnih biomedicinskih baza \\ podataka \cite{radivojac, doktJK}.}
 	\label{tab: databases}
 \end{table}
 
@@ -61,7 +61,7 @@ Svaka ontologija predstavljena je kao usmereni aciklički graf gde su čvorovima
 
 \section{Binarni klasifikatori}
 
-Klasifikacija, odnosno, zadatak dodeljivanja objekata jednoj od više predefinisanih kategorija, rasprostranjen je problem koji obuhvata mnoštvo različitih primena. Primeri uključuju otkrivanje spam poruka na osnovu zaglavlja poruke i njenog sadržaja, kategorisanje ćelija kao maligne ili beningne na osnovu rezultata magnetne rezonance, klasifikaciju galaksija na osnovu njihovog oblika, itd. Binarna klasifikacija je slučaj klasifikacije u kojoj postoje tačno dve predefinisane kategorije u koje treba razvrstati date objekte. Obično se za jednu kategoriju kaže da je to pozitivna klasa, a za drugu da je negativna.
+Klasifikacija, odnosno, zadatak dodeljivanja objekata jednoj od više predefinisanih kategorija, rasprostranjen je problem koji obuhvata mnoštvo različitih primena. Primeri uključuju otkrivanje spam poruka na osnovu zaglavlja poruke i njenog sadržaja, kategorisanje ćelija kao malignih ili beningnih na osnovu rezultata magnetne rezonance, klasifikaciju galaksija na osnovu njihovog oblika, itd. Binarna klasifikacija je slučaj klasifikacije u kojoj postoje tačno dve predefinisane kategorije u koje treba razvrstati date objekte. Obično se za jednu kategoriju kaže da je to pozitivna klasa, a za drugu da je negativna.
 
 Svaki klasifikator upotrebljava algoritam za učenje kako bi odredio model koji najbolje odgovara vezi između skupa atributa i klase ulaznih podataka. Model koji algoritam generiše trebalo bi da odgovara ulaznim podacima kao i da tačno predviđa klasu slogova koje ranije nije video. 
 
@@ -76,7 +76,7 @@ Osnovna ideja ove metode jeste pronalazak razdvajajuće hiperravni takve da su i
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figures/svm1.png}
-	\caption{Primeri razdvajajućih hiperravni \cite{introDM}.}
+	\caption{Primeri razdvajajućih hiperravni \cite{introDM}}
 	\label{fig:svm1}
 \end{figure}
 
@@ -88,7 +88,7 @@ Na slici \ref{fig:svm2} izdvojene su dve hiperravni $B_1$ i $B_2$ i za svaku su 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figures/svm2.png}
-	\caption{Margine razdvajajućih hiperravni \cite{introDM}.}
+	\caption{Margine razdvajajućih hiperravni \cite{introDM}}
 	\label{fig:svm2}
 \end{figure}
 
@@ -119,16 +119,16 @@ Metaparametar $C$ kontroliše koliki značaj imaju greške. Ukoliko je vrednost 
 
 \subsection{Logistička regresija}
 
-Logistička regresija (engl. \textit{logistic regression}) je statistički zasnovan metod za analizu skupa podataka u kom jedna ili više nezavisnih promenljivih određuju ishod. Osnovna pretpostvaka je Bernulijeva rasporedela ciljne promenljive $y$ pri datim vrednostim atributa $x$ odnosno, za date vrednosti atributa $x$, postoji parametar $\mu \in [0, 1]$ tako da važi:
+Logistička regresija (engl. \textit{logistic regression}) je statistički zasnovan metod za analizu skupa podataka u kom jedna ili više nezavisnih promenljivih određuju ishod. Osnovna pretpostvaka je Bernulijeva rasporedela ciljne promenljive $y$ pri datim vrednostima atributa $x$ odnosno, za date vrednosti atributa $x$, postoji parametar $\mu \in [0, 1]$ tako da važi:
 
 $$ p(y = 1 | x) = \mu $$ 
 
 \noindent odakle je $ p(y=0 | x)$  jednoznačno određeno.
-Zadatak je sličan kao prethodnoj metodi, potrebno je pronaći razdvajajuću hiperravan koja deli podatke tako da sa jedne strane budu instance iste klase. Najjaednostavniji je linearan model:
+Zadatak je sličan kao u prethodnoj metodi, potrebno je pronaći razdvajajuću hiperravan koja deli podatke tako da sa jedne strane budu instance iste klase. Najjednostavniji je linearan model:
 
 $$f(x) = w \cdot x$$
 
-Međutim, funkcije uzima vrednosti iz intervala $[-\infty, \infty]$ što nije prihvatljivo zbog verovatnoća. Zbog toga se vrednost linearnog modela transformiše monotonom funkcijom u interval $[0, 1]$. U te svrhe, najčešće se koristi sigmoidna funkcija:
+S obzirom da funkcija uzima vrednosti iz intervala $[-\infty, \infty]$, a parametar $\mu$ mora imati vrednost iz intervala $[0, 1]$ da bi verovatnoća bila ispravno definisana, ovakav model nije prihvatljiv. Zbog toga se vrednost linearnog modela transformiše monotonom funkcijom u interval $[0, 1]$. U te svrhe, najčešće se koristi sigmoidna funkcija:
 
 $$\sigma(t) = \dfrac{1}{1+exp(-t)}$$
 
@@ -146,7 +146,7 @@ Verovatnoća da instanca pripada jednoj klasi je veća što je instanca dalje od
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Figures/sigmoid.png}
-	\caption{Grafik sigmoidne funkcije \cite{ml}.}
+	\caption{Grafik sigmoidne funkcije \cite{ml}}
 	\label{fig:sigmoid}
 \end{figure}
 
@@ -156,7 +156,7 @@ $$\mathcal{L}(w) = \prod_{i=1}^{N}p_w(y_i|x_i)$$
 
 i potrebno je rešiti problem:
 
-$$\underset{w}{max} \mathcal{L}(w)$$
+$$\underset{w}{\text{max }}\mathcal{L}(w)$$
 
 Ukoliko se pređe na negativan logaritam verodostojnosti optimizacioni problem postaje:
 
@@ -178,7 +178,7 @@ Svaki list u stablu ima dodeljenu klasu, a unutrašnji čvorovi i koren sadrže 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Figures/tree.png}
-	\caption{Primer stabla odlučivanja koje određuje da li je životinja opasna ili ne \cite{vi}.}
+	\caption{Primer stabla odlučivanja koje određuje da li je životinja opasna ili ne \cite{vi}}
 	\label{fig:tree}
 \end{figure}
 
@@ -187,7 +187,7 @@ Svaki list u stablu ima dodeljenu klasu, a unutrašnji čvorovi i koren sadrže 
 \subsubsection{Predviđanje korišćenjem slučajnih šuma} 
 
 
-Osnovna ideja je kombinovanje više stabala odlučivanja u jedan model. Stabla koja se kombinuju treniraju se nad nezavisnim, slučajno odabranim, podskupovima podataka, a može se koristiti i slučajno odabran podskup atributa. Obučavaju se nad različitim skupovima kako bi njihove greške bile što slabije korelisane \cite{ml}.  
+Osnovna ideja je kombinovanje više stabala odlučivanja u jedan model. Stabla koja se kombinuju treniraju se nad nezavisnim, slučajno odabranim podskupovima podataka, a može se koristiti i slučajno odabran podskup atributa. Obučavaju se nad različitim skupovima kako bi njihove greške bile što slabije korelisane \cite{ml}.  
  
 Instanca se klasifikuje glasanjem. Svako od konstruisanih stabala klasifikuje instancu u jednu od dve klase, a zatim se svi odgovori broje i odgovor klasifikatora slučajne šume je ona klasa koja ima više glasova tj. ona klasa koju je više stabala predvidelo. Slika \ref{fig:rf} ilustruje proces treniranja i klasifikacije.
 
@@ -198,3 +198,40 @@ Instanca se klasifikuje glasanjem. Svako od konstruisanih stabala klasifikuje in
 	\caption{Primer slučajne šume \cite{introDM}. Prvo se iz početnog skupa slučajno odabiraju instance i formira se podskup za svako stablo. Zatim se nad odgovarajućim podskupovima treniraju stabla. Svako stablo klasifikuje nepoznatu instancu i odgovori se kombinuju u jedan, konačan, odgovor modela slučajnih šuma.}
 	\label{fig:rf}
 \end{figure}
+
+
+
+\section{Evaluacija modela binarne klasifikacije}
+\label{sec:evaluation}
+
+Metode binarne klasifikacije za test instancu daju jedan od dva moguća odgovora, na primer, ‚‚da'' ili ‚‚ne''. Pošto se jedna klasa obično posmatra kao pozitivna a druga kao negativna, neka u ovom primeru ‚‚da'' bude pozitivna klasa, a ‚‚ne'' neka bude negativna klasa. Prilikom ocenjivanja kvaliteta klasifikacionog modela od značaja su 4 veličine:
+
+\begin{itemize}
+	\item $tp$ - broj instanci za koju je predviđena pozitivna klasa i čija je stvarna klasa pozitivna
+	
+	\item $tn$ - broj instanci za koju je predviđena negativna klasa i čija je stvarna klasa negativna
+	
+	\item $fp$  - broj instanci za koju je predviđena pozitivna klasa, a čija je stvarna klasa negativna
+	
+	\item $fn$ - broj instanci za koju je predviđena negativna klasa, a čija je stvarna klasa pozitivna.
+	
+\end{itemize}
+
+
+Kada su definisane ove veličine, mogu se odrediti i neke mere kvaliteta. Na primer, tačnost modela. Tačnost (\textit{engl. accuracy}) određuje koliko je instanci tačno klasifikovano u odnosu na ukupan broj instanci i definiše se formulom:
+
+$$\text{accuracy = } \dfrac{tp + tn}{tp +tn +fp +fn}$$ 
+
+Ova metrika se često koristi u mašinskom učenju, međutim, ona ne daje uvek dobru ocenu metoda. U slučaju nebalansiranih klasa\footnote{Pod nebalansiranim klasama podrazumeva se da u skupu podataka postoji mnogo više instanci koji pripadaju jednoj klasi u odnosu na broj instanci koje pripadaju drugoj klasi.} model može da daje visoku vrednost za tačnost, a da ipak loše predviđa. Razlog je to što često loši modeli predviđaju skoro uvek samo jednu, dominantnu klasu, a pošto je instanci dominantne klase značajno više, većina instanci će biti ispravno klasifikovana. Međutim, cilj je napraviti model koji će biti uspešan u klasifikovanju obe klase, a ne samo jedne \cite{f1}.
+
+Zbog toga se definišu još neke mere kvaliteta modela. Prva je preciznost (\textit{engl. precision}), a druga je odziv (\textit{engl. recall}) i definišu se formulama:
+
+$$ \text{precision = } \dfrac{tp}{tp + fp}  \qquad  \qquad \text{recall = } \dfrac{tp}{tp + fn}$$
+
+\noindent Preciznost određuje koliko je pozitivnih instanci ispravno klasifikovano u odnosu na ukupan broj instanci koje su klasifikovane kao pozitivne. Sa druge strane, odziv određuje udeo ispravno klasifikovanih pozitivnih instanci u odnosu na ukupan broj pozitivnih instanci u skupu. 
+
+Preciznost i odziv pojedinačno nisu korisne. Ukoliko su sve instance klasifikovane kao pozitivne, odziv će biti maksimalan, međutim preciznost će biti katastrofalna, dok sa druge strane, ukoliko su sve instance klasifikovane kao negativne model ne greši i preciznost je maksimalna, ali odziv je veoma loš. Stoga ima smisla posmatrati ih zajedno što se često radi određivanjem njihove harmoniske sredine koja je nazvana $f_1$-mera \cite{ml}:
+
+$$f_1 = 2 \cdot \dfrac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}$$
+
+
