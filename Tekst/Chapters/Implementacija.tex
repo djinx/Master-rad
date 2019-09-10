@@ -1,0 +1,115 @@
+\chapter{Implementacija predviđanja funkcija proteina}
+\label{Chapter5}
+
+Predviđanje funkcije proteina vršeno je metodama binarne klasifikacije i to metodom potpornih vektora, slučajnim šumama i logističkom regresijom. Trenirani su binarni klasifikatori za pojedinačne funkcije ontologije molekulskih funkcija. Ulaz su obeležene sekvence proteina za konkretnu funkciju. Odgovor koji svaki od klasifikatora daje je da li zadati protein izvršava odgovarajuću funkciju ili ne.
+
+Kada su svi modeli istrenirani, testirani su nad 100 proteina različitih organizama. Za svaki protein traže se odgovori svih binarnih klasifikatora jedne metode, a njihovi odgovori se spajaju u konačan odgovor - podgraf ontologije koji predstavlja funkciju zadatog proteina.
+
+
+
+\section{Podaci}
+
+Podaci o proteinima korišćeni u ovom radu preuzeti su sa adrese \href{https://biofunctionprediction.org/cafa-targets/CAFA3_training_data.tgz}{https://biofunction prediction.org/cafa-targets/CAFA3\_training\_data.tgz}. Oni su podeljeni u dve datoteke:
+
+\begin{enumerate}
+	\item \textbf{uniprot\_sprot\_exp.fasta} - proteini i njihove sekvence,
+	\item \textbf{uniprot\_sprot\_exp.txt} - proteini i eksperimentalno utvrđene funkcije koje obavljaju.
+\end{enumerate}
+
+Dodatne informacije o organizmima u kojima se proteini nalaze preuzete su sa \url{https://www.uniprot.org/} i to za organizme:
+	\begin{itemize}
+		\item čovek (human)
+		\item miš (mouse)
+		\item pacov (rat)
+		\item ešerihija koli (ecoli)
+		\item arabidopsis (arath).
+	\end{itemize}
+
+
+Informacije o ontologijama preuzete su sa  \href{http://geneontology.org/docs/download-ontology/}{http://geneontology.org/docs/download-ontology/} u OBO formatu. 
+
+Preuzeti podaci nisu bili u pogodnom obliku za ulaz klasifikatora zbog čega je bilo neophodno njihovo parsiranje.
+
+
+\paragraph{Ontologija} Datoteka \textit{go.obo} sadrži funkcije iz sve tri ontologije. Njenim parsiranjem izdvojena je ontologija molekulskih funkcija (MFO). Ona se sastoji iz približno 12000 čvorova, međutim, neki čvorovi su zastareli (\textit{engl. obsolete}) zbog čega su izbačeni iz grafa. Pored toga, postoje čvorovi koji predstavljaju alternativni identifikator nekog drugog čvora te su takvi čvorovi ujedinjeni u jedan. Time je broj čvorova smanjen na 11078 molekulskih funkcija. Broj je dodatno umanjen zbog prirode podataka. Pre svega, približno 5500 funkcija se uopšte ne pojavljuje u trening skupu što znači da za njih nema pozitivnih instanci odnosno proteina koji ih izvršavaju pa su one izbačene. Zatim, oko 5000 funkcija se pojavljuje manje od 100 puta u trening skupu. Pokušaji treninga klasifikatora za takve funkcije su bili neuspešni te su i one izbačene iz skupa. Nakon svih redukcija ostalo je 399 funkcija sa 100 ili više pojavljivanja u trening skupu za koje su trenirani modeli.
+
+
+\paragraph{Proteini i funkcije} Parsiranjem \textit{uniprot\_sprot\_exp.txt} izdvojeno je više informacija - proteini sa funkcijama koje obavljaju kao i funkcije sa proteinima za koje je utvrđeno da ih obavljaju. Prvi skup podataka je obogaćen podacima iz ontologije s obzirom da su zadati samo krajnji čvorovi, a ne i svi preci, kako bi se dobio ceo podgraf ontologije koji predstavlja funkciju proteina. Drugi skup poslužio je za prebrojavanje pojavljivanja funkcije u trening skupu kao i za kasnije formiranje skupa pozitivnih i negativnih instanci.
+
+
+\paragraph{Sekvence proteina} U datoteci \textit{uniprot\_sprot\_exp.fasta} 
+nalazi se 66817 proteina. Među njima se nalaze i proteini koji ne obavljaju neku od funkcija iz MFO. Pored toga, postoje proteini čije sekvence nisu validne u smislu aminokiselina koje sadrže. Pod validnim sekvencama podrazumevaju se samo one koje se sastoje isključivo iz 20 standardnih aminokiselina. Nakon eliminacije ovakvih proteina preostaje 34785 onih koji obavljaju bar jednu molekulsku funkciju. Nakon redukcije broja funkcija na 399 smanjio se i skup proteina. Naime, izbačeni su svi proteini za koje je utvrđeno da vrše neku od eliminisanih funkcija. Nakon svih redukcija, veličina trening skupa je 20960. 
+
+
+
+\subsection{Predstavljanje proteina}
+\label{subsec:proteins}
+
+Mnoge metode mašinskog učenja koriste vektore kao ulaz zbog čega je pogodno da se niska aminokiselina prezapiše u niz. Jedan pogodan način za to jeste prebrojavanjem pojavljivanja svakog mogućeg trigrama nad azbukom 20 standardnih aminokiselina. Dimenzija jednog niza je samim tim $20^3$, a jedan element sadrži broj pojavljivanja odgovarajućeg trigrama u niski aminokiselina. Ono što je neophodno jeste da za svaki trigram postoji jedinstveno određen redni broj u nizu. U te svrhe, prvo je potrebno odrediti brojeve pojedinačnih aminokiselina, a šema korišćena u ovoj implementaciji prikazana je u tabeli \ref{tab: aminosNumbers}.
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		A & C & D & E & F & G & H & I & K & L & M & N & P & Q & R & S & T & V & W & Y \\
+		\hline
+		0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\
+		\hline             
+	\end{tabular}
+	\caption{Preslikavanje aminokiselina u broj}
+	\label{tab: aminosNumbers}
+\end{table}
+
+Sada, za svaki trigram može da se odredi njegov jedinstveni broj koji predstavlja poziciju u nizu i to formulom:
+
+$$kmer\_index = aa_1*20^2 + aa_2 * 20 + aa_3$$
+
+Sa ovakvim preslikavanjem trigrama u brojeve, jednostavnim prolaskom kroz nisku sa korakom od 3 karaktera dobija se odgovarajući niz.
+
+
+\section{Treniranje modela}
+\label{sec:train}
+
+
+Program je pisan u programskom jeziku Python i korišćene su implementacije metoda binarne klasifikacije iz Python-ove biblioteke \textit{sklearn}. Trenirano je 399 modela za svaki metod pojedinačno. Početni skup proteina podeljen je na trening i test skup u razmeri 3:1. Tokom treniranja izvršen je i odabir modela na validacionom skupu koji je izdvojen iz trening skupa u istoj razmeri. Odabir najboljeg modela izvršen je na osnovu f1 mere.
+
+Nakon što je obučavanje jednog modela završeno, on je sačuvan u posebnoj datoteci sa nazivom koji odgovara identifikatoru funkcije za koju je model treniran i to korišćenjem još jedne Python-ove biblioteke - \textit{pickle}. Ova biblioteka omogućava čuvanje i kasnije čitanje modela mašinskog učenja u pogodnom obliku, tako da nema potrebe za obučavanjem ispočetka već su modeli odmah spremni za predviđanje.
+
+
+\paragraph{Metod potpornih vektora}
+
+Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.01, 0.1, 1, 10\}$. Pored toga, odabiran je bolji od dva kernela, linearan i gausov. Zbog dugačkog treniranja jednog modela i velikog broja modela koje je trebalo obučiti, svim nizovima redukovana je dimenzionalnost na 1000. U te svrhe korišćena je Python-ova implementacija algoritma analize glavnih komponenti iz biblioteke \textit{sklearn}.  
+
+
+
+\paragraph{Logistička regresija}
+
+Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.0001, 0.001, 0.01, 0.1, 1\}$. Neki modeli nisu uspevali da nauče ništa iz podataka i njihova f1 mera bila je jednaka 0. Za takve modele izvršen je dodatan trening na proširenom skupu podataka. Proširenje skupa se odnosi na generisanje sintetičkih instanci kako bi se ublažila nebalansiranost pozitivnih i negativnih instanci. Za proširivanje skupa korišćena je Python-ova biblioteka \textit{imblearn}, a skup je obogaćen tako da odnos pozitivnih i negativnih instanci bude 1:2.
+
+
+\paragraph{Slučajne šume}
+
+Kod modela slučajnih šuma trenirani su modeli sa različitim brojem stabala iz skupa $\{100, 400, 700, 1000\}$. Slično kao kod logističke regresije, za modele čija je f1 mera bila 0 izvršen je dodatan trening sa dodatnim pozitivnim instancama.
+
+
+
+\section{Objedinjavanje modela}
+
+Nakon što su svi modeli za odabrani metod obučeni prelazi se na testiranje. Izdvojen je skup od 100 proteina nad kojim je testiran prediktor. Prediktor je formiran na osnovu 399 prethodno obučenih modela koji se na samom početku učitavaju u memoriju. Prilikom predviđanja funkcije jednog proteina, protein se prosleđuje kao ulaz svakom od binarnih klasifikatora koji daju vrednosti 0 ili 1. Ujedinjavanjem svih odgovora dobija se konačan odgovor. Sve funkcije za koje je odgovarajući klasifikator dao 1 kao odgovor predstavljaju čvor podgrafa.
+
+
+
+\section{Evaluacija modela}
+
+Kao mera kvaliteta pojedinačnih modela korišćena je $f_1$ mera. U okviru biblioteke \textit{sklearn} implementirana je funkcija koja određuje ovu vrednost na osnovu pravih i predviđenih klasa instanci iz test skupa. 
+
+Ista mera korišćena je za evaluaciju konačnog prediktora koji ujedinjuje sve odgovore. S obzirom da prediktor daje strukturu kao odgovor (usmereni aciklički graf) treba preciznije definisati kako se ova mera određuje. Pretpostavimo da je datoj test instanci pridružen izlazni vektor $y = [0, 1, 1, 0, 1, 1]$, a da je prediktor dao odgovor $y' = [0, 0, 1, 1, 0, 1]$ za istu test instancu. Poređenjem dva vektora može se lako utvrditi koje su klase ispravno određene, a koje pogrešno odnosno mogu se odrediti veličine $tp$, $tn$, $fp$ i $fn$ opisane u sekciji \ref{sec:evaluation}:
+
+$$y' = [\underset{\in tn}{0}, \underset{\in fn}{0}, \underset{\in tp}{1}, \underset{\in fp}{1}, \underset{\in fn}{0}, \underset{\in tp}{}]$$
+
+\noindent Na osnovu ovih veličina dalje se mogu odrediti preciznost i odziv, a onda i  $f_1$ mera.
+
+
+
+
