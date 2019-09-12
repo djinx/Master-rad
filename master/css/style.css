@@ -1,0 +1,138 @@
+body{
+	color: #e06377;
+}
+
+header {
+	color: #e06377;
+}
+
+h2, h3 {
+	padding: 2px;
+	margin: 5px;
+}
+
+#info {
+	float: left;
+}
+
+#slika {
+	float: right;
+	margin: 10px;
+	border: 2px solid #e06377;
+}
+
+img {
+	width: 120px;
+	height: 170px;
+}
+
+#glavni {
+	width: 50%;
+	background-color: #dbceb0;
+	border: 5px solid #c83349;
+	padding-left:5px;
+	padding-right: 5px;
+	padding-bottom:10px;
+	margin-left:15px;
+	margin-right:15px;
+	box-shadow: 20px 15px 10px 5px #e06377;
+	border-radius: 40px;
+	overflow: auto;
+	margin: auto;
+	margin-top: 15px;
+}
+
+.navig {
+	padding: 10px;
+	border-top: 1px solid #e06377;
+	border-bottom: 1px solid #e06377;
+	clear: both;
+	height: 50px;
+}
+
+.nav {
+	position: relative;
+	float: left;
+	font-size: 30px;
+	color: #dbceb0;
+	background-color: #e06377;
+	margin-left: 70px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 40px;
+}
+
+.nav:hover {
+	color: #e06377;
+	background-color: #dbceb0;
+	cursor: pointer;
+}
+
+#cv {
+	display: none;
+	
+}
+
+p {
+	font-size: 20px;
+	padding: 20px;
+	
+}
+
+#skripte {
+	text-align: center;
+	display: none;
+	
+}
+
+#skr{
+	position: relative;
+	float: left;
+	font-size: 20px;
+	color: #dbceb0;
+	background-color: #e06377;
+	margin: 5px;
+	padding: 10px;
+	height: 25px;
+}
+
+li:hover {
+	color: #e06377;
+	background-color: #dbceb0;
+	cursor: pointer;
+}
+
+#projekti {
+	/*display: none;*/
+}
+
+main {
+	clear: both;
+	font-weight: bold;
+}
+
+footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	
+}
+
+a:link{
+	color: #e06377;
+	text-decoration: none;
+}
+
+a:visited{
+	color: #e06377;
+}
+
+a:hover{
+	color: #dbceb0;
+	background-color: #e06377;
+	cursor: pointer;
+}
+
+a:active{
+	font-weight:bold;
+}
