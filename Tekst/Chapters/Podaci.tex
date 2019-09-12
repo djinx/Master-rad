@@ -218,7 +218,7 @@ Metode binarne klasifikacije za test instancu daju jedan od dva moguća odgovora
 \end{itemize}
 
 
-Kada su definisane ove veličine, mogu se odrediti i neke mere kvaliteta. Na primer, tačnost modela. Tačnost (\textit{engl. accuracy}) određuje koliko je instanci tačno klasifikovano u odnosu na ukupan broj instanci i definiše se formulom:
+Kada su definisane ove veličine, mogu se odrediti i neke mere kvaliteta kao što je, na primer, tačnost modela. Tačnost (\textit{engl. accuracy}) određuje koliko je instanci tačno klasifikovano u odnosu na ukupan broj instanci i definiše se formulom:
 
 $$\text{accuracy = } \dfrac{tp + tn}{tp +tn +fp +fn}$$ 
 
@@ -230,7 +230,7 @@ $$ \text{precision = } \dfrac{tp}{tp + fp}  \qquad  \qquad \text{recall = } \dfr
 
 \noindent Preciznost određuje koliko je pozitivnih instanci ispravno klasifikovano u odnosu na ukupan broj instanci koje su klasifikovane kao pozitivne. Sa druge strane, odziv određuje udeo ispravno klasifikovanih pozitivnih instanci u odnosu na ukupan broj pozitivnih instanci u skupu. 
 
-Preciznost i odziv pojedinačno nisu korisne. Ukoliko su sve instance klasifikovane kao pozitivne, odziv će biti maksimalan, međutim preciznost će biti katastrofalna, dok sa druge strane, ukoliko su sve instance klasifikovane kao negativne model ne greši i preciznost je maksimalna, ali odziv je veoma loš. Stoga ima smisla posmatrati ih zajedno što se često radi određivanjem njihove harmoniske sredine koja je nazvana $f_1$-mera \cite{ml}:
+Preciznost i odziv pojedinačno nisu korisne. Ukoliko su sve instance klasifikovane kao pozitivne, odziv će biti maksimalan, međutim preciznost će biti katastrofalna, dok sa druge strane, ukoliko su sve instance klasifikovane kao negativne model ne greši i preciznost je maksimalna, ali odziv je veoma loš. Stoga ima smisla posmatrati ih zajedno što se često radi određivanjem njihove harmonijske sredine koja je nazvana $f_1$-mera \cite{ml}:
 
 $$f_1 = 2 \cdot \dfrac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}$$
 
