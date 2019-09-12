@@ -342,6 +342,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 \newcommand{\byname}{by}
 \newcommand{\abstractname}{Abstract}
 \providecaptionname{german,ngerman,austrian,naustrian}{\byname}{von}
+\providecaptionname{serbian}{\byname}{}
 \providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\byname}{by}
 \ifbool{consistentlayout}{
 	\DeclareDocumentEnvironment{abstract}{ O{} }{%
