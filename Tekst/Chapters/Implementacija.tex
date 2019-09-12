@@ -1,7 +1,7 @@
 \chapter{Implementacija predviđanja funkcija proteina}
 \label{Chapter5}
 
-Predviđanje funkcije proteina vršeno je metodama binarne klasifikacije i to metodom potpornih vektora, slučajnim šumama i logističkom regresijom. Trenirani su binarni klasifikatori za pojedinačne funkcije ontologije molekulskih funkcija. Ulaz su obeležene sekvence proteina za konkretnu funkciju. Odgovor koji svaki od klasifikatora daje je da li zadati protein izvršava odgovarajuću funkciju ili ne.
+Predviđanje funkcije proteina vršeno je metodama binarne klasifikacije i to metodom potpornih vektora, slučajnim šumama i logističkom regresijom. Trenirani su binarni klasifikatori za pojedinačne funkcije ontologije molekulskih funkcija. Ulaz predstavljaju sekvence proteina za koje je određeno da li obavljaju ili ne obavljaju konkretnu funkciju. Odgovor koji svaki od klasifikatora daje je da li zadati protein izvršava odgovarajuću funkciju ili ne.
 
 Kada su svi modeli istrenirani, testirani su nad 100 proteina različitih organizama. Za svaki protein traže se odgovori svih binarnih klasifikatora jedne metode, a njihovi odgovori se spajaju u konačan odgovor - podgraf ontologije koji predstavlja funkciju zadatog proteina.
 
@@ -16,7 +16,7 @@ Podaci o proteinima korišćeni u ovom radu preuzeti su sa adrese \href{https://
 	\item \textbf{uniprot\_sprot\_exp.txt} - proteini i eksperimentalno utvrđene funkcije koje obavljaju.
 \end{enumerate}
 
-Dodatne informacije o organizmima u kojima se proteini nalaze preuzete su sa \url{https://www.uniprot.org/} i to za organizme:
+Dodatne informacije o organizmima iz kojih proteini potiču preuzete su sa \url{https://www.uniprot.org/} i to za organizme:
 	\begin{itemize}
 		\item čovek (human)
 		\item miš (mouse)
@@ -45,7 +45,7 @@ nalazi se 66817 proteina. Među njima se nalaze i proteini koji ne obavljaju nek
 \subsection{Predstavljanje proteina}
 \label{subsec:proteins}
 
-Mnoge metode mašinskog učenja koriste vektore kao ulaz zbog čega je pogodno da se niska aminokiselina prezapiše u niz. Jedan pogodan način za to jeste prebrojavanjem pojavljivanja svakog mogućeg trigrama nad azbukom 20 standardnih aminokiselina. Dimenzija jednog niza je samim tim $20^3$, a jedan element sadrži broj pojavljivanja odgovarajućeg trigrama u niski aminokiselina. Ono što je neophodno jeste da za svaki trigram postoji jedinstveno određen redni broj u nizu. U te svrhe, prvo je potrebno odrediti brojeve pojedinačnih aminokiselina, a šema korišćena u ovoj implementaciji prikazana je u tabeli \ref{tab: aminosNumbers}.
+Mnoge metode mašinskog učenja koriste vektore kao ulaz zbog čega je pogodno da se niska aminokiselina prepiše u niz. Jedan pogodan način za to jeste prebrojavanjem pojavljivanja svakog mogućeg trigrama nad azbukom 20 standardnih aminokiselina. Dimenzija jednog niza je samim tim $20^3$, a jedan element sadrži broj pojavljivanja odgovarajućeg trigrama u niski aminokiselina. Ono što je neophodno jeste da za svaki trigram postoji jedinstveno određen redni broj u nizu. U te svrhe, prvo je potrebno odrediti brojeve pojedinačnih aminokiselina, a šema korišćena u ovoj implementaciji prikazana je u tabeli \ref{tab: aminosNumbers}.
 
 
 \begin{table}[H]
@@ -72,7 +72,7 @@ Sa ovakvim preslikavanjem trigrama u brojeve, jednostavnim prolaskom kroz nisku 
 \label{sec:train}
 
 
-Program je pisan u programskom jeziku Python i korišćene su implementacije metoda binarne klasifikacije iz Python-ove biblioteke \textit{sklearn}. Trenirano je 399 modela za svaki metod pojedinačno. Početni skup proteina podeljen je na trening i test skup u razmeri 3:1. Tokom treniranja izvršen je i odabir modela na validacionom skupu koji je izdvojen iz trening skupa u istoj razmeri. Odabir najboljeg modela izvršen je na osnovu f1 mere.
+Program je pisan u programskom jeziku Python i korišćene su implementacije metoda binarne klasifikacije iz Python-ove biblioteke \textit{sklearn}. Trenirano je 399 modela za svaki metod pojedinačno. Početni skup proteina podeljen je na trening i test skup u razmeri 3:1. Tokom treniranja izvršen je i odabir modela na validacionom skupu koji je izdvojen iz trening skupa u istoj razmeri. Odabir najboljeg modela izvršen je na osnovu f1-mere.
 
 Nakon što je obučavanje jednog modela završeno, on je sačuvan u posebnoj datoteci sa nazivom koji odgovara identifikatoru funkcije za koju je model treniran i to korišćenjem još jedne Python-ove biblioteke - \textit{pickle}. Ova biblioteka omogućava čuvanje i kasnije čitanje modela mašinskog učenja u pogodnom obliku, tako da nema potrebe za obučavanjem ispočetka već su modeli odmah spremni za predviđanje.
 
@@ -85,12 +85,12 @@ Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.01,
 
 \paragraph{Logistička regresija}
 
-Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.0001, 0.001, 0.01, 0.1, 1\}$. Neki modeli nisu uspevali da nauče ništa iz podataka i njihova f1 mera bila je jednaka 0. Za takve modele izvršen je dodatan trening na proširenom skupu podataka. Proširenje skupa se odnosi na generisanje sintetičkih instanci kako bi se ublažila nebalansiranost pozitivnih i negativnih instanci. Za proširivanje skupa korišćena je Python-ova biblioteka \textit{imblearn}, a skup je obogaćen tako da odnos pozitivnih i negativnih instanci bude 1:2.
+Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.0001, 0.001, 0.01, 0.1, 1\}$. Neki modeli nisu uspevali da nauče ništa iz podataka i njihova f1-mera bila je jednaka 0. Za takve modele izvršen je dodatan trening na proširenom skupu podataka. Proširenje skupa se odnosi na generisanje sintetičkih instanci kako bi se ublažila nebalansiranost pozitivnih i negativnih instanci. Za proširivanje skupa korišćena je Python-ova biblioteka \textit{imblearn}, a skup je obogaćen tako da odnos pozitivnih i negativnih instanci bude 1:2.
 
 
 \paragraph{Slučajne šume}
 
-Kod modela slučajnih šuma trenirani su modeli sa različitim brojem stabala iz skupa $\{100, 400, 700, 1000\}$. Slično kao kod logističke regresije, za modele čija je f1 mera bila 0 izvršen je dodatan trening sa dodatnim pozitivnim instancama.
+Kod modela slučajnih šuma trenirani su modeli sa različitim brojem stabala iz skupa $\{100, 400, 700, 1000\}$. Slično kao kod logističke regresije, za modele čija je f1-mera bila 0 izvršen je dodatan trening sa dodatnim pozitivnim instancama.
 
 
 

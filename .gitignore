@@ -47,3 +47,8 @@ Tekst/main-blx.bib
 Tekst/Chapters/*.aux
 Tekst/Chapters/*.log
 Tekst/main.dvi
+Program/data/original_data/uniprot-proteome_human.fasta
+Program/data/original_data/uniprot-proteome_arath.fasta
+Program/data/original_data/uniprot-proteome_ecoli.fasta
+Program/data/original_data/uniprot-proteome_mouse.fasta
+Program/data/original_data/uniprot-proteome_rat.fasta
