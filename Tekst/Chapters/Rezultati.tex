@@ -16,154 +16,157 @@ Naivni klasifikator je testiran na istom test skupu kao i 3 prediktora, a rezult
 
 U tabelama \ref{tab: rfF1}, \ref{tab: lrF1} i \ref{tab: svmF1} prikazane su $f_1$ mere za 20 pojedinačnih klasifikatora za svaku upotrebljenu metodu binarne klasifikacije. Pored toga, prikazan je i broj pojavljivanja u trening skupu za svaku funkciju, kao i udeo broja pojavljivanja funkcije u celom trening skupu. Vrednosti za sve klasifikatore prikazane su na adresi \url{http://poincare.matf.bg.ac.rs/~anja_bukurov/master}.
 
-
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Funkcija & f1-mera & Broj pojavljivanja u skupu & Procenat pojavljivanja u skupu \\		\hline
-		GO:0005525 & 0.3 & 290 & 1.4\% \\
+		Funkcija & f1-mera & broj pojavljivanja u skupu & procenat pojavljivanja u skupu \\
 		\hline
-		GO:0008134 & 0.11 & 861 & 4.1\% \\
+		GO:0003674 & 1.0 & 20860 & 100.0\% \\
 		\hline
-		GO:0019899 & 0.11 & 2381 & 11.4\% \\
+		GO:0003824 & 0.5 & 7843 & 37.6\% \\
 		\hline
-		GO:0044325 & 0.13 & 144 & 0.7\% \\
+		GO:0005198 & 0.18 & 617 & 3.0\% \\
 		\hline
-		GO:0003723 & 0.12 & 1899 & 9.1\% \\
+		GO:0005215 & 0.2 & 1070 & 5.1\% \\
+		\hline
+		GO:0005488 & 0.84 & 15092 & 72.3\% \\
+		\hline
+		GO:0016209 & 0.12 & 120 & 0.6\% \\
+		\hline
+		GO:0060089 & 0.22 & 976 & 4.7\% \\
+		\hline
+		GO:0098772 & 0.13 & 1696 & 8.1\% \\
+		\hline
+		GO:0140110 & 0.25 & 2233 & 10.7\% \\
+		\hline
+		GO:0016740 & 0.38 & 3069 & 14.7\% \\
 		\hline
 		GO:0016787 & 0.25 & 3202 & 15.3\% \\
 		\hline
-		GO:0019900 & 0.12 & 5268 & 20.8\% \\
-		\hline
-		GO:0019888 & 0.13 & 71 & 0.3\% \\
-		\hline
-		GO:0004722 & 0.45 & 123 & 0.6\% \\
-		\hline
-		GO:0004867 & 0.18 & 105 & 0.5\% \\
-		\hline
-		GO:0005496 & 0.11 & 71 & 0.3\% \\
-		\hline
 		GO:0016829 & 0.12 & 316 & 1.5\% \\
 		\hline
-		GO:0046872 & 0.12 & 1824 & 8.7\% \\
-		\hline
-		GO:0016758 & 0.11 & 172 & 0.8\% \\
-		\hline
-		GO:0003729 & 0.13 & 5611 & 21.5\% \\
-		\hline
-		GO:0004930 & 0.12 & 312 & 1.5\% \\
-		\hline
-		GO:0030594 & 0.42 & 86 & 0.4\% \\
+		GO:0140096 & 0.4 & 3337 & 16.0\% \\
 		\hline
 		GO:0004497 & 0.16 & 5710 & 21.7\% \\
 		\hline
-		GO:0030246 & 0.18 & 180 & 0.9\% \\
+		GO:0009055 & 0.15 & 153 & 0.7\% \\
 		\hline
-		GO:0031406 & 0.12 & 5730 & 21.7\% \\
+		GO:0016627 & 0.11 & 76 & 0.4\% \\
+		\hline
+		GO:0016628 & 0.2 & 34 & 0.2\% \\
+		\hline
+		GO:0016741 & 0.21 & 258 & 1.2\% \\
+		\hline
+		GO:0016757 & 0.13 & 5667 & 21.6\% \\
+		\hline
+		GO:0016772 & 0.46 & 1609 & 7.7\% \\
 		\hline
 	\end{tabular}
-	\caption{Prikaz f1-mere za pojedina\v cne klasifikatore metode slučajne šume}
+	\caption{Prikaz f1 mera za pojedina\v cne klasifikatore metode slučajne šume}
 	\label{tab: rfF1}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Funkcija & f1-mera & Broj pojavljivanja u skupu & Procenat pojavljivanja u skupu \\		\hline
-		GO:0005525 & 0.46 & 290 & 1.4\% \\
+		Funkcija & f1-mera & broj pojavljivanja u skupu & procenat pojavljivanja u skupu \\
 		\hline
-		GO:0005524 & 0.2 & 671 & 3.2\% \\
+		GO:0003674 & 1.0 & 20860 & 100.0\% \\
 		\hline
-		GO:0051117 & 0.11 & 101 & 0.5\% \\
+		GO:0003824 & 0.69 & 7843 & 37.6\% \\
 		\hline
-		GO:0008134 & 0.26 & 861 & 4.1\% \\
+		GO:0005198 & 0.36 & 617 & 3.0\% \\
 		\hline
-		GO:0019899 & 0.31 & 2381 & 11.4\% \\
+		GO:0005215 & 0.63 & 1070 & 5.1\% \\
 		\hline
-		GO:0019904 & 0.15 & 681 & 3.3\% \\
+		GO:0005488 & 0.75 & 15092 & 72.3\% \\
 		\hline
-		GO:0044877 & 0.16 & 985 & 4.7\% \\
+		GO:0016209 & 0.33 & 120 & 0.6\% \\
 		\hline
-		GO:0003714 & 0.16 & 292 & 1.4\% \\
+		GO:0060089 & 0.57 & 976 & 4.7\% \\
 		\hline
-		GO:0046982 & 0.16 & 663 & 3.2\% \\
+		GO:0098772 & 0.32 & 1696 & 8.1\% \\
 		\hline
-		GO:0044325 & 0.28 & 144 & 0.7\% \\
+		GO:0140110 & 0.52 & 2233 & 10.7\% \\
 		\hline
-		GO:0003723 & 0.39 & 1899 & 9.1\% \\
+		GO:0009975 & 0.78 & 35 & 0.2\% \\
 		\hline
-		GO:0031625 & 0.15 & 303 & 1.5\% \\
+		GO:0016491 & 0.47 & 1182 & 5.7\% \\
 		\hline
-		GO:0003779 & 0.28 & 402 & 1.9\% \\
-		\hline
-		GO:0030234 & 0.27 & 1047 & 5.0\% \\
-		\hline
-		GO:0019901 & 0.18 & 668 & 3.2\% \\
-		\hline
-		GO:0042803 & 0.15 & 1218 & 5.8\% \\
-		\hline
-		GO:0042802 & 0.25 & 2480 & 11.9\% \\
-		\hline
-		GO:0005102 & 0.3 & 1423 & 6.8\% \\
+		GO:0016740 & 0.56 & 3069 & 14.7\% \\
 		\hline
 		GO:0016787 & 0.49 & 3202 & 15.3\% \\
 		\hline
-		GO:0004222 & 0.46 & 128 & 0.6\% \\
+		GO:0016829 & 0.4 & 316 & 1.5\% \\
+		\hline
+		GO:0016853 & 0.29 & 174 & 0.8\% \\
+		\hline
+		GO:0016874 & 0.27 & 153 & 0.7\% \\
+		\hline
+		GO:0140096 & 0.61 & 3337 & 16.0\% \\
+		\hline
+		GO:0140097 & 0.3 & 287 & 1.4\% \\
+		\hline
+		GO:0140098 & 0.14 & 286 & 1.4\% \\
+		\hline
+		GO:0004497 & 0.67 & 201 & 1.0\% \\
 		\hline
 	\end{tabular}
-	\caption{Prikaz f1-mere za pojedina\v cne klasifikatore metode logistička regresija}
+	\caption{Prikaz f1 mera za pojedina\v cne klasifikatore metode logistička regresija}
 	\label{tab: lrF1}
 \end{table}
 
-\begin{table}[h]
+
+\begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Funkcija & f1-mera & Broj pojavljivanja u skupu & Procenat pojavljivanja u skupu \\		\hline
-		GO:0005525 & 0.36 & 290 & 1.4\% \\
+		Funkcija & f1-mera & broj pojavljivanja u skupu & procenat pojavljivanja u skupu \\
 		\hline
-		GO:0005524 & 0.15 & 671 & 3.2\% \\
+		GO:0003674 & 1.0 & 20860 & 100.0\% \\
 		\hline
-		GO:0008134 & 0.27 & 861 & 4.1\% \\
+		GO:0003824 & 0.71 & 7843 & 37.6\% \\
 		\hline
-		GO:0019899 & 0.19 & 2381 & 11.4\% \\
+		GO:0005198 & 0.22 & 617 & 3.0\% \\
 		\hline
-		GO:0044877 & 0.11 & 985 & 4.7\% \\
+		GO:0005215 & 0.57 & 1070 & 5.1\% \\
 		\hline
-		GO:0003714 & 0.15 & 292 & 1.4\% \\
+		GO:0005488 & 0.84 & 15092 & 72.3\% \\
 		\hline
-		GO:0046982 & 0.16 & 663 & 3.2\% \\
+		GO:0016209 & 0.21 & 120 & 0.6\% \\
 		\hline
-		GO:0003723 & 0.33 & 1899 & 9.1\% \\
+		GO:0045182 & 0.13 & 128 & 0.6\% \\
 		\hline
-		GO:0003779 & 0.24 & 402 & 1.9\% \\
+		GO:0060089 & 0.56 & 976 & 4.7\% \\
 		\hline
-		GO:0030234 & 0.18 & 1047 & 5.0\% \\
+		GO:0098772 & 0.11 & 1696 & 8.1\% \\
 		\hline
-		GO:0019901 & 0.14 & 668 & 3.2\% \\
+		GO:0140110 & 0.47 & 2233 & 10.7\% \\
 		\hline
-		GO:0042802 & 0.11 & 2480 & 11.9\% \\
+		GO:0009975 & 0.17 & 35 & 0.2\% \\
 		\hline
-		GO:0005102 & 0.15 & 1423 & 6.8\% \\
+		GO:0016491 & 0.44 & 1182 & 5.7\% \\
+		\hline
+		GO:0016740 & 0.54 & 3069 & 14.7\% \\
 		\hline
 		GO:0016787 & 0.43 & 3202 & 15.3\% \\
 		\hline
-		GO:0004222 & 0.24 & 128 & 0.6\% \\
+		GO:0016829 & 0.35 & 316 & 1.5\% \\
 		\hline
-		GO:0019888 & 0.21 & 71 & 0.3\% \\
+		GO:0016853 & 0.23 & 174 & 0.8\% \\
 		\hline
-		GO:0004722 & 0.43 & 123 & 0.6\% \\
+		GO:0016874 & 0.2 & 153 & 0.7\% \\
 		\hline
-		GO:0004867 & 0.18 & 105 & 0.5\% \\
+		GO:0140096 & 0.6 & 3337 & 16.0\% \\
 		\hline
-		GO:0030145 & 0.11 & 162 & 0.8\% \\
+		GO:0004497 & 0.77 & 201 & 1.0\% \\
 		\hline
-		GO:0051287 & 0.2 & 123 & 0.6\% \\
+		GO:0009055 & 0.12 & 153 & 0.7\% \\
 		\hline
 	\end{tabular}
-	\caption{Prikaz f1-mere za pojedina\v cne klasifikatore metode potpornih vektora}
+	\caption{Prikaz f1 mera za pojedina\v cne klasifikatore metode potpornih vektora}
 	\label{tab: svmF1}
 \end{table}
 
