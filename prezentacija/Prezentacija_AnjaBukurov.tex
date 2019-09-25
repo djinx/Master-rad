@@ -8,7 +8,7 @@
 \title{Predviđanje funkcije proteina metodama binarne klasifikacije}
 \author{Anja Bukurov}
 \institute{Matematički fakultet}
-\date{26.06.2019}
+\date{26.06.2019.}
  
  
  
@@ -106,20 +106,6 @@
 	\end{itemize}
 \end{frame}
 
-
-\begin{frame}{Metod potpornih vektora}
-	\frametitle{Metod potpornih vektora}
-	
-	\begin{itemize}
-		\item Tehnika zasnovana na pronalasku razdvajajuće hiperravni
-		\item Sve instance iste klase treba da se nađu sa iste strane hiperravni
-		
-		\item Takvih ravni množe biti mnogo, ali nisu sve podjednako dobre
-		\item Traži se ona koja maksimizuje rastojanje između instanci dve klase
-	\end{itemize}
-\end{frame}
-
-
 \begin{frame}{Logistička regresija}
 	\frametitle{Logistička regresija}
 	
@@ -145,6 +131,25 @@
 \end{frame}
 
 
+
+\subsection{Evaluacija modela}
+\begin{frame}{Evaluacija modela}
+	\frametitle{Evaluacija modela}
+	\begin{itemize}
+		\item Tačnost
+		
+		\item Preciznost
+		
+		\item Odziv
+		
+		\item $f_1$
+		
+		\item Površina ispod ROC krive
+		
+	\end{itemize}
+\end{frame}
+		
+		
 \section{Implementacija}
 \subsection{Predstavljanje proteina i funkcija}
 \begin{frame}{Predstavljanje proteina i funkcija}
@@ -157,9 +162,10 @@
 		
 		$$trigram\_broj = ak_1 * 20^2 + ak_2 * 20 + ak_3$$
 		
-		pri čemu svaka aminokiselina ima dodeljen broj $ak_i$ iz intervala $[0, 19]$
+		pri čemu svaka aminokiselina ima dodeljen broj iz intervala $[0, 19]$
 	\end{itemize}
 \end{frame}
+
 
 \begin{frame}{Predstavljanje proteina i funkcija}
 	\frametitle{Predstavljanje funkcija}
@@ -170,7 +176,7 @@
 		\item Funkcije proteina podeljene su na tri
 		ontologije: biološki procesi (BPO), molekulske funkcije (MFO) i ćelijske komponente (CCO).
 		
-		\item Ontologija je predstavljena kao usmereni acikli£ki graf gde su čvorovima pridruženi nazivi funkcija, a grane koje ih povezuju definišu relaciju \textit{is\_a}
+		\item Ontologija je predstavljena kao usmereni aciklički graf gde su čvorovima pridruženi nazivi funkcija, a grane koje ih povezuju definišu relaciju \textit{is\_a}
 		
 		\item Svaki čvor ima specifičniju funkciju od roditeljskog čvora
 	
@@ -179,23 +185,132 @@
 \end{frame}
 
 
-
+\subsection{Obučavanje modela}
 \begin{frame}{Skupovi za obučavanje i evaluaciju}
 	\frametitle{Skupovi za obučavanje i evaluaciju}
 	\begin{itemize}
-		\item Početni skup 20960 proteina podeljen je na trening i test skup
+		\item Početni skup od 20960 proteina podeljen je na trening i test skup
 		
 		\item Za trening je izdvojeno 20860 proteina koji su korišćeni za obučavanje pojedinačnih binarnih modela
-		
-		\item Svaki binarni model predstavlja najbolji od nekoliko modela koji se razlikuju po korišćenim parametrima, a odabrani su na osnovu rezultata postignutih na podskupu trening skupa koji je izdvojen za validaciju
 		
 		\item Na test skupu od 100 proteina upoređeni su konačni prediktori čiji odgovor predstavlja uniju odgovora svih binarnih klasifikatora 
 	\end{itemize}
 \end{frame}
 
+
+\begin{frame}{Obučavanje modela}
+	\frametitle{Obučavanje modela}
+	\begin{itemize}
+		\item Korišćene su implementacije iz Python biblioteke \textit{sklearn}
+		
+		\item Za svaku funkciju trenirano je više modela sa različitim parametrima i odabran je najbolji po $f_1$-meri 
+		
+		\item Svaki model je obučen na 75\% trening skupa koji je prethodno podeljen na pozitivne i negativne instance
+		
+		\item 25\% skupa korišćeno je za validaciju i odabir modela 
+		 
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Parametri}
+	\frametitle{Parametri}
+	\begin{itemize}
+		\item Metod potpornih vektora: $C\in \{0.001, 0.1, 1, 10\}$ i $kernel \in \{linear, rbf\}$
+		~ \\ ~ \\
+		\item Linearna regresija: $C\in \{0.00001. 0.0001, 0.001, 0.1, 1\}$
+		~ \\ ~ \\
+		\item Slučajne šume: $n\_estimatoris \in \{100, 400, 700, 1000\}$
+		
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Objedinjavanje modela}
+\begin{frame}{Objedinjavanje modela}
+	\frametitle{Objedinjavanje modela}
+	
+	\begin{itemize}
+		\item Za svaku od tri metode napravljen je jedan prediktor
+		
+		\item Prediktor kao ulaz prima jednu proteinsku sekvencu, a izlaz je podgraf ontologije koji predstavlja funkciju zadatog proteina
+		
+		\item Svaki je fomiran na osnovu prethodno obučenih binarnih modela
+		
+		\item Tokom klasifikacije jednog proteina, sekvenca se prosleđuje svakom od modela koji daju odgovor za konkretnu funkciju
+		
+		\item Svi odgovori se spajaju u konačan odgovor prediktora - podgraf ontologije
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Evaluacija prediktora}
+\begin{frame}{Evaluacija prediktora}
+	\frametitle{Evaluacija prediktora}
+	
+	\begin{itemize}
+		\item Svi odgovori se spajaju u jedan niz čime se dobija klasa za svaku od funkcija
+		
+		\item Za svaki protein iz test skupa je eksperimentalno određena funkcija na osnovu čega je formiran i niz stvarnih klasa za svaku od funkcija
+		
+		\item Na osnovu ovih nizova - stvarne i predviđene klase, lako se određuju sve mere kvaliteta preditkora
+	\end{itemize}
+\end{frame}
+
+
 \section{Rezultati}
 \begin{frame}{Rezultati}
 	\frametitle{Rezultati}
+	\begin{itemize}
+		\item Prediktori su testirani nad skupom od 100 proteina i međusobno upoređeni
+		
+		\item Implementiran je i naivan klasifikator kao osnovni metod za poređenje 
+		
+		\item Vrednosti za svaku meru kvaliteta su računate na nivou svih organizama, i na pojedinačnim organizmima (čovek, miš, pacov, ešerihija i arabidopsis)
+		
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{../Tekst/Figures/f1_poredjenje.png}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}{Rezultati}
+	\frametitle{Poređenje sa CAFA}
+	\begin{itemize}
+		\item Prediktori su dodatno testirani na \textit{benchmark} skupu koji je korišćen u okviru CAFA3 takmičenja
+		
+		\item Skup sadrži 453 proteina 
+		
+		\item Poređenje je izvršeno na osnovu $f_1$-mere
+		
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{../Tekst/Figures/cafa_poredjenje.png}
+	\end{figure}
+	
+\end{frame}
+
+
+
+\begin{frame}{Zaključak}
+	\frametitle{Zaključak}
+	\begin{itemize}
+		\item Trenirani prediktori nemaju približnu moć predviđanja u poređenju sa rezultatima prikazanim na poslednjem CAFA takmičenju
+		
+		\item Planovi za njihovo poboljšanje uključuju treniranje pojedinačnih modela i prediktora za svaki organizam pojedinačno, povećanje trening skupa, izmenu ulaznih podataka, korišćenje raznovrsnijih metoda binarne klasifikacije
+		
+	\end{itemize}
 	
 \end{frame}
 
