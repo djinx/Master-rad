@@ -13,6 +13,7 @@ Program/data/parsed_data/test_functions_n_100.txt
 Program/data/parsed_data/test_functions.txt
 Program/data/parsed_data/num_functions_n_100.txt
 Program/data/parsed_data/num_functions.txt
+Program/data/parsed_data/
 Program/data/input/*
 Program/data/models/*
 Program/data/output/*
@@ -30,6 +31,17 @@ Prijava teme/Molba_AnjaBukurov.synctex.gz
 RF*
 Training_models*
 
+*.aux
+*.lof
+*.out
+*.log
+*.run
+*.synctex.gz
+*.toc
+*.snm
+*.nav
+*.txt
+Program/test_*
 Tekst/main.aux
 Tekst/main.lof
 Tekst/main.txt 

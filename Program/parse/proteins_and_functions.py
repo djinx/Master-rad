@@ -6,15 +6,18 @@ def proteins_with_functions_molecular(alt_ids, valid_proteins, obsoletes, path="
     # parents = read_files.read_map_file("parents.txt")
 
     for line in all_lines:
-        tokens = line.split(" ")
+        tokens = line.split("\t")
 
-        if tokens[2] == "F\n":
+        if len(tokens) == 2:
             protein = tokens[0]
-            function = tokens[1]
+            function = tokens[1].replace("\n", "")
 
             # Preskacemo proteine koji sadrze nestandardne aminokiseline
             if protein not in valid_proteins:
                 continue
+
+            if protein == 'T2848120004414':
+                print(function)
 
             # Preskacu se zastarele funkcije
             if function in obsoletes:

@@ -117,3 +117,14 @@ def read_test_functions(path="../data/parsed_data/", file="testing_functions.txt
         functions.append(line.replace("\n", ""))
 
     return functions
+
+
+def read_functions(file_name, path="../data/parsed_data/"):
+    file = open(path + file_name, "r")
+    lines = file.readlines()
+    functions = []
+
+    for line in lines:
+        functions.append(line.replace("\n", ""))
+
+    return functions

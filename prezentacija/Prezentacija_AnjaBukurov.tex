@@ -126,7 +126,7 @@
 		\item Metod asambla dizajniran za stabla odlučivanja
 		\item Čvorovi stabla sadrže pitanja, a grane su odgovori na njih
 		\item Listovi sadrže oznake klasa
-		\item Klasifikacija se vrši glasanjem - svako od stabla klasifikuje instancu, a prebrojavanjem se odlučuje koja je klasa
+		\item Klasifikacija se vrši glasanjem - svako stabla klasifikuje instancu, a prebrojavanjem se odlučuje koja je klasa
 	\end{itemize}
 \end{frame}
 
@@ -216,9 +216,9 @@
 \begin{frame}{Parametri}
 	\frametitle{Parametri}
 	\begin{itemize}
-		\item Metod potpornih vektora: $C\in \{0.001, 0.1, 1, 10\}$ i $kernel \in \{linear, rbf\}$
+		\item Metod potpornih vektora: $C\in \{0.01, 0.1, 1, 10\}$ i $kernel \in \{linear, rbf\}$
 		~ \\ ~ \\
-		\item Linearna regresija: $C\in \{0.00001. 0.0001, 0.001, 0.1, 1\}$
+		\item Logistička regresija: $C\in \{0.0001. 0.001, 0.01, 0.1, 1\}$
 		~ \\ ~ \\
 		\item Slučajne šume: $n\_estimatoris \in \{100, 400, 700, 1000\}$
 		
@@ -249,9 +249,9 @@
 	\frametitle{Evaluacija prediktora}
 	
 	\begin{itemize}
-		\item Svi odgovori se spajaju u jedan niz čime se dobija klasa za svaku od funkcija
+		\item Svi odgovori se spajaju u jedan niz čime se dobija oznaka za svaku od funkcija
 		
-		\item Za svaki protein iz test skupa je eksperimentalno određena funkcija na osnovu čega je formiran i niz stvarnih klasa za svaku od funkcija
+		\item Za svaki protein iz test skupa je eksperimentalno određena funkcija na osnovu čega je formiran i niz stvarnih klasa
 		
 		\item Na osnovu ovih nizova - stvarne i predviđene klase, lako se određuju sve mere kvaliteta preditkora
 	\end{itemize}
@@ -259,8 +259,9 @@
 
 
 \section{Rezultati}
-\begin{frame}{Rezultati}
-	\frametitle{Rezultati}
+\subsection{Poređenje 3 preditkora}
+\begin{frame}{Poređenje 3 preditkora}
+	\frametitle{Poređenje 3 preditkora}
 	\begin{itemize}
 		\item Prediktori su testirani nad skupom od 100 proteina i međusobno upoređeni
 		
@@ -280,6 +281,44 @@
 	
 \end{frame}
 
+\subsection{Najbolji binarni modeli}
+\begin{frame}{$f_1$-mere najboljih binarnih modela}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Oznaka funkcije & LR & RF & SVM \\
+			\hline
+			GO:0003824 & 0.71 & 0.52 & \textbf{0.72} \\
+			\hline
+			GO:0005488 & 0.76 & \textbf{0.84} & 0.78 \\
+			\hline
+			GO:0016787 & 0.46 & 0.23 & \textbf{0.48}\\
+			\hline
+			GO:0140096 & \textbf{0.59} & 0.42 & \textbf{0.59} \\
+			\hline
+			GO:0016740 & 0.53 & 0.36 & \textbf{0.55} \\
+			\hline
+			GO:0016825 & 0.69 & 0.56 & \textbf{0.71} \\
+			\hline
+			GO:0016772 & \textbf{0.67} & 0.46 & \textbf{0.67} \\
+			\hline
+			GO:0017171 & 0.69 & 0.57 & \textbf{0.71} \\
+			\hline
+			GO:0016773 & \textbf{0.77} & 0.51 & 0.76 \\
+			\hline
+			GO:0008236 & \textbf{0.7} & 0.54 & \textbf{0.7} \\
+			\hline
+			GO:0004672 & \textbf{0.82} & 0.53 & 0.81 \\
+			\hline
+			GO:0004674 & 0.74 & 0.44 & \textbf{0.75} \\
+			\hline
+		\end{tabular}
+		\label{tab: commonScores}
+	\end{table}
+\end{frame}
+
+\subsection{CAFA}
 \begin{frame}{Rezultati}
 	\frametitle{Poređenje sa CAFA}
 	\begin{itemize}

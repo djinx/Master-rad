@@ -15,16 +15,22 @@ def molecular_proteins_sequences(molecular_proteins, path="../data/original_data
     for line in lines:
         if line.startswith(">"):
             if protein_id != "" and protein_id in molecular_proteins:
-                sequences[protein_id] = sequence
+                if 'U' not in sequence:
+                    sequences[protein_id] = sequence
 
-            protein_id = line.replace(">", "").replace("\n", "")
+            if path.endswith("cafa.fasta"):
+                protein_id = line.split(" ")[0]
+            else:
+                protein_id = line
+            protein_id = protein_id.replace(">", "").replace("\n", "")
             sequence = ""
 
         else:
             sequence += line.replace("\n", "")
 
     # Poslednji protein koji nije upisan jos uvek
-    sequences[protein_id] = sequence
+    if protein_id in molecular_proteins:
+        sequences[protein_id] = sequence
 
     file.close()
     return sequences

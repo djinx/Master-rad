@@ -30,7 +30,7 @@ Podaci o proteinima mogu se pronaći u biomedicinskim bazama podataka, a neke od
 		& & masenom sprektometrijom \\
 		\hline 
 	\end{tabular}
-	\caption{Prikaz nekih javno dostupnih biomedicinskih baza \\ podataka \cite{radivojac, doktJK}.}
+	\caption{Prikaz nekih javno dostupnih biomedicinskih baza \\ podataka \cite{radivojac, doktJK}}
 	\label{tab: databases}
 \end{table}
 
@@ -54,9 +54,20 @@ Svaka ontologija predstavljena je kao usmereni aciklički graf gde su čvorovima
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figures/go_subgraph.png}
-	\caption{Prikaz svih predaka lista označenog funkcijom ‚‚nucleotid binding'' u ontologiji molekulskih funkcija.}
+	\caption{Prikaz svih predaka lista označenog funkcijom ‚‚nucleotid binding'' u ontologiji molekulskih funkcija \cite{quickGO}}
 	\label{fig:subgraph}
 \end{figure}
+
+
+\section{Nebalansirani skupovi podataka}
+
+Nebalansirani skupovi podataka podrazumevaju skupove u kojima nije svaka klasa predstavljena jednako tj. nema jednak ili približan broj instanci za svaku klasu. Nebalansirani podaci ne moraju biti loša stvar - u praksi su skupovi često nebalansirani do nekog stepena. Međutim, problem nastaje kada je stepen nebalansiranosti veliki. Na primer, u detekciji prevara ili donošenju medicinskih dijagnoza, nebalansiranost je velika. Većina transakcija koja se obavlja neće biti prevare, a postoje i slučajevi kada jeste prevara, iako je retko \cite{handleImblMLOnl, handleImblClfOnl}. 
+
+Algoritmi mašinskog učenja napravljeni su tako da minimizuju grešku. S obzirom da će, u slučaju velike nebalansiranosti podataka, mnogo veća šansa biti da instanca pripada većinskoj klasi, algoritmi će češće klasifikovati podatke baš u tu klasu. 
+
+Jedan od pristupa ovakvom problemu jeste pravljenje novog skupa podataka od postojećeg u cilju balansiranja klasa. Postoje dva popularna načina da se ovo učini. Jedan podrazumeva dodavanje novih instanci, a drugi uklanjanje postojećih instanci. Prvi pristup uvećava broj instanci klase u manjini u trening skupu. Najbolje rešenje jeste dodavanje novih instanci klase u manjini kako bi se nebalansiranost ublažila ili potpuno odstranila. Međutim, najčešće novih instanci nema pa se prave veštačke instance na osnovu postojećih. Time se ne gube informacije iz originalnog trening skupa, ali je pristup sklon preprilagođavanju. Sa druge strane, uklanjanje postojećih instanci podrazumeva smanjenje skupa većinske klase čime se dobija izbalansiran skup, ali može se desiti da se izgube bitne informacije \cite{handleImblClfOnl}.
+
+Prilikom predviđanja funkcije proteina, problem nebalansiranih skupova podataka javlja se prilikom podele proteina na one koji vrše neku funkciju iz ontologije i na one koji je ne vrše. Proteina koji se svrstavaju u pozitivnu klasu ima mnogo manje od onih iz negativne klase i broj opada što se dublje ide kroz ontologiju. U glavi \ref{Chapter5} su detaljnije opisani podaci korišćeni u radu i preciznije je prikazana podela podataka.
 
 
 \section{Binarni klasifikatori}
@@ -68,9 +79,7 @@ Svaki klasifikator upotrebljava algoritam za učenje kako bi odredio model koji 
 
 \subsection{Metod potpornih vektora} 
 
-Metod potpornih vektora (engl. \textit{support vector machine}) je tehnika za klasifikaciju zasnovana na ideji vektorskih prostora. Ova metoda generiše klasifikacioni model koji predstavlja funkciju. Osnovni algoritam definisan je za binarnu klasifikaciju.
-
-Osnovna ideja ove metode jeste pronalazak razdvajajuće hiperravni takve da su instance iste klase sa iste strane ravni. Sa tako postavljenim uslovom, razdvajajućih hiperravni može biti više od jedne što je prikazano na slici \ref{fig:svm1}. Iako svaka od ravni razdvaja podatke bez greške, nema garancije da će se podjednako dobro ponašati sa novim podacima koje je potrebno klasifikovati. 
+Metod potpornih vektora (engl. \textit{support vector machine}) je tehnika binarne klasifikacije bazirana na pronalasku razdvajajuće hiperravni. Ideja je pronaći takvu hiperravan da su instance iste klase sa iste strane ravni. Sa tako postavljenim uslovom, razdvajajućih hiperravni može biti više od jedne što je prikazano na slici \ref{fig:svm1}. Iako svaka od ravni razdvaja podatke bez greške, nema garancije da će se podjednako dobro ponašati sa novim podacima koje je potrebno klasifikovati. 
 
 
 \begin{figure}[H]
@@ -132,7 +141,7 @@ S obzirom da funkcija uzima vrednosti iz intervala $[-\infty, \infty]$, a parame
 
 $$\sigma(t) = \dfrac{1}{1+exp(-t)}$$
 
-čiji je grafik prikazan na slici \ref{fig:sigmoid}. Nakon transformacije vrednosti linearnog modela sigmoidnom funkcijom, model logističke regresije određen je relacijom:
+\noindent čiji je grafik prikazan na slici \ref{fig:sigmoid}. Nakon transformacije vrednosti linearnog modela sigmoidnom funkcijom, model logističke regresije određen je relacijom:
 
 $$p_w(y = 1 | x) = \sigma(w \cdot x)$$
 
@@ -166,7 +175,7 @@ $$ \underset{w}{min} -\sum_{i=0}^{N} [y_i\log f_w(x_i) + (1-y_i)\log(1 - f_w(x_i
 
 \subsection{Slučajne šume} 
 
-Metod slučajne šume (engl. \textit{random forests}) spada u grupu metoda specijalno dizajnirane za stabla odlučivanja. Ona kombinuje predviđanja više različitih stabala, gde je svako stablo generisano na osnovu vrednosti nezavisnog skupa slučajno odabranih vektora.
+Metod slučajnih šuma (engl. \textit{random forests}) spada u grupu metoda specijalno dizajnirane za stabla odlučivanja. Ona kombinuje predviđanja više različitih stabala, gde je svako stablo generisano na osnovu vrednosti nezavisnog skupa slučajno odabranih vektora.
 
 \subsubsection{Stabla odlučivanja}
  
@@ -230,8 +239,51 @@ $$ \text{precision = } \dfrac{tp}{tp + fp}  \qquad  \qquad \text{recall = } \dfr
 
 \noindent Preciznost određuje koliko je pozitivnih instanci ispravno klasifikovano u odnosu na ukupan broj instanci koje su klasifikovane kao pozitivne. Sa druge strane, odziv određuje udeo ispravno klasifikovanih pozitivnih instanci u odnosu na ukupan broj pozitivnih instanci u skupu. 
 
-Preciznost i odziv pojedinačno nisu korisne. Ukoliko su sve instance klasifikovane kao pozitivne, odziv će biti maksimalan, međutim preciznost će biti katastrofalna, dok sa druge strane, ukoliko su sve instance klasifikovane kao negativne model ne greši i preciznost je maksimalna, ali odziv je veoma loš. Stoga ima smisla posmatrati ih zajedno što se često radi određivanjem njihove harmonijske sredine koja je nazvana $f_1$-mera \cite{ml}:
+Preciznost i odziv pojedinačno nisu korisne \cite{handleImblMLOnl}:
+
+\begin{itemize}
+	\item visok odziv i preciznost: model dobro klasifikuje podatke iz određene klase
+	\item nizak odziv i visoka preciznost: model retko klasifikuje instance u  određenu klasu, ali kad to uradi može mu se verovati da je ispravno
+	\item visok odziv i niska preciznost: model često klasifikuje instance u određenu klasu, ali uključiće i instance drugih klasa pa mu se ne može mnogo verovati
+	\item nizak odziv i preciznost: model loše klasfikuje instance u određenu klasu.
+\end{itemize}
+
+Ukoliko su sve instance klasifikovane kao pozitivne, odziv će biti maksimalan, međutim preciznost će biti veoma loša, dok sa druge strane, ukoliko su sve instance klasifikovane kao negativne model ne greši i preciznost je maksimalna, ali odziv je veoma loš. Stoga ima smisla posmatrati ih zajedno što se često radi određivanjem njihove harmonijske sredine koja je nazvana $f_1$-mera \cite{ml}:
 
 $$f_1 = 2 \cdot \dfrac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}$$
+
+Još jedna mera kvaliteta koja se koristi prilikom evaluacija klasifikacionih modela je površina ispod ROC krive (\textit{engl. area under the curve}). Pretpostavlja se da klasifikator počiva na nekom modelu koji različitim instancama pridružuje neke skorove. Obično se takav skor prevodi u klasu nekom vrstom zaokruživanja u odnosu na neki prag \cite{ml}. ROC kriva je grafik koji prikazuje performanse klasifikacionog modela pri svim pragovima. Ona prikazuje dve parametra: meru stvarno pozitivnih (\textit{engl. true postive rate}) i meru lažno pozitivnih instanci (\textit{engl. false positive rate}) koje se računaju po formulama \cite{roc}:
+
+$$ \text{tpr = } \dfrac{tp}{tp + fn}  \qquad  \qquad \text{fpr = } \dfrac{fp}{fp + tn}$$
+
+Smanjenje praga rezultuje povećanjem pozitivno klasifikovanih instanci čime rastu i veličine $tp$ i $fp$. Slika \ref{fig:roc} prikazuje primer ROC krive. Površina ispod ROC krive meri dvodimenzionalni prostor ispod krive od tačke $(0, 0)$ do $(1, 1)$ i daje uprosečenu meru performansi modela za sve pragove. Može se interpretirati kao verovatnoća da model daje viši skor pozitivnoj instanci nego negativnoj. \cite{roc}. 
+
+Površina ispod ROC krive govori koliko je model uspešan u razdvajanju klasa. Što je veća vrednost, model bolje klasifikuje negativne instance kao negativne, a pozitivne kao pozitivne. Model za koji je ova mera dala vrednost blisku 1 je odličan model koji dobro razdvaja klase. Sa druge strane, vrednost bliska 0 označava slab model koji loše razdvaja klase i to uglavnom klasifikuje instance u suprotnu klasu. Ukoliko je vrednost ove mere za neki model jednaka 0.5 to znači da model nije naučio da razdvaja klase \cite{auc}.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Figures/roc.png}
+	\caption{ROC kriva \cite{roc}}
+	\label{fig:roc}
+\end{figure}
+
+
+
+
+\section{Analiza glavnih komponenti}
+
+Ideja analize glavnih komponenti je smanjenje dimenzionalnosti skupa podataka koji su korelisani, a da se pritom varijabilnost u skupu što bolje očuva. Dimenzionalnost se definiše kao broj atributa koji su prisutni u podacima. Korelacija pokazuje koliko su dve promenljive slične. Varijacija promenljivih nosi više infomacija, ali koreliralnost atributa ukazuje na to da nose manje informacija nego što njihov broj sugeriše. Potrebno je pronaći skup vektora takvih da je varijansa projekcija podataka na prostor koji razapinju najveća, a da kovarijacije između projekcija podataka nema. Dodatno se odbacuju vektori duž kojih je varijacija najmanja, a odabrani vektori se nazivaju \textit{glavne komponente}. Kako bi projekcije bile nekorelirane, konstruišu se ortogonalni vektori. Ortogonalnost označava da promenljive nisu korelirane tj. da je korelacija između svaka dva para promenljivih jednaka 0. Može se reći da analiza glavnih komponenti (\textit{engl. Principal component analysis}) pruža projekciju ili senku objekta posmatranog iz njegove najbogatije perspektive \cite{introDM, ni, pcaOnl}. 
+
+
+Matrica kovarijacije je matrica koja se sastoji od kovarijacija između parova promenljivih. Element $\sigma_{ij}$ označava kovarijansu između $i$-te i $j$-te promenljive. Sopstveni vektor je nenula vektor $v$ kvadratne matrice $A$ ukoliko važi:
+$$Av = \lambda v$$
+
+\noindent Prva komponenta se bira tako da nosi najviše informacija odnosno, da održi najveću varijansu. Vektori koji se biraju su spostveni vektori matrice kovarijacije zbog čega su ortogonalni.
+
+Glavne komponente se predstavljaju kao linearne kombinacije posmatranih promenljivih. Izlaz algoritma su glavne komponente kojih ima manje ili jednako početnom broju promenljivih. Ukoliko želimo da smanjimo dimenzionalnost taj broj će svakako biti manji \cite{pcaOnl}.
+
+
+U ovom radu, proteini su predstavljeni nizovima dimenzije $20^3$, što je opisano u sekciji \ref{subsec:proteins}. Veliki broj atributa za svaki protein uticao je na performanse metode potpornih vektora zbog čega je primena ovog algoritma bila neophodna. Više reči o tome biće u poglavlju \ref{sec:train}.
 
 

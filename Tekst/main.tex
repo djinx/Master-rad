@@ -23,7 +23,7 @@
 %oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
 % serbian, % ngerman for German
 serbian,
-singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+onehalfspacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
 %nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
 %liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
@@ -33,6 +33,7 @@ singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespac
 headsepline, % Uncomment to get a line under the header
 %chapterinoneline, % Uncomment to place the chapter title next to the number on one line
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+openany
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
 \usepackage[utf8]{inputenc} % Required for inputting international characters
@@ -43,23 +44,55 @@ headsepline, % Uncomment to get a line under the header
 % dužine
 
 \usepackage{float}
-\usepackage{listings}                                                          
+\usepackage{subcaption}
+\usepackage{listings}  
+\usepackage{boldline, multirow}
+\usepackage{pdflscape}                                                        
 \usepackage{color}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-                                                                                
+\usepackage{listings}
+\usepackage{pbox}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4
+}
+   
+
+\lstset{style=mystyle}                                                                             
 
 % \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
 \usepackage[
-  backend=bibtex
-  , natbib=true
-  , citestyle=numeric
-  , bibstyle=numeric
-  , sorting=none
-  , maxbibnames=99
+backend=bibtex
+, natbib=true
+, citestyle=numeric
+, bibstyle=numeric
+, sorting=none
+, maxbibnames=99
 ]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
 
 
@@ -67,6 +100,7 @@ headsepline, % Uncomment to get a line under the header
 
 
 % \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -231,23 +265,23 @@ dr Mladen Nikolić \\
 
 Proteini su makromolekuli koji igraju važnu ulogu u organizmu svakog živog bića. To su biološki najaktivniji molekuli neophodni za izgradnju i funkcionisanje ćelija i imaju veliki broj esencijalnih funkcija. Struktura proteina zavisi od rasporeda aminokiselina i utiče na njegovu funkciju. Primarna struktura obuhvata sekvencu aminokiselina koje izgrađuju protein. Ona je osnovni izvor informacija o proteinu i njegovoj funkciji. Poznato je da proteini sa sličnim primarnim strukturama teže da obavljaju iste funkcije. 
 
-Svake godine sekvencira se veliki broj novih genoma čime raste broj novootkrivenih proteina. Funkcija proteina određuje se eksperimentalno što je skup i spor proces zbog čega se ulaže trud u razvoj računarskih metoda koje mogu da predvide funkciju proteina. Cilj ovog rada je razvoj alata za određivanje funkcije proteina na osnovu njegove primarne strukture pomoću metoda binarne klasifikacije.
+Svake godine sekvencira se veliki broj novih genoma čime raste broj novootkrivenih proteina. Funkcija proteina određuje se eksperimentalno što je skup i spor proces zbog čega se ulaže trud u razvoj računarskih metoda koje mogu da predvide funkciju proteina. Jedan pristup rešavanju ovog problema jeste predviđanje funkcije proteina. Ono može koristiti različite izvore informacija o proteinima poput interakcija između proteina, evolucione povezanosti i stukture proteina. U ovom radu razvijen je alat za određivanje funkcije proteina na osnovu njegove sekvence pomoću metoda binarne klasifikacije sa ciljem ispitivanja performansi jednostavnih metoda mašinskog ucenja na ovom kompleksnom problemu.
 
 
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
 %	ACKNOWLEDGEMENTS
-%----------------------------------------------------------------------------------------
-\iffalse 
+%---------------------------------------------------------------------------------------- 
+\iffalse
 \begin{acknowledgements}
 \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
 
-
+Zahvaljujem se, pre svega, svojoj porodici i prijateljima za neizmernu podršku i ljubav. Veliku zahvalnost dugujem i svom mentoru, Jovani Kovačević, za sve savete i veliko strpljenje tokom izrade ovog rada. Posebno bih se zahvalila prijateljima i kolegama Vojislavu Stankoviću, Nikoli Ajzenhameru i Uni Stanković na korisnim savetima i podršci tokom izrade ovog rada.  
 
 
 \end{acknowledgements}
-\fi 
+\fi
 %
 %----------------------------------------------------------------------------------------
 %	LIST OF KEYWORDS
@@ -262,9 +296,9 @@ Svake godine sekvencira se veliki broj novih genoma čime raste broj novootkrive
 
 \tableofcontents % Prints the main table of contents
 
-%\listoffigures % Prints the list of figures
+\listoffigures % Prints the list of figures
 
-%\listoftables % Prints the list of tables
+\listoftables % Prints the list of tables
 
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS
@@ -330,6 +364,7 @@ Svake godine sekvencira se veliki broj novih genoma čime raste broj novootkrive
 \include{Chapters/Podaci}
 \include{Chapters/Implementacija}
 \include{Chapters/Rezultati}
+\include{Chapters/Zakljucak}
 
 
 %----------------------------------------------------------------------------------------
@@ -348,7 +383,7 @@ Svake godine sekvencira se veliki broj novih genoma čime raste broj novootkrive
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-\renewcommand{\bibname}{Bibliografija}
+\renewcommand{\bibname}{Literatura}
 \printbibliography[heading=bibintoc]
 
 %----------------------------------------------------------------------------------------

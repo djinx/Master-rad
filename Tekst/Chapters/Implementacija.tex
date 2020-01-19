@@ -1,9 +1,9 @@
-\chapter{Implementacija predviđanja funkcija proteina}
+\chapter{Implementacija predviđanja funkcije proteina}
 \label{Chapter5}
 
-Predviđanje funkcije proteina vršeno je metodama binarne klasifikacije i to metodom potpornih vektora, slučajnim šumama i logističkom regresijom. Trenirani su binarni klasifikatori za pojedinačne funkcije ontologije molekulskih funkcija. Ulaz predstavljaju sekvence proteina za koje je određeno da li obavljaju ili ne obavljaju konkretnu funkciju. Odgovor koji svaki od klasifikatora daje je da li zadati protein izvršava odgovarajuću funkciju ili ne.
+Predviđanje funkcije proteina vršeno je metodama binarne klasifikacije i to metodom potpornih vektora, slučajnim šumama i logističkom regresijom. Trenirani su binarni klasifikatori za pojedinačne funkcije ontologije molekulskih funkcija. Ulaz predstavljaju sekvence proteina za koje je eksperimentalno određeno da li obavljaju ili ne obavljaju konkretnu funkciju. Odgovor koji svaki od klasifikatora daje je da li zadati protein izvršava odgovarajuću funkciju ili ne.
 
-Kada su svi modeli istrenirani, testirani su nad 100 proteina različitih organizama. Za svaki protein traže se odgovori svih binarnih klasifikatora jedne metode, a njihovi odgovori se spajaju u konačan odgovor - podgraf ontologije koji predstavlja funkciju zadatog proteina.
+Kada su svi modeli za jednu od metoda istrenirani, ujedinjeni su u jedinstveni izlaz za jedan prediktor. Prilikom predviđanja funkcije jednog proteina, prediktor testira proteinsku sekvencu nad svakim binarnim klasifikatorom, a odgovore koje dobija spaja u konačan odgovor - podgraf ontologije koji predstavlja funkciju zadatog proteina. Na taj način dobijena su tri prediktora, po jedan za svaku navedenu metodu.
 
 
 
@@ -61,43 +61,122 @@ Mnoge metode mašinskog učenja koriste vektore kao ulaz zbog čega je pogodno d
 	\label{tab: aminosNumbers}
 \end{table}
 
+
+Naredni segment koda definiše preslikavanje funkcije koja preslikava aminokiseline u brojeve:
+
+\begin{lstlisting}[language=Python]
+def amino_to_number(aa):
+	amino_acids = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 
+	'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+	return amino_acids.index(aa)
+\end{lstlisting}
+
+
 Sada, za svaki trigram može da se odredi njegov jedinstveni broj koji predstavlja poziciju u nizu i to formulom:
 
 $$kmer\_index = aa_1*20^2 + aa_2 * 20 + aa_3$$
 
-Sa ovakvim preslikavanjem trigrama u brojeve, jednostavnim prolaskom kroz nisku sa korakom od 3 karaktera dobija se odgovarajući niz.
+\noindent Pridruživanje broja trigramu implementirano je rekurzivnom funkcijom \verb|kmer_to_number|. Funkcija je napisana tako da može da radi za različite vrednosti broja $k$, a podrazumevana je vrednost 3.
+\begin{lstlisting}[language=Python]
+def kmer_to_number(kmer, k=3):
+	if k == 1:
+		return amino_to_number(kmer)
+	
+	return kmer_to_number(kmer[:-1], k - 1) * number_of_aa + amino_to_number(kmer[-1])
+\end{lstlisting}
 
+
+~\\
+Sa ovakvim preslikavanjem trigrama u brojeve, jednostavnim prolaskom kroz nisku sa korakom od 3 karaktera dobija se odgovarajući niz. Funkcija \verb|form_array| pravi niz dimenzije $20^k$, za parametarski zadato $k$. Povratna vrednost je niz broja pojavljivanja svakog trigrama na odgovarajućim pozicijama koje se određuju prethodnom funckijom.
+
+\begin{lstlisting}[language=Python]
+def form_array(protein, k=3):
+	n = len(protein)
+	array = np.zeros(number_of_aa ** k)
+	
+	for i in range(0, n - k):
+		kmer = protein[i:i + k]
+		position = kmer_to_number(kmer, k)
+		array[position] += 1
+	
+	return array
+\end{lstlisting}
+ 
+
+\section{Podela podataka na trening, validacioni i test skup}
+
+Početni skup od 20960 proteina podeljen je na dve grupe - \textit{trening} i \textit{test} skup. Trening skup je korišćen za obučavanje pojedinačnih binarnih modela i njihovu evaluaciju, a test skup je primenjen prikilom evaluacije svakog od prediktora koji ujedinjuju pojedinačne modele. U tu svrhu je izdvojeno 100 proteina, a preostalih 20860 korišćeno je za obučavanje. Trening skup je potrebno dodatno podeliti na deo za obučavanje i deo za odabir i validaciju modela, koji se još naziva \textit{validacioni} skup.
+
+Svaka funkcija ima različit skup proteina koji je vrše. Zato je za svaku potrebno posebno obeležiti proteine koji obavljaju zadatu funkciju kao pozitivne instance i one koji je ne obavljaju kao negativne. Nakon toga moguće je izvršiti i podelu trening skupa na skup za obučavanje i validacioni skup. 25\% skupa predviđeno je za odabir modela, dok je ostalih 75\% korišćeno za obučavanje modela sa različitim parametrima. 
+
+
+Podela na pozitivne i negativne instance implementirano je u funkciji \verb|pos_neg_data|. Prvi parametar funkcije je mapa koja preslikava oznake proteina u sekvencu. Drugi parametar je funkcija za koju se pravi podela. Zatim slede parametri koji označavaju putanje do datoteka koje sadrži podatke o funkcijama sa proteinima iz trening skupa koji vrše tu funkciju i listu svih proteina iz trening skupa. Iz prve datoteke čitaju se podaci o funkciji koja je prosleđena čime se dobijaju pozitivne instance. Negativne instance izdvajaju se iz liste svih proteina preskakanjem prethodno izdvojenih pozitivnih. 
+
+
+\begin{lstlisting}[language=Python]
+def pos_neg_data(all_sequences, function, f_path, p_path, k=3):
+	positive_proteins = read.read_map_file(f_path)[function]
+	negative_proteins = read.read_proteins(p_path, positive_proteins)
+	size = len(all_sequences)
+	
+	x = np.zeros((size, 20 ** k))
+	y = np.ones(size, dtype=int)
+	i = 0
+	
+	for protein in all_sequences:
+		if protein in positive_proteins:
+			x[i] = make_array(all_sequences[protein], k)
+		if protein in negative_proteins:
+			x[i] = make_array(all_sequences[protein], k)
+			y[i] = -1
+		
+		i += 1
+	
+	return x, y
+\end{lstlisting}
+
+Funkcija \verb|read_map_file(file)| predviđena je za čitanje podataka u obliku \\ ključ$\rightarrow$vrednosti, pri čemu se ključ koristi kao ključ mape, a vrednosti se spajaju u listu i pridružuju ključu u mapi. Funkcija \verb|read_proteins(file, skip_proteins=None)| služi za čitanje datoteke u koju su zapisane oznake proteina, svaka u zasebnom redu. Parametar \verb|skip_proteins| određuje koje proteine treba preskočiti u slučaju određivanja negativnih instanci, a kada je vrednost \verb|None|, što je podrazumevana vrednost, čitaju se svi proteini i smeštaju u listu koja se vraća iz funkcije.
+
+
+Funkcija \verb|make_array(sequences, k=3)| prima nisku koja je ranije formirana pomoću \verb|form_array| za određeni protein. U nisku su upisani parovi indeks:broj, gde je indeks redni broj u nizu kojim se protein predstavlja, a broj je broj pojavljivanja određenog $k$-grama u proteinskoj sekvenci. Funkcija vraća niz dimenzije $20^k$ kojim je predstavljen protein.
+
+Podela podataka izvršena je pomoću funkcije \verb|train_test_split| iz \textit{sklearn} biblioteke. Ona deli podatke na deo za obučavanje i deo za evaluaciju u zadatoj razmeri. Postavljena je vrednost za parametar \verb|random_state| kako bi svi modeli bili trenirani na istom podskupu.
 
 \section{Treniranje modela}
 \label{sec:train}
 
 
-Program je pisan u programskom jeziku Python i korišćene su implementacije metoda binarne klasifikacije iz Python-ove biblioteke \textit{sklearn}. Trenirano je 399 modela za svaki metod pojedinačno. Početni skup proteina podeljen je na trening i test skup u razmeri 3:1. Tokom treniranja izvršen je i odabir modela na validacionom skupu koji je izdvojen iz trening skupa u istoj razmeri. Odabir najboljeg modela izvršen je na osnovu f1-mere.
+Program je pisan u programskom jeziku Python i korišćene su implementacije metoda binarne klasifikacije iz Python-ove biblioteke \textit{sklearn}. Trenirano je 398 modela za svaki metod pojedinačno. Za koren ontologije (funckija GO:0003674) nije bilo moguće napraviti model zbog trening skupa u kom se nalaze samo proteini koji vrše molekulske funkcije. Drugim rečima, za koren nije bilo negativnih instanci u skupu.
+
+Početni skup proteina podeljen je na trening i test skup u razmeri 3:1. Tokom treniranja izvršen je i odabir modela na validacionom skupu koji je izdvojen iz trening skupa u istoj razmeri. Odabir najboljeg modela izvršen je na osnovu $f_1$-mere.
 
 Nakon što je obučavanje jednog modela završeno, on je sačuvan u posebnoj datoteci sa nazivom koji odgovara identifikatoru funkcije za koju je model treniran i to korišćenjem još jedne Python-ove biblioteke - \textit{pickle}. Ova biblioteka omogućava čuvanje i kasnije čitanje modela mašinskog učenja u pogodnom obliku, tako da nema potrebe za obučavanjem ispočetka već su modeli odmah spremni za predviđanje.
+
+Za odabir najboljeg modela korišćena je funkcija \verb|best_classifier(x_train,| \\ \verb|y_train, x_test, y_test)| kojoj je potrebno proslediti pripremljene podatke za obučavanje i testiranje. Najbolji model se bira na osnovu $f_1$-mere koja se računa za svaki od modela, a funkcija vraća model i vrednosti za mere kvaliteta najboljeg modela i to: $f_1$-meru, tačnost, preciznost, odziv i površinu ispod krive.
 
 
 \paragraph{Metod potpornih vektora}
 
-Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.01, 0.1, 1, 10\}$. Pored toga, odabiran je bolji od dva kernela, linearan i gausov. Zbog dugačkog treniranja jednog modela i velikog broja modela koje je trebalo obučiti, svim nizovima redukovana je dimenzionalnost na 1000. U te svrhe korišćena je Python-ova implementacija algoritma analize glavnih komponenti iz biblioteke \textit{sklearn}.  
+Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.01, 0.1, 1, 10\}$. Pored toga, odabiran je bolji od dva kernela, linearan i gausov. Svakom modelu je postavljen i parametar \verb|class_weight| na vrednost \textit{balanced} kako bi se svakoj klasi pridružila težina obrnuto proporcionalna frekvenciji pojavljivanja u trening skupu. Zbog dugačkog treniranja jednog modela i velikog broja modela koje je trebalo obučiti, svim nizovima redukovana je dimenzionalnost na 1000. U te svrhe korišćena je Python-ova implementacija algoritma analize glavnih komponenti iz biblioteke \textit{sklearn}.  
 
 
 
 \paragraph{Logistička regresija}
 
-Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.0001, 0.001, 0.01, 0.1, 1\}$. Neki modeli nisu uspevali da nauče ništa iz podataka i njihova f1-mera bila je jednaka 0. Za takve modele izvršen je dodatan trening na proširenom skupu podataka. Proširenje skupa se odnosi na generisanje sintetičkih instanci kako bi se ublažila nebalansiranost pozitivnih i negativnih instanci. Za proširivanje skupa korišćena je Python-ova biblioteka \textit{imblearn}, a skup je obogaćen tako da odnos pozitivnih i negativnih instanci bude 1:2.
+Prilikom odabira modela birana je vrednost za parametar C i to iz skupa $\{0.0001, 0.001, 0.01, 0.1, 1\}$. Svakom modelu je postavljen i parametar \verb|class_weight| na vrednost \textit{balanced}. Neki modeli nisu uspevali da nauče ništa iz podataka i njihova $f_1$-mera bila je jednaka 0. Za takve modele izvršen je dodatan trening na proširenom skupu podataka. Proširenje skupa se odnosi na generisanje sintetičkih instanci kako bi se ublažila nebalansiranost pozitivnih i negativnih instanci. Za proširivanje skupa korišćena je Python-ova biblioteka \textit{imblearn}, a skup je obogaćen tako da odnos pozitivnih i negativnih instanci bude 1:2.
 
 
 \paragraph{Slučajne šume}
 
-Kod modela slučajnih šuma trenirani su modeli sa različitim brojem stabala iz skupa $\{100, 400, 700, 1000\}$. Slično kao kod logističke regresije, za modele čija je f1-mera bila 0 izvršen je dodatan trening sa dodatnim pozitivnim instancama.
+Kod modela slučajnih šuma trenirani su modeli sa različitim brojem stabala iz skupa $\{100, 400, 700, 1000\}$. Svakom modelu je postavljen i parametar \verb|class_weight| na vrednost \textit{balanced}. Slično kao kod logističke regresije, za modele čija je $f_1$-mera bila 0 izvršen je dodatan trening sa dodatnim pozitivnim instancama.
 
 
 
 \section{Objedinjavanje modela}
 
-Nakon što su svi modeli za odabrani metod obučeni prelazi se na testiranje. Izdvojen je skup od 100 proteina nad kojim je testiran prediktor. Prediktor je formiran na osnovu 399 prethodno obučenih modela koji se na samom početku učitavaju u memoriju. Prilikom predviđanja funkcije jednog proteina, protein se prosleđuje kao ulaz svakom od binarnih klasifikatora koji daju vrednosti 0 ili 1. Ujedinjavanjem svih odgovora dobija se konačan odgovor. Sve funkcije za koje je odgovarajući klasifikator dao 1 kao odgovor predstavljaju čvor podgrafa.
+Nakon što su svi modeli za odabrani metod obučeni prelazi se na testiranje. Izdvojen je skup od 100 proteina nad kojim je testiran prediktor. Prediktor je formiran na osnovu 398 prethodno obučenih modela za svaku od 398 funkcija koje se pojavljuju u trening skupu. Prilikom predviđanja funkcije jednog proteina, protein se prosleđuje kao ulaz svakom od binarnih klasifikatora koji daju vrednosti 0 ili 1. Ujedinjavanjem svih odgovora dobija se konačan odgovor. Sve funkcije za koje je odgovarajući klasifikator dao 1 kao odgovor predstavljaju čvor podgrafa.
 
+Funkcija \verb|all_predictions(protein, true_functions, pca)| kao parametre prima jedan test protein, zatim funkcije za koje je eksperimentalno utvrđeno da ih izvršava i indikator da li treba koristiti smanjenje dimenzionalnosti (u slučaju metode potpornih vektora prosleđuje se vrednost \verb|True|). Za svaku od 399 funkcija proverava se da li je protein izvršava ili ne primenom odgovarajućeg klasifikatora i rezultat se upisuje u niz - 0 ako ne izvršava odnosno 1 ako izvršava. Izuzetno u slučaju korena ontologije se dodeljuje vrednost 1. Nakon što je svaki klasifikator dao svoj odgovor, određuju se vrednosti za mere kvaliteta koje su postignute za dati protein, što je opisano u narednoj sekciji. Funkcija vraća podgraf ontologije koji predstavlja funkciju proteina i vrednost za sve izračunate mere kvaliteta modela.
 
 
 \section{Evaluacija modela}
@@ -106,10 +185,56 @@ Kao mera kvaliteta pojedinačnih modela korišćena je $f_1$ mera. U okviru bibl
 
 Ista mera korišćena je za evaluaciju konačnog prediktora koji ujedinjuje sve odgovore. S obzirom da prediktor daje strukturu kao odgovor (usmereni aciklički graf) treba preciznije definisati kako se ova mera određuje. Pretpostavimo da je datoj test instanci pridružen izlazni vektor $y = [0, 1, 1, 0, 1, 1]$, a da je prediktor dao odgovor $y' = [0, 0, 1, 1, 0, 1]$ za istu test instancu. Poređenjem dva vektora može se lako utvrditi koje su klase ispravno određene, a koje pogrešno odnosno mogu se odrediti veličine $tp$, $tn$, $fp$ i $fn$ opisane u sekciji \ref{sec:evaluation}:
 
-$$y' = [\underset{\in tn}{0}, \underset{\in fn}{0}, \underset{\in tp}{1}, \underset{\in fp}{1}, \underset{\in fn}{0}, \underset{\in tp}{}]$$
+$$y' = [\underset{\in tn}{0}, \underset{\in fn}{0}, \underset{\in tp}{1}, \underset{\in fp}{1}, \underset{\in fn}{0}, \underset{\in tp}{1}]$$
 
-\noindent Na osnovu ovih veličina dalje se mogu odrediti preciznost i odziv, a onda i  $f_1$ mera.
+\noindent Na osnovu ovih veličina dalje se mogu odrediti sve metrike opisane u poglavlju \ref{sec:evaluation}.
 
+Nakon što su izvršena sva predviđanja, formirana su dva niza - y\_true i y\_predicted. Svaki od njih sastoji se iz nula i jedinica na odgovarajućim pozicijama, gde nula označava da protein ne izvršava funkciju, a 1 znači da je izvršava. Ovako formirani nizovi mogu se koristiti kao parametri funkcija za određivanje vrednosti za mere kvaliteta iz biblioteke \textit{sklearn}. 
+
+~ 
+\begin{lstlisting}[language=Python]
+def all_predictions(protein, true_functions, pca):
+	predicted_functions = []
+	functions = read_files.read_functions("molecular_functions.txt")
+	
+	n = len(functions)
+	y_true = np.zeros(n)
+	y_predicted = np.zeros(n)
+	i = 0
+	
+	sequence = train_test_data.make_array(protein, 3)
+
+	for function in functions:
+	
+		if function == "GO:0003674":
+			predicted_functions.append(function)
+			y_true[i] = 1
+			y_predicted[i] = 1
+			continue	
+			
+		if pca:
+			pca_model = read_model(function, "PCA_models/")
+			sequence = pca_model.transform([sequence])[0]
+			
+		predicted = prediction([sequence], function)
+		
+		if function in true_functions:
+			y_true[i] = 1
+		
+		if predicted == 1:
+			y_predicted[i] = 1
+			predicted_functions.append(function)
+		
+		i += 1
+	
+	f1 = metrics.f1_score(y_true, y_predicted)
+	acc = metrics.accuracy_score(y_true, y_predicted)
+	pre = metrics.precision_score(y_true, y_predicted)
+	rec = metrics.recall_score(y_true, y_predicted)
+	auc = metrics.roc_auc_score(y_true, y_predicted)
+	
+	return predicted_functions, f1, acc, pre, rec, auc
+\end{lstlisting}
 
 
 

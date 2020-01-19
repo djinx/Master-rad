@@ -113,6 +113,15 @@ def ontology_tree_file(ontology):
     file.close()
 
 
+def names_file(ontology):
+    file = open("../data/parsed_data/names.txt", "w")
+
+    for o in ontology:
+        file.write(o + "->" + ontology[o]['name'] + "\n")
+
+    file.close()
+
+
 def find_all_parents(function, parents, molecular_functions):
     current_parents = molecular_functions[function]['parents']
 
@@ -133,3 +142,12 @@ def parents_file(molecular_functions):
         file.write(mf + "->" + " ".join(parents) + "\n")
 
     file.close()
+
+
+def main():
+    mf, _ = functions()
+    names_file(mf)
+
+
+if __name__ == '__main__':
+    main()
